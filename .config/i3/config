@@ -25,7 +25,7 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+q kill
 
-# start dmenu (a program launcher)
+# start dmenu
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
@@ -118,7 +118,7 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+q exec i3-msg exit
 
-# resize window (you can also use the mouse for that)
+# resize window
 mode "resize" {
   # vim bindings
   bindsym h resize grow width 10 px or 10 ppt
