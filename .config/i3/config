@@ -28,7 +28,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec alacritty
+bindsym $mod+space exec alacritty
 
 # kill focused window
 bindsym $mod+q kill
@@ -67,8 +67,7 @@ bindsym $mod+Shift+Right move right
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-bindsym $mod+Mod1+Return fullscreen toggle
+bindsym $mod+Return fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
