@@ -5,8 +5,17 @@ set $mod Mod4
 for_window [class="^.*"] border pixel 1
 new_window 1pixel
 
+# Font for window titles
+font pango:monospace 8
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
 # Set alt-tab application
 exec_always alttab
+
+# start dmenu
+bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # move focused window between monitors
 bindsym $mod+Shift+greater move container to output up
@@ -21,28 +30,16 @@ bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioMute exec amixer set Master toggle
 
-# Font for window titles
-font pango:monospace 8
-
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
-# start a terminal
-bindsym $mod+space exec alacritty
-
 # kill focused window
 bindsym $mod+q kill
 
-# start dmenu
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-# change focus
+# vim bindings for focus window
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
+# arrow keys for focus window
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
@@ -75,10 +72,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+f floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+Shift+f focus mode_toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
