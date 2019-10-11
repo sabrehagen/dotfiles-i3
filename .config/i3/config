@@ -17,6 +17,12 @@ exec_always alttab
 # start dmenu
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
+# start terminal
+bindsym $mod+space exec alacritty
+
+# kill all terminals
+bindsym $mod+Shift+space exec ~/.config/scripts/kill-tmux-terminals.sh
+
 # move focused window between monitors
 bindsym $mod+Shift+greater move container to output up
 bindsym $mod+Shift+less move container to output down
