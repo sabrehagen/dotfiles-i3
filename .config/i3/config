@@ -24,8 +24,8 @@ bindsym $mod+space exec alacritty
 bindsym $mod+Shift+space exec ~/.config/scripts/kill-tmux-terminals.sh
 
 # move focused window between monitors
-bindsym $mod+Shift+greater move container to output up
-bindsym $mod+Shift+less move container to output down
+bindsym $mod+Shift+less move container to output up
+bindsym $mod+Shift+greater move container to output down
 
 # control monitor brightness
 bindsym XF86MonBrightnessUp exec ~/.config/scripts/brightness.sh +
@@ -108,6 +108,10 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+
+# switch to adjacent workspaces
+bindsym $mod+less workspace prev
+bindsym $mod+greater workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
