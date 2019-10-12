@@ -1,6 +1,6 @@
 general {
   colors = true
-  interval = 5
+  interval = 1
 }
 
 order += "disk /"
@@ -19,7 +19,7 @@ battery all {
 }
 
 tztime local {
-  format = "%I:%M %h-%d"
+  format = "%I:%M:%S %h-%d"
 }
 
 load {
