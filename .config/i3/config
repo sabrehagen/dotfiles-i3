@@ -112,7 +112,9 @@ bindsym $mod+0 workspace $ws10
 
 # switch to adjacent workspaces
 bindsym $mod+less workspace prev
+bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+greater workspace next
+bindsym $mod+Tab workspace next
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
