@@ -165,3 +165,6 @@ bindsym $mod+r mode "resize"
 bar {
   status_command i3status
 }
+
+# Window border colors
+client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
