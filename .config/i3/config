@@ -15,6 +15,9 @@ floating_modifier $mod
 # Set alt-tab application
 exec_always alttab
 
+# Set monitor layout
+exec ~/.config/scripts/monitor-hotplug.sh
+
 # start dmenu
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
