@@ -16,13 +16,13 @@ floating_modifier $mod
 exec_always alttab
 
 # Set monitor layout
-exec ~/.config/scripts/monitor-hotplug.sh
+exec autorandr --change
 
 # start dmenu
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # start terminal
-bindsym $mod+space exec alacritty
+bindsym $mod+Return exec alacritty
 
 # kill all terminals
 bindsym $mod+Shift+space exec ~/.config/scripts/kill-tmux-terminals.sh
@@ -75,7 +75,7 @@ bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
-bindsym $mod+Return fullscreen toggle
+bindsym $mod+space fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
