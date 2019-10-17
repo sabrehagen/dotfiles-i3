@@ -1,0 +1,12 @@
+{
+  "window_command_mappings": [
+    {
+      "class": "Alacritty",
+      "command": "alacritty"
+    }
+  ],
+  "window_swallow_criteria": {},
+  "terminals": [
+    "Alacritty"
+  ]
+}
