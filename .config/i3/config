@@ -18,6 +18,14 @@ exec_always alttab
 # Set monitor layout
 exec autorandr --change
 
+# Restore workspace layout on startup
+exec i3-resurrect restore -w $ws1 --swallow=class,instance,title"; \
+  i3-resurrect restore -w $ws2 --swallow=class,instance,title"; \
+  i3-resurrect restore -w $ws3 --swallow=class,instance,title"; \
+  i3-resurrect restore -w $ws4 --swallow=class,instance,title"; \
+  i3-resurrect restore -w $ws5 --swallow=class,instance,title"; \
+  i3-resurrect restore -w $ws6 --swallow=class,instance,title"
+
 # start dmenu
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
@@ -141,8 +149,14 @@ bindsym $mod+Shift+c reload
 # restart i3 inplace
 bindsym $mod+Shift+r restart
 
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+q exec i3-msg exit
+# Save workspace layout and exit i3
+bindsym $mod+Shift+q exec i3-resurrect save -w $ws1 --swallow=class,instance,title"; \
+  i3-resurrect save -w $ws2 --swallow=class,instance,title"; \
+  i3-resurrect save -w $ws3 --swallow=class,instance,title"; \
+  i3-resurrect save -w $ws4 --swallow=class,instance,title"; \
+  i3-resurrect save -w $ws5 --swallow=class,instance,title"; \
+  i3-resurrect save -w $ws6 --swallow=class,instance,title"; \
+  i3-msg exit
 
 # resize window
 mode "resize" {
