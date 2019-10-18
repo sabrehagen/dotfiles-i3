@@ -3,7 +3,7 @@ set $alt Mod1
 set $mod Mod4
 
 # Hide window title bars
-for_window [class="^.*"] border pixel 1
+for_window [class=".*"] border pixel 0
 new_window 1pixel
 
 # Font for window titles
@@ -101,6 +101,9 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
+# create new workspace
+bindsym $mod+n exec ~/.config/i3/new-workspace.sh
+
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -179,9 +182,19 @@ bindsym $mod+Shift+q exec i3-resurrect save -w $ws1; \
   i3-msg exit
 
 # Restore workspace layout on startup
-exec i3-resurrect restore -w $ws1; \
-  i3-resurrect restore -w $ws2; \
-  i3-resurrect restore -w $ws3; \
-  i3-resurrect restore -w $ws4; \
+exec i3-resurrect restore -w $ws6; \
   i3-resurrect restore -w $ws5; \
-  i3-resurrect restore -w $ws6
+  i3-resurrect restore -w $ws4; \
+  i3-resurrect restore -w $ws3; \
+  i3-resurrect restore -w $ws2; \
+  i3-resurrect restore -w $ws1
+
+# i3-gaps: activate smart borders
+smart_borders on
+
+# i3-gaps: only enable gaps when there is at least one window
+smart_gaps on
+
+# i3-gaps: resize gaps
+bindsym $mod+minus gaps inner all minus 5
+bindsym $mod+Equals gaps inner all plus 5
