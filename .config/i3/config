@@ -18,6 +18,9 @@ exec_always alttab
 # Set monitor layout
 exec autorandr --change
 
+# Set background
+exec_always --no-startup-id feh --bg-scale ~/.local/share/backgrounds/firewatch.jpg
+
 # start dmenu
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
@@ -68,7 +71,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-# bindsym $mod+h split h
+bindsym $mod+semicolon split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -192,9 +195,10 @@ exec i3-resurrect restore -w $ws6; \
 # i3-gaps: activate smart borders
 smart_borders on
 
-# i3-gaps: only enable gaps when there is at least one window
-smart_gaps on
-
 # i3-gaps: resize gaps
-bindsym $mod+minus gaps inner all minus 5
-bindsym $mod+Equals gaps inner all plus 5
+bindsym $mod+minus gaps inner all plus 20
+bindsym $mod+equal gaps inner all minus 20
+
+# i3-gaps: set gaps on startup
+gaps inner 20
+gaps inner 20
