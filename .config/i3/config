@@ -3,7 +3,7 @@ set $alt Mod1
 set $mod Mod4
 
 # Hide window title bars
-for_window [class="^.*"] border pixel 1
+for_window [class=".*"] border pixel 0
 new_window 1pixel
 
 # Font for window titles
@@ -17,6 +17,9 @@ exec_always alttab
 
 # Set monitor layout
 exec autorandr --change
+
+# Set background
+exec --no-startup-id feh --bg-scale ~/.local/share/backgrounds/jungle.jpg
 
 # start dmenu
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
@@ -68,7 +71,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-# bindsym $mod+h split h
+bindsym $mod+semicolon split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -100,6 +103,9 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+# create new workspace
+bindsym $mod+n exec ~/.config/i3/new-workspace.sh
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -179,9 +185,16 @@ bindsym $mod+Shift+q exec i3-resurrect save -w $ws1; \
   i3-msg exit
 
 # Restore workspace layout on startup
-exec i3-resurrect restore -w $ws1; \
-  i3-resurrect restore -w $ws2; \
-  i3-resurrect restore -w $ws3; \
-  i3-resurrect restore -w $ws4; \
+exec i3-resurrect restore -w $ws6; \
   i3-resurrect restore -w $ws5; \
-  i3-resurrect restore -w $ws6
+  i3-resurrect restore -w $ws4; \
+  i3-resurrect restore -w $ws3; \
+  i3-resurrect restore -w $ws2; \
+  i3-resurrect restore -w $ws1
+
+# i3-gaps: activate smart borders
+smart_borders on
+
+# i3-gaps: resize gaps
+bindsym $mod+minus gaps inner all plus 20
+bindsym $mod+equal gaps inner all minus 20
