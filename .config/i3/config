@@ -21,74 +21,77 @@ exec autorandr --change
 # Set background
 exec_always --no-startup-id feh --bg-scale ~/.local/share/backgrounds/firewatch.jpg
 
-# start dmenu
+# Start compton
+exec --no-startup-id compton --config ~/.config/compton/compton.conf
+
+# Start dmenu
 bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# start terminal
+# Start terminal
 bindsym $mod+Return exec alacritty
 
-# kill all terminals
+# Kill all terminals
 bindsym $mod+Shift+space exec ~/.config/scripts/kill-tmux-terminals.sh
 
-# move focused window between monitors
+# Move focused window between monitors
 bindsym $mod+Shift+less move container to output up
 bindsym $mod+Shift+greater move container to output down
 
-# control monitor brightness
+# Control monitor brightness
 bindsym XF86MonBrightnessUp exec ~/.config/scripts/brightness.sh +
 bindsym XF86MonBrightnessDown exec ~/.config/scripts/brightness.sh -
 
-# control audio volume
+# Control audio volume
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioMute exec amixer set Master toggle
 
-# kill focused window
+# Kill focused window
 bindsym $mod+q kill
 
-# vim bindings for focus window
+# Vim bindings for focus window
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# arrow keys for focus window
+# Arrow keys for focus window
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# vim bindings for move focused window
+# Vim bindings for move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# arrow keys for move focused window
+# Arrow keys for move focused window
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# split in horizontal orientation
+# Split in horizontal orientation
 bindsym $mod+semicolon split h
 
-# split in vertical orientation
+# Split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
+# Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 bindsym $mod+space fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
+# Change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# toggle tiling / floating
+# Toggle tiling / floating
 bindsym $mod+$alt+f floating toggle
 
-# change focus between tiling / floating windows
+# Change focus between tiling / floating windows
 bindsym $mod+Shift+f focus mode_toggle
 
 # Define names for default workspaces for which we configure key bindings later on.
@@ -104,10 +107,10 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-# create new workspace
+# Create new workspace
 bindsym $mod+n exec ~/.config/i3/new-workspace.sh
 
-# switch to workspace
+# Switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
@@ -119,13 +122,13 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-# switch to adjacent workspaces
+# Switch to adjacent workspaces
 bindsym $mod+less workspace prev
 bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+greater workspace next
 bindsym $mod+Tab workspace next
 
-# move focused container to workspace
+# Move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
 bindsym $mod+Shift+3 move container to workspace $ws3
@@ -137,31 +140,31 @@ bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
-# move workspace to adjacent screen
+# Move workspace to adjacent screen
 bindsym $mod+$alt+less move workspace to output up
 bindsym $mod+$alt+greater move workspace to output down
 
-# reload the configuration file
+# Reload the configuration file
 bindsym $mod+Shift+c reload
 
-# restart i3 inplace
+# Restart i3 inplace
 bindsym $mod+Shift+r restart
 
-# resize window
+# Resize window
 mode "resize" {
-  # vim bindings
+  # Vim bindings
   bindsym h resize grow width 10 px or 10 ppt
   bindsym j resize grow height 10 px or 10 ppt
   bindsym l resize shrink width 10 px or 10 ppt
   bindsym k resize shrink height 10 px or 10 ppt
 
-  # arrow keys
+  # Arrow keys
   bindsym Left resize shrink width 10 px or 10 ppt
   bindsym Down resize grow height 10 px or 10 ppt
   bindsym Up resize shrink height 10 px or 10 ppt
   bindsym Right resize grow width 10 px or 10 ppt
 
-  # back to normal
+  # Back to normal
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
@@ -182,7 +185,7 @@ bindsym $mod+Shift+q exec i3-resurrect save -w $ws1; \
   exec i3-resurrect save -w $ws4; \
   exec i3-resurrect save -w $ws5; \
   exec i3-resurrect save -w $ws6; \
-  i3-msg exit
+  exec i3-msg exit
 
 # Restore workspace layout on startup
 exec i3-resurrect restore -w $ws6; \
