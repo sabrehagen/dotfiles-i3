@@ -30,6 +30,9 @@ bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 # Start terminal
 bindsym $mod+Return exec alacritty
 
+# Start i3lock
+bindsym $mod+slash exec i3lock-fancy
+
 # Kill all terminals
 bindsym $mod+Shift+space exec ~/.config/scripts/kill-tmux-terminals.sh
 
