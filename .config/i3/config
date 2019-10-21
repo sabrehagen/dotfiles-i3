@@ -24,18 +24,6 @@ exec_always --no-startup-id feh --bg-scale ~/.local/share/backgrounds/firewatch.
 # Start compton
 exec --no-startup-id compton --config ~/.config/compton/compton.conf
 
-# Start dmenu
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-# Start terminal
-bindsym $mod+Return exec alacritty
-
-# Start i3lock
-bindsym $mod+slash exec i3lock-fancy
-
-# Kill all terminals
-bindsym $mod+Shift+space exec ~/.config/scripts/kill-tmux-terminals.sh
-
 # Move focused window between monitors
 bindsym $mod+Shift+less move container to output up
 bindsym $mod+Shift+greater move container to output down
@@ -89,7 +77,6 @@ bindsym $mod+space fullscreen toggle
 
 # Change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # Toggle tiling / floating
