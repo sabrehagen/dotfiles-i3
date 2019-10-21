@@ -1,5 +1,4 @@
 # Set modifiers
-set $alt Mod1
 set $mod Mod4
 
 # Hide window title bars
@@ -24,27 +23,15 @@ exec_always --no-startup-id feh --bg-scale ~/.local/share/backgrounds/firewatch.
 # Start compton
 exec --no-startup-id compton --config ~/.config/compton/compton.conf
 
-# Start dmenu
-bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
-
-# Start terminal
-bindsym $mod+Return exec alacritty
-
-# Start i3lock
-bindsym $mod+slash exec i3lock-fancy
-
-# Kill all terminals
-bindsym $mod+Shift+space exec ~/.config/scripts/kill-tmux-terminals.sh
-
 # Move focused window between monitors
 bindsym $mod+Shift+less move container to output up
 bindsym $mod+Shift+greater move container to output down
 
-# Control monitor brightness
+# Change monitor brightness
 bindsym XF86MonBrightnessUp exec ~/.config/scripts/brightness.sh +
 bindsym XF86MonBrightnessDown exec ~/.config/scripts/brightness.sh -
 
-# Control audio volume
+# Change audio volume
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioMute exec amixer set Master toggle
@@ -77,11 +64,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Merge window right in vertical orientation
-bindsym $mod+$alt+h split v; focus left; move right
+bindsym $mod+Control+h split v; focus left; move right
 
 # Merge window left in vertical orientation
-bindsym $mod+$alt+l split v; focus right; move left
-
+bindsym $mod+Control+l split v; focus right; move left
 
 # Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -89,11 +75,7 @@ bindsym $mod+space fullscreen toggle
 
 # Change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
-# Toggle tiling / floating
-bindsym $mod+$alt+f floating toggle
 
 # Change focus between tiling / floating windows
 bindsym $mod+Shift+f focus mode_toggle
@@ -145,8 +127,8 @@ bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
 
 # Move workspace to adjacent screen
-bindsym $mod+$alt+less move workspace to output up
-bindsym $mod+$alt+greater move workspace to output down
+bindsym $mod+Control+less move workspace to output up
+bindsym $mod+Control+greater move workspace to output down
 
 # Reload the configuration file
 bindsym $mod+Shift+c reload
@@ -209,3 +191,33 @@ bindsym $mod+equal gaps inner all minus 20
 # i3-gaps: set gaps on startup
 gaps inner 20
 gaps inner 20
+
+# Launch terminal
+bindsym $mod+Return exec alacritty
+
+# Launch kill desktop environment tmux sessions
+bindsym $mod+shift+Return exec ~/.config/scripts/tmux-kill-desktop-environment-shell-sessions.sh
+
+# Launch build desktop environment from dotfiles
+bindsym $mod+F4 exec ~/.config/scripts/tmux-desktop-environment-build-dotfiles.sh
+
+# Launch kill all containers except the desktop environment
+bindsym $mod+shift+F5 exec ~/repositories/sabrehagen/desktop-environment/docker/scripts/kill-all.sh
+
+# Launch lockscreen
+bindsym $mod+slash exec i3lock-fancy
+
+# Launch chrome
+bindsym $mod+b exec google-chrome
+
+# Launch code
+bindsym $mod+c exec code
+
+# Launch dmenu
+bindsym $mod+d exec i3-dmenu-desktop
+
+# Launch slack
+bindsym $mod+m exec slack
+
+# Launch signal
+bindsym $mod+shift+m exec signal-desktop --start-in-tray
