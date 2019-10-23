@@ -11,9 +11,6 @@ font pango:monospace 8
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Set alt-tab application
-exec_always alttab
-
 # Set monitor layout
 exec autorandr --change
 
@@ -24,8 +21,8 @@ exec_always --no-startup-id feh --bg-scale ~/.local/share/backgrounds/firewatch.
 exec --no-startup-id compton --config ~/.config/compton/compton.conf
 
 # Move focused window between monitors
-# bindsym $mod+Shift+less move container to output up
-# bindsym $mod+Shift+greater move container to output down
+bindsym $mod+less move container to output up
+bindsym $mod+greater move container to output down
 
 # Change monitor brightness
 bindsym XF86MonBrightnessUp exec ~/.config/scripts/brightness.sh +
@@ -64,7 +61,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Merge window left in vertical orientation
-bindsym $mod+9 split v; focus left; move right
+bindsym $mod+9 split v; focus left; move right; move up
 
 # Merge window right in vertical orientation
 bindsym $mod+0 split v; focus right; move left
@@ -111,9 +108,7 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 
 # Switch to adjacent workspaces
-bindsym $mod+less workspace prev
 bindsym $mod+Shift+Tab workspace prev
-bindsym $mod+greater workspace next
 bindsym $mod+Tab workspace next
 
 # Move focused container to workspace
@@ -171,11 +166,11 @@ bindsym $mod+Shift+q exec i3-resurrect save -w $ws1; \
 
 # Restore workspace layout on startup
 exec i3-resurrect restore -w $ws6; \
-  i3-resurrect restore -w $ws5; \
-  i3-resurrect restore -w $ws4; \
-  i3-resurrect restore -w $ws3; \
-  i3-resurrect restore -w $ws2; \
-  i3-resurrect restore -w $ws1
+  exec i3-resurrect restore -w $ws5; \
+  exec i3-resurrect restore -w $ws4; \
+  exec i3-resurrect restore -w $ws3; \
+  exec i3-resurrect restore -w $ws2; \
+  exec i3-resurrect restore -w $ws1
 
 # i3-gaps: activate smart borders
 smart_borders on
@@ -201,7 +196,7 @@ bindsym $mod+shift+F5 exec ~/repositories/sabrehagen/desktop-environment/docker/
 bindsym $mod+F6 exec ~/.config/scripts/tmux-kill-desktop-environment-shell-sessions.sh
 
 # Launch lockscreen
-bindsym $mod+slash exec i3lock-fancy
+bindsym $mod+slash exec i3lock-fancy --pixelate
 
 # Launch chrome
 bindsym $mod+b exec google-chrome
