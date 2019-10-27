@@ -165,13 +165,14 @@ bindsym $mod+Shift+q exec i3-resurrect save -w $ws1; \
   exec i3-msg exit
 
 # Restore workspace layout on startup
-exec i3-resurrect restore -w $ws1
-exec i3-resurrect restore -w $ws2
-exec i3-resurrect restore -w $ws3
-exec i3-resurrect restore -w $ws4
-exec i3-resurrect restore -w $ws5
-exec i3-resurrect restore -w $ws6
-exec i3-msg workspace $ws1
+exec sleep 0.3; \
+  exec i3-resurrect restore -w $ws1; \
+  exec i3-resurrect restore -w $ws2; \
+  exec i3-resurrect restore -w $ws3; \
+  exec i3-resurrect restore -w $ws4; \
+  exec i3-resurrect restore -w $ws5; \
+  exec i3-resurrect restore -w $ws6; \
+  exec i3-msg workspace $ws1
 
 # i3-gaps: activate smart borders
 smart_borders on
@@ -226,8 +227,11 @@ bindsym $mod+shift+m exec google-chrome --app=https://slack.jackson.cloud-comput
 # Launch signal
 bindsym $mod+y exec signal-desktop --start-in-tray
 
-# Launch terminal
-bindsym $mod+Return exec alacritty
+# Launch retro terminal
+bindsym $mod+Return exec cool-retro-term
+
+# Launch alacritty terminal
+bindsym $mod+Control+Return exec alacritty
 
 # Launch web terminal
 bindsym $mod+shift+Return exec google-chrome --app=https://terminal.jackson.cloud-computer.dev
