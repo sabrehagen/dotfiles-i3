@@ -2,7 +2,7 @@
 set $mod Mod4
 
 # Hide window title bars
-for_window [class=".*"] border pixel 0
+for_window [class=".*"] border pixel 1
 new_window 1pixel
 
 # Font for window titles
@@ -15,10 +15,13 @@ floating_modifier $mod
 exec autorandr --change
 
 # Set background
-exec_always --no-startup-id feh --bg-scale ~/.local/share/backgrounds/firewatch.jpg
+exec_always feh --bg-scale ~/.local/share/backgrounds/firewatch.jpg
 
 # Start compton
-exec --no-startup-id compton --config ~/.config/compton/compton.conf
+exec compton --config ~/.config/compton/compton.conf
+
+# Start autolock
+exec xautolock -time 3 -locker "i3lock-fancy --pixelate"
 
 # Move focused window between monitors
 bindsym $mod+less move container to output up
@@ -71,7 +74,6 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+space fullscreen toggle
 
 # Change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+e layout toggle split
 
 # Change focus between tiling / floating windows
@@ -156,8 +158,7 @@ bar {
 client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
 
 # Save workspace layout and exit i3
-bindsym $mod+Shift+q exec ~/.config/i3/save-layout.sh; \
-  exec i3-msg exit
+bindsym $mod+Shift+q exec ~/.config/i3/save-layout.sh
 
 # Restore workspace layout on startup
 exec ~/.config/i3/restore-layout.sh
