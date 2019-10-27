@@ -156,23 +156,11 @@ bar {
 client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
 
 # Save workspace layout and exit i3
-bindsym $mod+Shift+q exec i3-resurrect save -w $ws1; \
-  exec i3-resurrect save -w $ws2; \
-  exec i3-resurrect save -w $ws3; \
-  exec i3-resurrect save -w $ws4; \
-  exec i3-resurrect save -w $ws5; \
-  exec i3-resurrect save -w $ws6; \
+bindsym $mod+Shift+q exec ~/.config/i3/save-layout.sh; \
   exec i3-msg exit
 
 # Restore workspace layout on startup
-exec sleep 0.3; \
-  exec i3-resurrect restore -w $ws1; \
-  exec i3-resurrect restore -w $ws2; \
-  exec i3-resurrect restore -w $ws3; \
-  exec i3-resurrect restore -w $ws4; \
-  exec i3-resurrect restore -w $ws5; \
-  exec i3-resurrect restore -w $ws6; \
-  exec i3-msg workspace $ws1
+exec ~/.config/i3/restore-layout.sh
 
 # i3-gaps: activate smart borders
 smart_borders on
