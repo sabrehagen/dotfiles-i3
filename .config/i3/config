@@ -28,8 +28,8 @@ bindsym $mod+less move container to output up
 bindsym $mod+greater move container to output down
 
 # Change monitor brightness
-bindsym XF86MonBrightnessUp exec ~/.config/scripts/brightness.sh +
-bindsym XF86MonBrightnessDown exec ~/.config/scripts/brightness.sh -
+bindsym XF86MonBrightnessUp exec ~/.config/scripts/hardware-brightness.sh +
+bindsym XF86MonBrightnessDown exec ~/.config/scripts/hardware-brightness.sh -
 
 # Change audio volume
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
@@ -73,8 +73,10 @@ bindsym $mod+0 split v; focus right; move left
 bindsym $mod+f fullscreen toggle
 bindsym $mod+space fullscreen toggle
 
+# Focus urgent window
+bindsym $mod+u [urgent=latest] focus
+
 # Change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
 bindsym $mod+e layout toggle split
 
 # Change focus between tiling / floating windows
@@ -217,11 +219,11 @@ bindsym $mod+shift+m exec google-chrome --app=https://slack.jackson.cloud-comput
 # Launch signal
 bindsym $mod+y exec signal-desktop --start-in-tray
 
-# Launch retro terminal
-bindsym $mod+Return exec cool-retro-term
-
 # Launch alacritty terminal
-bindsym $mod+Control+Return exec alacritty
+bindsym $mod+Return exec alacritty
 
 # Launch web terminal
 bindsym $mod+shift+Return exec google-chrome --app=https://terminal.jackson.cloud-computer.dev
+
+# Launch retro terminal
+bindsym $mod+Control+Return exec cool-retro-term
