@@ -12,24 +12,31 @@ font pango:monospace 8
 floating_modifier $mod
 
 # Set monitor layout
-exec autorandr --change
+exec --no-startup-id autorandr --change
 
 # Set background
-exec_always feh --bg-scale ~/.local/share/backgrounds/firewatch.jpg
+exec_always --no-startup-id feh --bg-scale ~/.local/share/backgrounds/firewatch.jpg
 
 # Start compton
-exec compton --config ~/.config/compton/compton.conf
+exec --no-startup-id compton --config ~/.config/compton/compton.conf
 
 # Start autolock
-exec xautolock -time 3 -locker "i3lock-fancy --pixelate"
+exec --no-startup-id xautolock -time 3 -locker "i3lock-fancy --pixelate"
+
+# Start workspace names
+exec_always --no-startup-id exec i3-workspace-names-daemon
 
 # Move focused window between monitors
 bindsym $mod+less move container to output up
 bindsym $mod+greater move container to output down
 
-# Change monitor brightness
+# Change monitor hardware brightness
 bindsym XF86MonBrightnessUp exec ~/.config/scripts/hardware-brightness.sh +
 bindsym XF86MonBrightnessDown exec ~/.config/scripts/hardware-brightness.sh -
+
+# Change monitor software brightness
+bindsym Shift+XF86MonBrightnessUp exec ~/.config/scripts/software-brightness.sh +
+bindsym Shift+XF86MonBrightnessDown exec ~/.config/scripts/software-brightness.sh -
 
 # Change audio volume
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
@@ -83,7 +90,7 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+f focus mode_toggle
 
 # Reload the configuration file
-bindsym $mod+Shift+Escape reload
+bindsym $mod+Escape reload
 
 # Restart i3 inplace
 bindsym $mod+Shift+r restart
@@ -103,30 +110,30 @@ set $ws8 "8"
 bindsym $mod+n exec ~/.config/i3/new-workspace.sh
 
 # Switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
+bindsym $mod+1 workspace number $ws1
+bindsym $mod+2 workspace number $ws2
+bindsym $mod+3 workspace number $ws3
+bindsym $mod+4 workspace number $ws4
+bindsym $mod+5 workspace number $ws5
+bindsym $mod+6 workspace number $ws6
+bindsym $mod+7 workspace number $ws7
+bindsym $mod+8 workspace number $ws8
 
 # Switch to adjacent workspaces
 bindsym $mod+Shift+Tab workspace prev
 bindsym $mod+Tab workspace next
 
 # Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+bindsym $mod+Shift+1 move container to workspace number $ws1
+bindsym $mod+Shift+2 move container to workspace number $ws2
+bindsym $mod+Shift+3 move container to workspace number $ws3
+bindsym $mod+Shift+4 move container to workspace number $ws4
+bindsym $mod+Shift+5 move container to workspace number $ws5
+bindsym $mod+Shift+6 move container to workspace number $ws6
+bindsym $mod+Shift+7 move container to workspace number $ws7
+bindsym $mod+Shift+8 move container to workspace number $ws8
+bindsym $mod+Shift+9 move container to workspace number $ws9
+bindsym $mod+Shift+0 move container to workspace number $ws10
 
 # Move workspace to adjacent screen
 bindsym $mod+Shift+less move workspace to output up
@@ -154,7 +161,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
-  status_command i3status
+  position bottom
+  status_command i3blocks
 }
 
 # Window border colors
@@ -227,3 +235,9 @@ bindsym $mod+shift+Return exec google-chrome --app=https://terminal.jackson.clou
 
 # Launch retro terminal
 bindsym $mod+Control+Return exec cool-retro-term
+
+# Launch screenshot capture
+bindsym $mod+x exec maim -s | xclip -selection clipboard -t image/png
+
+# Launch screenshot dump
+bindsym $mod+w exec xclip -o -selection clipboard > /tmp/screenshot.png

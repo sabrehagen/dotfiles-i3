@@ -1,0 +1,39 @@
+separator_block_width=15
+color=#ffffff
+markup=none
+
+[desktop-environment-build]
+command=~/.config/i3blocks/desktop-environment-build
+interval=1
+
+[disk]
+label=
+command=echo 87G
+interval=1
+
+[cpu]
+label=
+command=echo 12%
+interval=1
+
+[battery]
+command=~/.config/i3blocks/battery
+interval=1
+
+[wifi]
+label=
+command=echo $(iw dev wlp58s0 link | grep SSID | cut -f2 -d:) $(ip addr | grep wlp | grep inet | sed -E 's;.*inet (.*)/.*;\1;')
+interval=1
+
+[bandwidth]
+command=~/.config/i3blocks/bandwidth
+interval=2
+
+[network]
+command=echo up
+interval=2
+
+[time]
+label=
+command=date '+%a %d %b %I:%M:%S '
+interval=1

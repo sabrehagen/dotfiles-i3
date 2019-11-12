@@ -1,0 +1,12 @@
+#!/bin/bash
+
+BATTERY=$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')
+
+if [ "$BATTERY" -ge 90 ]; then ICON=
+elif [ "$BATTERY" -ge 70 ]; then ICON=
+elif [ "$BATTERY" -ge 40 ]; then ICON=
+elif [ "$BATTERY" -ge 20 ]; then ICON=
+else ICON=
+fi
+
+echo $ICON $BATTERY%
