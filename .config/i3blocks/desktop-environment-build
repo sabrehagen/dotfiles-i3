@@ -1,7 +1,9 @@
 BUILD_STARTED=$(tmux ls | grep build-dotfiles | sed -E 's/.*build-dotfiles-([^:]*):.*/\1/')
 
 if [ ! -z "$BUILD_STARTED" ]; then
-  echo  $(timeago $BUILD_STARTED)
+  echo -n " "
+  echo $BUILD_STARTED | timeago
 else
-  echo  $(timeago $(docker inspect sabrehagen/desktop-environment --format='{{.Created}}' | xargs date +%s -d))
+  echo -n " "
+  docker inspect sabrehagen/desktop-environment --format='{{.Created}}' | xargs date +%s -d | timeago
 fi
