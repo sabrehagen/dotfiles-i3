@@ -1,0 +1,7 @@
+PING_TEST=$(timeout 2 ping google.com 2>/dev/null | grep -q from; echo $?)
+
+if [ "$PING_TEST" -eq 0 ]; then
+  echo up
+else
+  echo down
+fi

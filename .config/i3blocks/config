@@ -6,14 +6,20 @@ markup=none
 command=~/.config/i3blocks/desktop-environment-build
 interval=1
 
+[cpu]
+label=
+command=~/.config/i3blocks/cpu
+interval=2
+min_width=32
+
+[memory]
+label=
+command=~/.config/i3blocks/memory
+interval=2
+
 [disk]
 label=
-command=echo 87G
-interval=1
-
-[cpu]
-label=
-command=echo 12%
+command=~/.config/i3blocks/disk
 interval=1
 
 [battery]
@@ -28,9 +34,11 @@ interval=1
 [bandwidth]
 command=~/.config/i3blocks/bandwidth
 interval=2
+min_width=65
 
-[network]
-command=echo up
+[connectivity]
+label=
+command=~/.config/i3blocks/connectivity
 interval=2
 
 [time]

@@ -29,7 +29,6 @@ if ! [[ -f "${path}" ]]; then
   chmod 0666 "${path}"
 fi
 
-
 # read previous state and update data storage
 read old < "${path}"
 echo "${time} ${rx} ${tx}" > "${path}"
@@ -63,7 +62,7 @@ echo -n " "
 # outgoing
 tx_kib=$(( $tx_rate >> 10 ))
 if hash bc 2>/dev/null && [[ "$tx_rate" -gt 1048576 ]]; then
-  printf '%3sM' "`echo "scale=1; $tx_kib / 1024" | bc`"
+  printf '%4sM' "`echo "scale=1; $tx_kib / 1024" | bc`"
 else
-  printf "%3sK" "${tx_kib}"
+  printf "%4sK" "${tx_kib}"
 fi
