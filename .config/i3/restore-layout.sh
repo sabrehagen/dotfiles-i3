@@ -1,8 +1,12 @@
-SAVED_WORKSPACES=$(grep -rl , ~/.i3/i3-resurrect | sort | sed 's;.*/;;' | cut -c 11 | uniq)
-
-for SAVED_WORKSPACE in $SAVED_WORKSPACES; do
-  i3-resurrect restore -w $SAVED_WORKSPACE
-done
+# Restore all workspaces
+grep -rl , ~/.i3/i3-resurrect | \
+  sort | \
+  sed 's;.*/;;' | \
+  cut -c 11- | \
+  uniq | \
+  sed 's;_.*;;' | \
+  head -1 | \
+  xargs -n 1 -I @ i3-resurrect restore -w "@"
 
 # Focus the first workspace
 i3-msg workspace 1 > /dev/null

@@ -140,6 +140,8 @@ bindsym $mod+Shift+less move workspace to output up
 bindsym $mod+Shift+greater move workspace to output down
 
 # Resize window
+bindsym $mod+r mode "resize"
+
 mode "resize" {
   # Vim bindings
   bindsym h resize grow width 10 px or 10 ppt
@@ -157,8 +159,6 @@ mode "resize" {
   bindsym Return mode "default"
   bindsym Escape mode "default"
 }
-
-bindsym $mod+r mode "resize"
 
 bar {
   position bottom
