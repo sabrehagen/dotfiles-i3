@@ -109,6 +109,9 @@ set $ws8 "8"
 # Create new workspace
 bindsym $mod+n exec ~/.config/i3/new-workspace.sh
 
+# Move window to new workspace
+bindsym $mod+Shift+n exec ~/.config/i3/move-window-to-new-workspace.sh
+
 # Switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2

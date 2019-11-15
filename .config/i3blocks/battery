@@ -1,5 +1,3 @@
-#!/bin/bash
-
 BATTERY=$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')
 
 if [ "$BATTERY" -ge 90 ]; then ICON=
@@ -10,3 +8,7 @@ else ICON=
 fi
 
 echo $ICON $BATTERY%
+echo $ICON $BATTERY%
+[ "$BATTERY" -le 10 ] && echo "#FF0000"
+
+exit 0

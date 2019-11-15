@@ -28,7 +28,7 @@ interval=1
 
 [wifi]
 label=
-command=echo $(iw dev wlp58s0 link | grep SSID | cut -f2 -d:) $(ip addr | grep wlp | grep inet | sed -E 's;.*inet (.*)/.*;\1;')
+command=~/.config/i3blocks/wifi
 interval=1
 
 [bandwidth]

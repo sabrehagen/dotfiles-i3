@@ -15,8 +15,11 @@ i3-msg -t get_workspaces | \
   head -1 | \
   xargs -I @ i3-msg workspace "@" > /dev/null
 
+# Multiply number workspaces by two to account for loading delays
+NUM_WORKSPACES=$(( $(i3-msg -t get_workspaces | grep -o name | wc -l) * 2 ))
+
 # Clear all window urgency after restoration
-for SAVED_WORKSPACE in $SAVED_WORKSPACES; do
+for WORKSPACE in $NUM_WORKSPACES; do
   # Wait for windows to finish loading
   sleep 1
 
