@@ -1,15 +1,19 @@
+RESURRECT_DIRECTORY=~/.config/i3/i3-resurrect
+
 # Restore all workspaces
-grep -rl , ~/.i3/i3-resurrect | \
+grep -rl , $RESURRECT_DIRECTORY | \
   sort | \
   sed 's;.*/;;' | \
   cut -c 11- | \
-  uniq | \
   sed 's;_.*;;' | \
-  head -1 | \
-  xargs -n 1 -I @ i3-resurrect restore -w "@"
+  uniq | \
+  xargs -n 1 -I @ i3-resurrect restore --directory $RESURRECT_DIRECTORY --workspace "@"
 
 # Focus the first workspace
-i3-msg workspace 1 > /dev/null
+i3-msg -t get_workspaces | \
+  jq '.[].name' | \
+  head -1 | \
+  xargs -I @ i3-msg workspace "@" > /dev/null
 
 # Clear all window urgency after restoration
 for SAVED_WORKSPACE in $SAVED_WORKSPACES; do

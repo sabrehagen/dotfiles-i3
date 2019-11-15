@@ -1,8 +1,9 @@
 {
   "google-chrome": "chrome",
   "alacritty": "terminal",
-  "code": "edit",
+  "code": "code",
   "pcmanfm": "folder-open",
   "signal": "comment",
+  "skype": "skype",
   "slack": "slack"
 }

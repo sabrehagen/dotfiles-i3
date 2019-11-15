@@ -1,4 +1,4 @@
-BUILD_STARTED=$(tmux ls | grep build-dotfiles | sed -E 's/.*build-dotfiles-([^:]*):.*/\1/')
+BUILD_STARTED=$(tmux ls | grep build-dotfiles.*: | sed -E 's/.*build-dotfiles-([^:]*):.*/\1/')
 
 if [ ! -z "$BUILD_STARTED" ]; then
   echo -n " "

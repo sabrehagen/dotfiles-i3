@@ -24,7 +24,7 @@ exec --no-startup-id compton --config ~/.config/compton/compton.conf
 exec --no-startup-id xautolock -time 3 -locker "i3lock-fancy --pixelate"
 
 # Start workspace names
-exec_always --no-startup-id exec i3-workspace-names-daemon
+exec_always --no-startup-id exec i3-workspace-names-daemon --delimiter " | "
 
 # Move focused window between monitors
 bindsym $mod+less move container to output up
@@ -84,7 +84,7 @@ bindsym $mod+space fullscreen toggle
 bindsym $mod+u [urgent=latest] focus
 
 # Change container layout (stacked, tabbed, toggle split)
-bindsym $mod+e layout toggle split
+bindsym $mod+backslash layout toggle split
 
 # Change focus between tiling / floating windows
 bindsym $mod+Shift+f focus mode_toggle
@@ -144,16 +144,16 @@ bindsym $mod+r mode "resize"
 
 mode "resize" {
   # Vim bindings
-  bindsym h resize grow width 10 px or 10 ppt
-  bindsym j resize grow height 10 px or 10 ppt
-  bindsym l resize shrink width 10 px or 10 ppt
-  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym h resize shrink width 10 px or 10 ppt
+  bindsym j resize shrink height 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
+  bindsym k resize grow height 10 px or 10 ppt
 
   # Arrow keys
-  bindsym Left resize shrink width 10 px or 10 ppt
-  bindsym Down resize grow height 10 px or 10 ppt
-  bindsym Up resize shrink height 10 px or 10 ppt
-  bindsym Right resize grow width 10 px or 10 ppt
+  bindsym Left resize shrink height 10 px or 10 ppt
+  bindsym Down resize grow width 10 px or 10 ppt
+  bindsym Up resize shrink width 10 px or 10 ppt
+  bindsym Right resize grow height 10 px or 10 ppt
 
   # Back to normal
   bindsym Return mode "default"
@@ -169,7 +169,7 @@ bar {
 client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
 
 # Save workspace layout and exit i3
-bindsym $mod+Shift+q exec ~/.config/i3/save-layout.sh
+bindsym $mod+Shift+q exec ~/.config/i3/save-layout.sh && exec i3-msg exit
 
 # Restore workspace layout on startup
 exec ~/.config/i3/restore-layout.sh
@@ -214,6 +214,9 @@ bindsym $mod+shift+c exec google-chrome --app=https://code.jackson.cloud-compute
 
 # Launch dmenu
 bindsym $mod+d exec i3-dmenu-desktop
+
+# Launch pcmanfm
+bindsym $mod+e exec pcmanfm
 
 # Launch web desktop
 bindsym $mod+shift+d exec google-chrome --app=https://desktop.jackson.cloud-computer.dev
