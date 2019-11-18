@@ -9,17 +9,14 @@ grep -rl , $RESURRECT_DIRECTORY | \
   uniq | \
   xargs -n 1 -I @ i3-resurrect restore --directory $RESURRECT_DIRECTORY --workspace "@"
 
-# Focus the first workspace
-i3-msg -t get_workspaces | \
-  jq '.[].name' | \
-  head -1 | \
-  xargs -I @ i3-msg workspace "@" > /dev/null
+# Focus the previously focused workspace
+cat $RESURRECT_DIRECTORY/focused | xargs i3-msg workspace number
 
 # Multiply number workspaces by two to account for loading delays
 NUM_WORKSPACES=$(( $(i3-msg -t get_workspaces | grep -o name | wc -l) * 2 ))
 
 # Clear all window urgency after restoration
-for WORKSPACE in $NUM_WORKSPACES; do
+for WORKSPACE in $(seq $NUM_WORKSPACES); do
   # Wait for windows to finish loading
   sleep 1
 

@@ -1,4 +1,0 @@
-SSID=$(iw dev wlp58s0 link | grep SSID | cut -f2 -d:)
-IP=$(ip addr | grep wlp | grep inet | sed -E 's;.*inet (.*)/.*;\1;')
-
-echo $SSID $IP

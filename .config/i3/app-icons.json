@@ -5,5 +5,7 @@
   "pcmanfm": "folder-open",
   "signal": "comment",
   "skype": "skype",
-  "slack": "slack"
+  "slack": "slack",
+  "telegramdesktop": "paper-plane",
+  "xava": "music"
 }

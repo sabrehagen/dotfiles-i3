@@ -1,5 +1,4 @@
 separator_block_width=15
-color=#ffffff
 markup=none
 
 [desktop-environment-build]
@@ -26,19 +25,13 @@ interval=1
 command=~/.config/i3blocks/battery
 interval=1
 
-[wifi]
-label=
-command=~/.config/i3blocks/wifi
-interval=1
-
 [bandwidth]
 command=~/.config/i3blocks/bandwidth
 interval=2
 min_width=65
 
-[connectivity]
-label=
-command=~/.config/i3blocks/connectivity
+[network]
+command=~/.config/i3blocks/network
 interval=2
 
 [time]

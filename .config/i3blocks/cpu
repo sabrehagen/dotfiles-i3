@@ -32,7 +32,9 @@ if [[ "${PREV_TOTAL}" != "" ]] && [[ "${PREV_IDLE}" != "" ]]; then
   let "DIFF_USAGE=(1000*($DIFF_TOTAL-$DIFF_IDLE)/$DIFF_TOTAL+5)/10"
   printf "%2d%%\n" "${DIFF_USAGE}"
   printf "%2d%%\n" "${DIFF_USAGE}"
-  echo ""
+  if [[ "${DIFF_USAGE}" -gt 0 ]] && [[ "${DIFF_USAGE}" -gt "${URGENT_VALUE}" ]]; then
+    echo "#FF0022"
+  fi
 else
   echo "?"
   echo "?"
@@ -42,7 +44,3 @@ fi
 # Remember the total and idle CPU times for the next check.
 echo "${TOTAL}" > "${cpuFile}"
 echo "${IDLE}" >> "${cpuFile}"
-
-if [[ "${DIFF_USAGE}" -gt 0 ]] && [[ "${DIFF_USAGE}" -gt "${URGENT_VALUE}" ]]; then
-  exit 33
-fi

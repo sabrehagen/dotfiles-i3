@@ -1,5 +1,12 @@
+#!/bin/bash
 BATTERY=$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')
 
+# Exit if a battery value was not returned
+if ! [[ "$BATTERY" =~ ^[0-9]+$ ]]; then
+  exit 0
+fi
+
+# Battery partial
 if [ "$BATTERY" -ge 90 ]; then ICON=
 elif [ "$BATTERY" -ge 70 ]; then ICON=
 elif [ "$BATTERY" -ge 40 ]; then ICON=
@@ -7,8 +14,16 @@ elif [ "$BATTERY" -ge 20 ]; then ICON=
 else ICON=
 fi
 
+# Battery charging
+CHARGING=$(acpi -b | grep "Battery 0" | grep -q Charging; echo $?)
+if [ "$CHARGING" -eq "0" ]; then
+  ICON=
+fi
+
 echo $ICON $BATTERY%
 echo $ICON $BATTERY%
-[ "$BATTERY" -le 10 ] && echo "#FF0000"
+if [ "$BATTERY" -le 10 ]; then
+  echo "#FF0000"
+fi
 
 exit 0

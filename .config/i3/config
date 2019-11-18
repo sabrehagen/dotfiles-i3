@@ -1,12 +1,15 @@
 # Set modifiers
 set $mod Mod4
 
-# Hide window title bars
-for_window [class=".*"] border pixel 1
+# Set window border size
+for_window [class=".*"] border pixel 2
 new_window 1pixel
 
-# Font for window titles
+# Set i3 windows font
 font pango:monospace 8
+
+# Disable window borders when there is only one window
+smart_borders on
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -14,8 +17,8 @@ floating_modifier $mod
 # Set monitor layout
 exec --no-startup-id autorandr --change
 
-# Set background
-exec_always --no-startup-id feh --bg-scale ~/.local/share/backgrounds/firewatch.jpg
+# Reload wal config
+exec_always --no-startup-id wal -R
 
 # Start compton
 exec --no-startup-id compton --config ~/.config/compton/compton.conf
@@ -25,6 +28,9 @@ exec --no-startup-id xautolock -time 3 -locker "i3lock-fancy --pixelate"
 
 # Start workspace names
 exec_always --no-startup-id exec i3-workspace-names-daemon --delimiter " | "
+
+# Start workspace renumbering
+exec --no-startup-id ~/.config/i3/renumber-workspaces.sh
 
 # Move focused window between monitors
 bindsym $mod+less move container to output up
@@ -70,6 +76,12 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
+# Change container layout
+bindsym $mod+backslash split toggle
+
+# Create empty container
+bindsym $mod+bracketleft open
+
 # Merge window left in vertical orientation
 bindsym $mod+9 split v; focus left; move right; move up
 
@@ -82,9 +94,6 @@ bindsym $mod+space fullscreen toggle
 
 # Focus urgent window
 bindsym $mod+u [urgent=latest] focus
-
-# Change container layout (stacked, tabbed, toggle split)
-bindsym $mod+backslash layout toggle split
 
 # Change focus between tiling / floating windows
 bindsym $mod+Shift+f focus mode_toggle
@@ -122,69 +131,83 @@ bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 
-# Switch to adjacent workspaces
-bindsym $mod+Shift+Tab workspace prev
-bindsym $mod+Tab workspace next
+# Switch to adjacent workspace
+bindsym $mod+Control+h exec ~/.config/i3/move-to-adjacent-workspace.sh -
+bindsym $mod+Control+l exec ~/.config/i3/move-to-adjacent-workspace.sh +
+bindsym $mod+Shift+Tab exec ~/.config/i3/move-to-adjacent-workspace.sh -
+bindsym $mod+Tab exec ~/.config/i3/move-to-adjacent-workspace.sh +
 
-# Move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+# Switch to previous workspace
+bindsym $mod+Shift+minus workspace back_and_forth
+
+# Move focused container to workspace and switch to workspace
+bindsym $mod+Shift+1 exec i3-msg move container to workspace number $ws1; exec i3-msg workspace number $ws1
+bindsym $mod+Shift+2 exec i3-msg move container to workspace number $ws2; exec i3-msg workspace number $ws2
+bindsym $mod+Shift+3 exec i3-msg move container to workspace number $ws3; exec i3-msg workspace number $ws3
+bindsym $mod+Shift+4 exec i3-msg move container to workspace number $ws4; exec i3-msg workspace number $ws4
+bindsym $mod+Shift+5 exec i3-msg move container to workspace number $ws5; exec i3-msg workspace number $ws5
+bindsym $mod+Shift+6 exec i3-msg move container to workspace number $ws6; exec i3-msg workspace number $ws6
+bindsym $mod+Shift+7 exec i3-msg move container to workspace number $ws7; exec i3-msg workspace number $ws7
+bindsym $mod+Shift+8 exec i3-msg move container to workspace number $ws8; exec i3-msg workspace number $ws8
+bindsym $mod+Shift+9 exec i3-msg move container to workspace number $ws9; exec i3-msg workspace number $ws9
 
 # Move workspace to adjacent screen
 bindsym $mod+Shift+less move workspace to output up
 bindsym $mod+Shift+greater move workspace to output down
 
-# Resize window
-bindsym $mod+r mode "resize"
+# Vim bindings
+bindsym $mod+Shift+Ctrl+h resize shrink width 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+j resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+l resize grow width 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+k resize grow height 10 px or 10 ppt
 
-mode "resize" {
-  # Vim bindings
-  bindsym h resize shrink width 10 px or 10 ppt
-  bindsym j resize shrink height 10 px or 10 ppt
-  bindsym l resize grow width 10 px or 10 ppt
-  bindsym k resize grow height 10 px or 10 ppt
+# Arrow keys
+bindsym $mod+Shift+Ctrl+Left resize shrink height 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+Down resize grow width 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+Up resize shrink width 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+Right resize grow height 10 px or 10 ppt
 
-  # Arrow keys
-  bindsym Left resize shrink height 10 px or 10 ppt
-  bindsym Down resize grow width 10 px or 10 ppt
-  bindsym Up resize shrink width 10 px or 10 ppt
-  bindsym Right resize grow height 10 px or 10 ppt
+# Load colours from Xresources
+set_from_resource $fg     i3wm.color7   #ffffff
+set_from_resource $bg     i3wm.color0   #4c7899
+set_from_resource $active i3wm.color1   #ffffff
+set_from_resource $alert  i3wm.color13  #ffffff
 
-  # Back to normal
-  bindsym Return mode "default"
-  bindsym Escape mode "default"
-}
+# Colour classes        border  background  text   indicator  child_border
+client.focused          $bg     $bg         $bg    $bg        $fg
+client.focused_inactive $bg     $bg         $fg    $bg        $bg
+client.unfocused        $bg     $bg         $fg    $bg        $bg
+client.urgent           $bg     $bg         $fg    $bg        $bg
+client.placeholder      $bg     $bg         $fg    $bg        $bg
+client.background       $bg
 
+# i3bar configuration
 bar {
+  colors {
+    background $bg
+    statusline $fg
+
+    # Setting          border   background  font
+    focused_workspace  $bg      $active     $fg
+    active_workspace   $bg      $bg         $fg
+    inactive_workspace $bg      $bg         $fg
+    urgent_workspace   $bg      $alert      $fg
+  }
   position bottom
   status_command i3blocks
 }
 
-# Window border colors
-client.focused #4c7899 #285577 #ffffff #2e9ef4 #285577
-
 # Save workspace layout and exit i3
-bindsym $mod+Shift+q exec ~/.config/i3/save-layout.sh && exec i3-msg exit
+bindsym $mod+Shift+q exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-desktop-environment-restart.sh
 
 # Restore workspace layout on startup
 exec ~/.config/i3/restore-layout.sh
 
-# i3-gaps: activate smart borders
-smart_borders on
-
-# i3-gaps: resize gaps
+# Resize gaps
 bindsym $mod+minus gaps inner all plus 20
 bindsym $mod+equal gaps inner all minus 20
 
-# i3-gaps: set gaps on startup
+# Set gaps on startup
 gaps inner 20
 gaps inner 20
 
@@ -192,10 +215,7 @@ gaps inner 20
 bindsym $mod+F4 exec ~/.config/scripts/tmux-desktop-environment-build-dotfiles.sh
 
 # Launch kill all containers except the desktop environment
-bindsym $mod+F5 exec ~/.config/scripts/host-desktop-environment-restart.sh
-
-# Launch kill all containers except the desktop environment
-bindsym $mod+shift+F5 exec ~/repositories/sabrehagen/desktop-environment/docker/scripts/kill-all.sh
+bindsym $mod+F5 exec ~/repositories/sabrehagen/desktop-environment/docker/scripts/kill-all.sh
 
 # Launch kill desktop environment tmux sessions
 bindsym $mod+F6 exec ~/.config/scripts/tmux-kill-desktop-environment-shell-sessions.sh
@@ -205,6 +225,9 @@ bindsym $mod+slash exec i3lock-fancy --pixelate
 
 # Launch chrome
 bindsym $mod+b exec google-chrome
+
+# Launch chrome app from clipboard
+bindsym $mod+a exec clipboard | xargs -I@ google-chrome --app="@"
 
 # Launch web chrome
 bindsym $mod+shift+b exec google-chrome --app=https://chrome.jackson.cloud-computer.dev
@@ -216,7 +239,7 @@ bindsym $mod+c exec code
 bindsym $mod+shift+c exec google-chrome --app=https://code.jackson.cloud-computer.dev
 
 # Launch dmenu
-bindsym $mod+d exec i3-dmenu-desktop
+bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
 
 # Launch pcmanfm
 bindsym $mod+e exec pcmanfm
@@ -230,20 +253,32 @@ bindsym $mod+m exec slack
 # Launch web slack
 bindsym $mod+shift+m exec google-chrome --app=https://slack.jackson.cloud-computer.dev
 
-# Launch signal
-bindsym $mod+y exec signal-desktop --start-in-tray
+# Launch theme reload
+bindsym $mod+Shift+p exec wal -R
 
-# Launch alacritty terminal
-bindsym $mod+Return exec alacritty
+# Launch wallpaper changer
+bindsym $mod+p exec ~/.config/scripts/wal.sh
 
-# Launch web terminal
-bindsym $mod+shift+Return exec google-chrome --app=https://terminal.jackson.cloud-computer.dev
+# Launch screenshot dump
+bindsym $mod+w exec xclip -o -selection clipboard > /tmp/screenshot.png
 
-# Launch retro terminal
-bindsym $mod+Control+Return exec cool-retro-term
+# Launch screenshot upload
+bindsym $mod+Shift+w exec xclip -o -selection clipboard | imgur-uploader | clipboard
 
 # Launch screenshot capture
 bindsym $mod+x exec maim -s | xclip -selection clipboard -t image/png
 
-# Launch screenshot dump
-bindsym $mod+w exec xclip -o -selection clipboard > /tmp/screenshot.png
+# Launch signal
+bindsym $mod+y exec signal-desktop --start-in-tray
+
+# Launch host reboot
+bindsym Control+Mod1+Delete exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-reboot.sh
+
+# Launch terminal alacritty
+bindsym $mod+Return exec ~/.config/scripts/launch-alacritty.sh
+
+# Launch terminal retro
+bindsym $mod+Control+Return exec cool-retro-term
+
+# Launch terminal web
+bindsym $mod+shift+Return exec google-chrome --app=https://terminal.jackson.cloud-computer.dev

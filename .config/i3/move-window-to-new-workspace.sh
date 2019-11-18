@@ -1,11 +1,4 @@
-WORKSPACE_NUMBER=$(( \
-  $(i3-msg -t get_workspaces | \
-  tr , '\n' | \
-  grep '"num":' | \
-  cut -d : -f 2 | \
-  sort -rn | \
-  head -1) + 1 \
-))
+WORKSPACE_NUMBER=$(( $(i3-msg -t get_workspaces | jq '.[].num' | sort -rn | head -1) + 1 ))
 
 # Move window to new workspace
 i3-msg move container to workspace number $WORKSPACE_NUMBER

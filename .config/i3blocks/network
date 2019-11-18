@@ -1,0 +1,25 @@
+INTERFACE=$(ip route | awk '/^default/ { print $5 ; exit }')
+SSID=$(iw dev $INTERFACE link | grep SSID | cut -f2 -d:)
+IP=$(ip addr | grep $INTERFACE | grep inet | sed -E 's;.*inet (.*)/.*;\1;')
+ICON=
+
+if [ -z "$SSID" ]; then
+  ICON=
+  SSID=Ethernet
+fi
+
+if [ -z "$IP" ]; then
+  STATUS=Disconnected
+else
+  STATUS="$SSID $IP"
+fi
+
+CONNECTIVITY_CHECK=$(timeout 2 ping google.com 2>/dev/null | grep -q from; echo $?)
+
+if [ "$CONNECTIVITY_CHECK" -ne 0 ]; then
+  COLOUR="#FF0022"
+fi
+
+echo $ICON $STATUS
+echo $ICON $STATUS
+echo $COLOUR
