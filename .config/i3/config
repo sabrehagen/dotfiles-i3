@@ -241,11 +241,14 @@ bindsym $mod+shift+c exec google-chrome --app=https://code.jackson.cloud-compute
 # Launch dmenu
 bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
 
+# Launch web desktop
+bindsym $mod+shift+d exec google-chrome --app=https://desktop.jackson.cloud-computer.dev
+
 # Launch pcmanfm
 bindsym $mod+e exec pcmanfm
 
-# Launch web desktop
-bindsym $mod+shift+d exec google-chrome --app=https://desktop.jackson.cloud-computer.dev
+# Launch wifi
+bindsym $mod+i exec ~/.config/scripts/launch-alacritty.sh --command zsh -c "~/.config/scripts/ssh-host.sh wicd-curses"
 
 # Launch slack
 bindsym $mod+m exec slack
@@ -272,7 +275,7 @@ bindsym $mod+x exec maim -s | xclip -selection clipboard -t image/png
 bindsym $mod+y exec signal-desktop --start-in-tray
 
 # Launch host reboot
-bindsym Control+Mod1+Delete exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-reboot.sh
+bindsym Control+Mod1+Delete exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-restart.sh
 
 # Launch terminal alacritty
 bindsym $mod+Return exec ~/.config/scripts/launch-alacritty.sh
