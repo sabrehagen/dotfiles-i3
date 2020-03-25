@@ -248,7 +248,7 @@ bindsym $mod+shift+d exec google-chrome --app=https://desktop.jackson.cloud-comp
 bindsym $mod+e exec pcmanfm
 
 # Launch wifi
-bindsym $mod+i exec ~/.config/scripts/launch-alacritty.sh --command zsh -c "~/.config/scripts/ssh-host.sh wicd-curses"
+bindsym $mod+i exec ~/.config/scripts/launch-alacritty.sh --command zsh -c "~/.config/scripts/ssh-host-tty.sh wicd-curses"
 
 # Launch slack
 bindsym $mod+m exec slack
