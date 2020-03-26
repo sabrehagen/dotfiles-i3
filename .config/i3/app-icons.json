@@ -1,7 +1,9 @@
 {
-  "google-chrome": "chrome",
   "alacritty": "terminal",
+  "apache jmeter": "fire",
   "code": "code",
+  "firefox": "firefox",
+  "google-chrome": "chrome",
   "pcmanfm": "folder-open",
   "signal": "comment",
   "skype": "skype",
