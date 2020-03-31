@@ -14,6 +14,12 @@ else
   STATUS="$SSID $IP"
 fi
 
+VPN_CHECK=$(pgrep openvpn >/dev/null; echo $?)
+
+if [ "$VPN_CHECK" -eq "0" ]; then
+  COLOUR="#00CC00"
+fi
+
 CONNECTIVITY_CHECK=$(timeout 2 ping google.com 2>/dev/null | grep -q from; echo $?)
 
 if [ "$CONNECTIVITY_CHECK" -ne 0 ]; then
