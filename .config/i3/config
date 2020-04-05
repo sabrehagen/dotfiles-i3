@@ -247,9 +247,6 @@ bindsym $mod+shift+d exec google-chrome --app=https://desktop.jackson.cloud-comp
 # Launch pcmanfm
 bindsym $mod+e exec pcmanfm
 
-# Launch wifi
-bindsym $mod+i exec ~/.config/scripts/launch-alacritty.sh --command zsh -c "~/.config/scripts/ssh-host-tty.sh wicd-curses"
-
 # Launch slack
 bindsym $mod+m exec slack
 
@@ -280,8 +277,18 @@ bindsym Control+Mod1+Delete exec ~/.config/i3/save-layout.sh && ~/.config/script
 # Launch terminal alacritty
 bindsym $mod+Return exec ~/.config/scripts/launch-alacritty.sh
 
+# Launch terminal on scratchpad
+for_window [title="scratchpad-terminal"] move scratchpad
+exec_always --no-startup-id ~/.config/scripts/launch-alacritty.sh --title scratchpad-terminal --command tmux new-session -ADs scratchpad-terminal zsh --login
+bindsym $mod+grave [title="scratchpad-terminal"] scratchpad show
+
 # Launch terminal retro
 bindsym $mod+Control+Return exec cool-retro-term
 
 # Launch terminal web
 bindsym $mod+shift+Return exec google-chrome --app=https://terminal.jackson.cloud-computer.dev
+
+# Launch wifi on scratchpad
+bindsym $mod+i [title="scratchpad-wifi"] scratchpad show
+for_window [title="scratchpad-wifi"] floating enable, resize set 0 0, move scratchpad
+exec_always --no-startup-id ~/.config/scripts/launch-alacritty.sh --dimensions 90 20 --title scratchpad-wifi --command zsh -c "~/.config/scripts/ssh-host-tty.sh wicd-curses"
