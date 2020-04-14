@@ -24,7 +24,7 @@ exec_always --no-startup-id wal -R
 exec --no-startup-id compton --config ~/.config/compton/compton.conf
 
 # Start autolock
-exec --no-startup-id xautolock -time 3 -locker "i3lock-fancy --pixelate"
+exec --no-startup-id xautolock -time 10 -locker "i3lock-fancy --pixelate"
 
 # Start workspace names
 exec_always --no-startup-id exec i3-workspace-names-daemon --delimiter " | "
