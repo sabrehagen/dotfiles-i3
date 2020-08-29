@@ -6,7 +6,7 @@ for_window [class=".*"] border pixel 2
 new_window 1pixel
 
 # Set i3 windows font
-font pango:monospace 8
+font pango:monospace 12
 
 # Disable window borders when there is only one window
 smart_borders on
