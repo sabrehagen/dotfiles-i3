@@ -14,7 +14,10 @@ smart_borders on
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
-# Set monitor layout
+# Set default monitor layout
+exec --no-startup-id ~/.screenlayout/default.sh
+
+# Adapt to actual monitor layout
 exec --no-startup-id autorandr --change
 
 # Reload wal config
@@ -291,4 +294,4 @@ bindsym $mod+shift+Return exec google-chrome --app=https://terminal.jackson.clou
 # Launch wifi on scratchpad
 bindsym $mod+i [title="scratchpad-wifi"] scratchpad show
 for_window [title="scratchpad-wifi"] floating enable, resize set 0 0, move scratchpad
-exec_always --no-startup-id ~/.config/scripts/launch-alacritty.sh --dimensions 90 20 --title scratchpad-wifi --command zsh -c "~/.config/scripts/ssh-host-tty.sh wicd-curses"
+exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --dimensions 90 20 --title scratchpad-wifi --command zsh -c "~/.config/scripts/ssh-host-tty.sh wicd-curses"
