@@ -1,5 +1,6 @@
 # Set modifiers
 set $mod Mod4
+set $alt Mod1
 
 # Set window border size
 for_window [class=".*"] border pixel 2
@@ -275,7 +276,7 @@ bindsym $mod+x exec maim -s | xclip -selection clipboard -t image/png
 bindsym $mod+y exec signal-desktop --start-in-tray
 
 # Launch host reboot
-bindsym Control+Mod1+Delete exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-restart.sh
+bindsym Control+$alt+Delete exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-restart.sh
 
 # Launch terminal alacritty
 bindsym $mod+Return exec ~/.config/scripts/launch-alacritty.sh
@@ -295,3 +296,18 @@ bindsym $mod+shift+Return exec google-chrome --app=https://terminal.jackson.clou
 bindsym $mod+i [title="scratchpad-wifi"] scratchpad show
 for_window [title="scratchpad-wifi"] floating enable, resize set 0 0, move scratchpad
 exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --dimensions 90 20 --title scratchpad-wifi --command zsh -c "~/.config/scripts/ssh-host-tty.sh wicd-curses"
+
+# Focus chrome
+bindsym $mod+$alt+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chrome
+
+# Focus code
+bindsym $mod+$alt+c exec ~/.config/i3/move-to-next-window-of-type.sh code
+
+# Focus pcmanfm
+bindsym $mod+$alt+e exec ~/.config/i3/move-to-next-window-of-type.sh pcmanfm
+
+# Focus slack
+bindsym $mod+$alt+m exec ~/.config/i3/move-to-next-window-of-type.sh slack
+
+# Focus terminal alacritty
+bindsym $mod+$alt+Return exec ~/.config/i3/move-to-next-window-of-type.sh alacritty
