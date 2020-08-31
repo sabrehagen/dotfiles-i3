@@ -17,9 +17,6 @@ floating_modifier $mod
 # Set default monitor layout
 exec --no-startup-id ~/.screenlayout/default.sh
 
-# Adapt to actual monitor layout
-exec --no-startup-id autorandr --change
-
 # Reload wal config
 exec_always --no-startup-id wal -R
 
