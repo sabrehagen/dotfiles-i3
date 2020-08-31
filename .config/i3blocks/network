@@ -23,16 +23,16 @@ if [ "$VPN_CHECK" -eq "0" ]; then
   COLOUR=$color6
 fi
 
-PING_CHECK=$(timeout 1 ping 1.1.1.1 2>/dev/null | grep -q from; echo $?)
-
-if [ "$PING_CHECK" -ne 0 ]; then
-  COLOUR="#FF0022"
-fi
-
 DNS_CHECK=$(timeout 2 ping google.com 2>/dev/null | grep -q from; echo $?)
 
 if [ "$DNS_CHECK" -ne 0 ]; then
   COLOUR="#FF7700"
+
+  PING_CHECK=$(timeout 1 ping 1.1.1.1 2>/dev/null | grep -q from; echo $?)
+
+  if [ "$PING_CHECK" -ne 0 ]; then
+    COLOUR="#FF0022"
+  fi
 fi
 
 echo $ICON $STATUS
