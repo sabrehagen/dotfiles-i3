@@ -28,11 +28,12 @@ interval=1
 [ping]
 command=~/.config/i3blocks/ping
 interval=2
+min_width=65
 
 [bandwidth]
 command=~/.config/i3blocks/bandwidth
 interval=2
-min_width=65
+min_width=68
 
 [network]
 command=~/.config/i3blocks/network

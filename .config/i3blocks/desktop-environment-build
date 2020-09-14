@@ -5,7 +5,7 @@ if [ ! -z "$BUILD_STARTED" ]; then
   echo $BUILD_STARTED | timeago
 else
   echo -n " "
-  IMAGE_BUILD_DATE=$(docker inspect sabrehagen/desktop-environment --format='{{.Created}}' | xargs date +%s -d)
+  IMAGE_BUILD_DATE=$(docker inspect desktop-environment --format='{{.Created}}' | xargs date +%s -d)
   echo $IMAGE_BUILD_DATE | timeago
   echo $IMAGE_BUILD_DATE | timeago
 

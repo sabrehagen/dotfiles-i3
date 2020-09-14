@@ -99,9 +99,6 @@ bindsym $mod+u [urgent=latest] focus
 # Change focus between tiling / floating windows
 bindsym $mod+Shift+f focus mode_toggle
 
-# Reload the configuration file
-bindsym $mod+Escape reload
-
 # Restart i3 in-place
 bindsym $mod+Shift+r restart
 
@@ -242,6 +239,9 @@ bindsym $mod+c exec code
 # Launch web code
 bindsym $mod+shift+c exec google-chrome --app=https://code.jackson.cloud-computer.dev
 
+# Launch discord
+bindsym $mod+comma exec discord
+
 # Launch dmenu
 bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
 
@@ -281,27 +281,20 @@ bindsym Control+$alt+Delete exec ~/.config/i3/save-layout.sh && ~/.config/script
 # Launch terminal alacritty
 bindsym $mod+Return exec ~/.config/scripts/launch-alacritty.sh
 
-# Launch terminal on scratchpad
-for_window [title="scratchpad-terminal"] move scratchpad
-exec_always --no-startup-id ~/.config/scripts/launch-alacritty.sh --title scratchpad-terminal --command tmux new-session -ADs scratchpad-terminal zsh --login
-bindsym $mod+grave [title="scratchpad-terminal"] scratchpad show
-
 # Launch terminal retro
 bindsym $mod+Control+Return exec cool-retro-term
 
 # Launch terminal web
 bindsym $mod+shift+Return exec google-chrome --app=https://terminal.jackson.cloud-computer.dev
 
-# Launch wifi on scratchpad
-bindsym $mod+i [title="scratchpad-wifi"] scratchpad show
-for_window [title="scratchpad-wifi"] floating enable, resize set 0 0, move scratchpad
-exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --dimensions 90 20 --title scratchpad-wifi --command zsh -c "~/.config/scripts/ssh-host-tty.sh wicd-curses"
-
 # Focus chrome
 bindsym $mod+$alt+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chrome
 
 # Focus code
 bindsym $mod+$alt+c exec ~/.config/i3/move-to-next-window-of-type.sh code
+
+# Focus discord
+bindsym $mod+$alt+comma exec ~/.config/i3/move-to-next-window-of-type.sh discord
 
 # Focus pcmanfm
 bindsym $mod+$alt+e exec ~/.config/i3/move-to-next-window-of-type.sh pcmanfm
@@ -311,3 +304,18 @@ bindsym $mod+$alt+m exec ~/.config/i3/move-to-next-window-of-type.sh slack
 
 # Focus terminal alacritty
 bindsym $mod+$alt+Return exec ~/.config/i3/move-to-next-window-of-type.sh alacritty
+
+# Launch gotop on scratchpad
+bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
+for_window [title="scratchpad_gotop"] floating enable, resize set 0 0, move scratchpad
+exec_always --no-startup-id ~/.config/scripts/launch-alacritty.sh --dimensions 152 41 --title scratchpad_gotop --command gotop
+
+# Launch terminal on scratchpad
+for_window [title="scratchpad_terminal"] move scratchpad
+exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --title scratchpad_terminal --command tmux new-session -ADs scratchpad_terminal zsh --login
+bindsym $mod+grave [title="scratchpad_terminal"] scratchpad show
+
+# Launch wifi on scratchpad
+bindsym $mod+i [title="scratchpad_wifi"] scratchpad show
+for_window [title="scratchpad_wifi"] floating enable, resize set 0 0, move scratchpad
+exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --dimensions 90 20 --title scratchpad_wifi --command zsh -c "~/.config/scripts/ssh-host-tty.sh wicd-curses"
