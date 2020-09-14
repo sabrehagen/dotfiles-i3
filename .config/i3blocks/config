@@ -25,6 +25,10 @@ interval=1
 command=~/.config/i3blocks/battery
 interval=1
 
+[ping]
+command=~/.config/i3blocks/ping
+interval=2
+
 [bandwidth]
 command=~/.config/i3blocks/bandwidth
 interval=2

@@ -1,0 +1,4 @@
+PING_MS=$(ping -c 1 -W 15 1.1.1.1 | grep time= | cut -f4 -d= | sed 's/[\. ].*//')
+echo -n "  "
+echo ${PING_MS}ms
+echo ${PING_MS}ms
