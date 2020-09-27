@@ -6,7 +6,7 @@ if [ ! -z "$BUILD_STARTED" ]; then
 else
   echo -n " "
   CONTAINER_CREATED_DATE=$(docker inspect desktop-environment --format='{{.Created}}' | xargs date +%s -d)
-  CONTAINER_IMAGE_ID=$(docker ps | grep desktop-environment | sed 's;[^ ]* *;;' | cut -f1 -d' ')
+  CONTAINER_IMAGE_ID=$(docker inspect desktop-environment --format='{{.Image}}')
   IMAGE_BUILD_DATE=$(docker inspect $CONTAINER_IMAGE_ID --format='{{.Created}}' | xargs date +%s -d)
 
   echo $IMAGE_BUILD_DATE | timeago
