@@ -5,13 +5,14 @@ if [ ! -z "$BUILD_STARTED" ]; then
   echo $BUILD_STARTED | timeago
 else
   echo -n " "
-  IMAGE_BUILD_DATE=$(docker inspect desktop-environment --format='{{.Created}}' | xargs date +%s -d)
+  CONTAINER_CREATED_DATE=$(docker inspect desktop-environment --format='{{.Created}}' | xargs date +%s -d)
+  CONTAINER_IMAGE_ID=$(docker ps | grep desktop-environment | sed 's;[^ ]* *;;' | cut -f1 -d' ')
+  IMAGE_BUILD_DATE=$(docker inspect $CONTAINER_IMAGE_ID --format='{{.Created}}' | xargs date +%s -d)
+
   echo $IMAGE_BUILD_DATE | timeago
   echo $IMAGE_BUILD_DATE | timeago
 
-  CONTAINER_IMAGE_ID=$(docker ps | grep desktop-environment | sed 's;[^ ]* *;;' | cut -f1 -d' ')
-  CONTAINER_BUILD_DATE=$(docker inspect $CONTAINER_IMAGE_ID --format='{{.Created}}' | xargs date +%s -d)
-  if [ "$IMAGE_BUILD_DATE" -gt "$CONTAINER_BUILD_DATE" ]; then
+  if [ "$IMAGE_BUILD_DATE" -gt "$CONTAINER_CREATED_DATE" ]; then
     echo $(xrdb -query | grep '\*color2' | cut -d: -f2)
   fi
 fi

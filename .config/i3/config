@@ -308,7 +308,7 @@ bindsym $mod+$alt+Return exec ~/.config/i3/move-to-next-window-of-type.sh alacri
 # Launch gotop on scratchpad
 bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
 for_window [title="scratchpad_gotop"] floating enable, resize set 0 0, move scratchpad
-exec_always --no-startup-id ~/.config/scripts/launch-alacritty.sh --dimensions 152 41 --title scratchpad_gotop --command gotop
+exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --dimensions 152 41 --title scratchpad_gotop --command gotop
 
 # Launch terminal on scratchpad
 for_window [title="scratchpad_terminal"] move scratchpad
@@ -318,4 +318,4 @@ bindsym $mod+grave [title="scratchpad_terminal"] scratchpad show
 # Launch wifi on scratchpad
 bindsym $mod+i [title="scratchpad_wifi"] scratchpad show
 for_window [title="scratchpad_wifi"] floating enable, resize set 0 0, move scratchpad
-exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --dimensions 90 20 --title scratchpad_wifi --command zsh -c "~/.config/scripts/ssh-host-tty.sh wicd-curses"
+exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --dimensions 58 35 --title scratchpad_wifi --command zsh -c "~/.config/scripts/ssh-host-tty.sh sudo nmtui-connect"
