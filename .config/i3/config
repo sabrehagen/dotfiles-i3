@@ -33,6 +33,9 @@ exec_always --no-startup-id exec i3-workspace-names-daemon --delimiter " | "
 # Start workspace renumbering
 exec --no-startup-id ~/.config/i3/renumber-workspaces.sh
 
+# Start i3 focus last window
+exec --no-startup-id i3-focus-last
+
 # Move focused window between monitors
 bindsym $mod+less move container to output up
 bindsym $mod+greater move container to output down
@@ -105,6 +108,9 @@ bindsym $mod+Shift+r restart
 # Focus previous workspace
 bindsym $mod+minus exec i3-msg workspace back_and_forth
 
+# Switch to previous window
+bindsym $mod+Shift+minus exec i3-focus-last switch
+
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1"
@@ -137,9 +143,6 @@ bindsym $mod+Control+h exec ~/.config/i3/move-to-adjacent-workspace.sh -
 bindsym $mod+Control+l exec ~/.config/i3/move-to-adjacent-workspace.sh +
 bindsym $mod+Shift+Tab exec ~/.config/i3/move-to-adjacent-workspace.sh -
 bindsym $mod+Tab exec ~/.config/i3/move-to-adjacent-workspace.sh +
-
-# Switch to previous workspace
-bindsym $mod+Shift+minus workspace back_and_forth
 
 # Move focused container to workspace and switch to workspace
 bindsym $mod+Shift+1 exec i3-msg move container to workspace number $ws1; exec i3-msg workspace number $ws1
