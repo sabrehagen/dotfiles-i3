@@ -267,13 +267,16 @@ bindsym $mod+Shift+p exec wal -R
 bindsym $mod+p exec ~/.config/scripts/wal.sh
 
 # Launch screenshot dump
-bindsym $mod+w exec xclip -o -selection clipboard > /tmp/screenshot.png
+bindsym $mod+w exec xclip -out -selection clipboard > /tmp/screenshot.png
 
 # Launch screenshot upload
-bindsym $mod+Shift+w exec xclip -o -selection clipboard | imgur-uploader | clipboard
+bindsym $mod+Shift+w exec xclip -out -selection clipboard | imgur-uploader | clipboard
 
-# Launch screenshot capture
-bindsym $mod+x exec maim -s | xclip -selection clipboard -t image/png
+# Launch screenshot capture selection
+bindsym $mod+x exec maim --select | xclip -selection clipboard -t image/png
+
+# Launch screenshot capture fullscreen
+bindsym $mod+Shift+x exec maim --window root | xclip -selection clipboard -t image/png
 
 # Launch signal
 bindsym $mod+y exec signal-desktop --start-in-tray
