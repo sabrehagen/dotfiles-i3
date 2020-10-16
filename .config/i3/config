@@ -202,7 +202,7 @@ bar {
 }
 
 # Save workspace layout and exit i3
-bindsym $mod+Shift+q exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-desktop-environment-restart.sh
+bindsym $mod+Shift+r exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-desktop-environment-restart.sh
 
 # Restore workspace layout on startup
 exec ~/.config/i3/restore-layout.sh
