@@ -21,20 +21,20 @@ exec --no-startup-id ~/.screenlayout/default.sh
 # Reload wal config
 exec_always --no-startup-id wal -R
 
-# Start compton
-exec --no-startup-id compton --config ~/.config/compton/compton.conf
-
 # Start autolock
 exec --no-startup-id xautolock -time 10 -locker "i3lock-fancy --pixelate"
+
+# Start i3 focus last window
+exec --no-startup-id i3-focus-last
+
+# Start picom
+exec --no-startup-id picom
 
 # Start workspace names
 exec_always --no-startup-id exec i3-workspace-names-daemon --delimiter " | "
 
 # Start workspace renumbering
 exec --no-startup-id ~/.config/i3/renumber-workspaces.sh
-
-# Start i3 focus last window
-exec --no-startup-id i3-focus-last
 
 # Move focused window between monitors
 bindsym $mod+less move container to output up
