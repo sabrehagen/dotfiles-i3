@@ -24,6 +24,9 @@ exec_always --no-startup-id wal -R
 # Start autolock
 exec --no-startup-id xautolock -time 10 -locker "i3lock-fancy --pixelate"
 
+# Start autotiling
+exec --no-startup-id autotiling
+
 # Start i3 focus last window
 exec --no-startup-id i3-focus-last
 
