@@ -211,11 +211,10 @@ bindsym $mod+Shift+q exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-
 exec ~/.config/i3/restore-layout.sh
 
 # Resize gaps
-bindsym $mod+Shift+equal gaps inner all plus 20
-bindsym $mod+equal gaps inner all minus 20
+bindsym $mod+Shift+equal ~/.config/i3/resize-gaps.sh -
+bindsym $mod+equal ~/.config/i3/resize-gaps.sh +
 
 # Set gaps on startup
-gaps inner 20
 gaps inner 20
 
 # Launch build desktop environment from dotfiles
