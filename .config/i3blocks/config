@@ -5,6 +5,10 @@ markup=none
 command=~/.config/i3blocks/desktop-environment-build
 interval=1
 
+[battery]
+command=~/.config/i3blocks/battery
+interval=1
+
 [cpu]
 label=
 command=~/.config/i3blocks/cpu
@@ -15,15 +19,6 @@ min_width=32
 label=
 command=~/.config/i3blocks/memory
 interval=2
-
-[disk]
-label=
-command=~/.config/i3blocks/disk
-interval=1
-
-[battery]
-command=~/.config/i3blocks/battery
-interval=1
 
 [ping]
 command=~/.config/i3blocks/ping
