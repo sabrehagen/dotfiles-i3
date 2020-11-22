@@ -1,20 +1,21 @@
-INTERFACE=$(ip route | awk '/^default/ { print $5 ; exit }')
-SSID=$(iw dev $INTERFACE link | grep SSID | cut -f2 -d:)
-IP=$(ip addr | grep $INTERFACE | grep inet | sed -E 's;.*inet (.*)/.*;\1;')
+# Collect host network information rather than docker network information
+HOST_WIRELESS_INTERFACE=$(~/.config/scripts/ssh-host.sh iw dev | awk '$1=="Interface"{print $2}')
+HOST_SSID=$(~/.config/scripts/ssh-host.sh iw dev $HOST_WIRELESS_INTERFACE link | grep SSID | cut -f2 -d:)
+HOST_IP=$(~/.config/scripts/ssh-host.sh ip addr | grep $HOST_WIRELESS_INTERFACE | grep inet | sed -E 's;.*inet (.*)/.*;\1;')
 ICON=
 
 # Source wal colours
 . "${HOME}/.cache/wal/colors.sh"
 
-if [ -z "$SSID" ]; then
+if [ -z "$HOST_SSID" ]; then
   ICON=
   SSID=Ethernet
 fi
 
-if [ -z "$IP" ]; then
+if [ -z "$HOST_IP" ]; then
   STATUS=Disconnected
 else
-  STATUS="$SSID $IP"
+  STATUS="$HOST_SSID $HOST_IP"
 fi
 
 VPN_CHECK=$(pgrep openvpn >/dev/null; echo $?)
