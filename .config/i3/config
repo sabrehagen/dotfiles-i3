@@ -269,7 +269,7 @@ bindsym $mod+Shift+p exec wal -R
 bindsym $mod+p exec ~/.config/scripts/wal.sh
 
 # Launch screenshot dump
-bindsym $mod+w exec xclip -out -selection clipboard > /tmp/screenshot.png
+bindsym $mod+w exec xclip -out -selection clipboard > ~/pictures/screenshot-$(date +%s).png
 
 # Launch screenshot upload
 bindsym $mod+Shift+w exec xclip -out -selection clipboard | imgur-uploader | clipboard
