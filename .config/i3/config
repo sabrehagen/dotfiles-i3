@@ -245,7 +245,7 @@ bindsym $mod+c exec code
 bindsym $mod+shift+c exec google-chrome --app=https://code.jackson.cloud-computer.dev
 
 # Launch discord
-bindsym $mod+Shift+m exec discord
+bindsym $mod+z exec discord
 
 # Launch dmenu
 bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
