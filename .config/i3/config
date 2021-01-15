@@ -106,7 +106,7 @@ bindsym $mod+u [urgent=latest] focus
 bindsym $mod+Shift+f focus mode_toggle
 
 # Restart i3 in-place
-bindsym $mod+Shift+r restart
+bindsym $mod+Shift+r reload
 
 # Focus previous workspace
 bindsym $mod+minus exec i3-msg workspace back_and_forth
