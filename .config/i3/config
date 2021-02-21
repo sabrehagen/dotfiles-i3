@@ -89,11 +89,9 @@ bindsym $mod+backslash split toggle
 # Create empty container
 bindsym $mod+bracketleft open
 
-# Merge window left in vertical orientation
-bindsym $mod+9 split v; focus left; move right; move up
-
-# Merge window right in vertical orientation
-bindsym $mod+0 split v; focus right; move left
+# Enter Picture-in-Picture mode for the focused container
+bindsym $mod+Prior fullscreen disable, floating enable, resize set 576 324, sticky enable, move window to position 1300 687
+bindsym $mod+shift+Prior floating disable, sticky disable
 
 # Enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
@@ -276,9 +274,6 @@ bindsym $mod+x exec maim --select | xclip -selection clipboard -t image/png
 
 # Launch screenshot capture fullscreen
 bindsym $mod+Shift+x exec maim --window root | xclip -selection clipboard -t image/png
-
-# Launch signal
-bindsym $mod+y exec signal-desktop --start-in-tray
 
 # Launch host reboot
 bindsym Control+$alt+Delete exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-restart.sh
