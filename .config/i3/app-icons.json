@@ -1,14 +1,12 @@
 {
   "alacritty": "terminal",
-  "caprine": "comments",
   "code": "code",
   "discord": "comment",
   "firefox": "firefox",
+  "ferdi": "comment",
   "google-chrome": "chrome",
   "pcmanfm": "folder-open",
-  "signal": "comment",
   "skype": "skype",
   "slack": "slack",
-  "telegramdesktop": "paper-plane",
   "xava": "music"
 }
