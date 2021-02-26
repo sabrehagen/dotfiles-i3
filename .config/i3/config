@@ -213,7 +213,7 @@ bindsym $mod+equal exec ~/.config/i3/resize-gaps.sh -
 bindsym $mod+Shift+equal exec ~/.config/i3/resize-gaps.sh +
 
 # Set gaps on startup
-gaps inner 20
+gaps inner 60
 
 # Launch build desktop environment from dotfiles
 bindsym $mod+F4 exec ~/.config/scripts/tmux-desktop-environment-build-dotfiles.sh
@@ -242,8 +242,8 @@ bindsym $mod+c exec code
 # Launch web code
 bindsym $mod+shift+c exec google-chrome --app=https://code.jackson.cloud-computer.dev
 
-# Launch discord
-bindsym $mod+d exec discord
+# Launch ferdi
+bindsym $mod+d exec ferdi
 
 # Launch web desktop
 bindsym $mod+shift+d exec google-chrome --app=https://desktop.jackson.cloud-computer.dev
@@ -293,8 +293,8 @@ bindsym $mod+$alt+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chro
 # Focus code
 bindsym $mod+$alt+c exec ~/.config/i3/move-to-next-window-of-type.sh code
 
-# Focus discord
-bindsym $mod+$alt+d exec ~/.config/i3/move-to-next-window-of-type.sh discord
+# Focus ferdi
+bindsym $mod+$alt+d exec ~/.config/i3/move-to-next-window-of-type.sh ferdi
 
 # Focus pcmanfm
 bindsym $mod+$alt+e exec ~/.config/i3/move-to-next-window-of-type.sh pcmanfm
