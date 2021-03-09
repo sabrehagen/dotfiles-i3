@@ -1,6 +1,11 @@
-ICON=
 BRIGHTNESS=$(~/.config/scripts/ssh-host.sh sudo cat /sys/class/backlight/intel_backlight/actual_brightness)
 MAX_BRIGHTNESS=$(~/.config/scripts/ssh-host.sh sudo cat /sys/class/backlight/intel_backlight/max_brightness)
 PERCENTAGE=$(printf %d $(echo 100/$MAX_BRIGHTNESS*$BRIGHTNESS | bc -l))
+
+if [ "$PERCENTAGE" -gt "50" ]; then
+  ICON=
+else
+  ICON=
+fi
 
 echo $ICON $PERCENTAGE%
