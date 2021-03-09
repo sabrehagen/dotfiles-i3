@@ -1,0 +1,4 @@
+ICON=
+CLOCK=$(date '+%a %d %b %I:%M:%S ')
+
+echo $ICON $CLOCK
