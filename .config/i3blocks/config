@@ -34,7 +34,6 @@ min_width=68
 command=~/.config/i3blocks/network
 interval=2
 
-[time]
-label=
-command=date '+%a %d %b %I:%M:%S '
+[clock]
+command=~/.config/i3blocks/clock
 interval=1
