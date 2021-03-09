@@ -242,17 +242,17 @@ bindsym $mod+c exec code
 # Launch web code
 bindsym $mod+shift+c exec google-chrome --app=https://code.jackson.cloud-computer.dev
 
+# Launch dmenu
+bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
+
 # Launch ferdi
-bindsym $mod+d exec ferdi
+bindsym $mod+m exec ferdi
 
 # Launch web desktop
 bindsym $mod+shift+d exec google-chrome --app=https://desktop.jackson.cloud-computer.dev
 
 # Launch pcmanfm
 bindsym $mod+e exec pcmanfm
-
-# Launch slack
-bindsym $mod+m exec slack
 
 # Launch web slack
 bindsym $mod+shift+m exec google-chrome --app=https://slack.jackson.cloud-computer.dev
@@ -294,13 +294,10 @@ bindsym $mod+$alt+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chro
 bindsym $mod+$alt+c exec ~/.config/i3/move-to-next-window-of-type.sh code
 
 # Focus ferdi
-bindsym $mod+$alt+d exec ~/.config/i3/move-to-next-window-of-type.sh ferdi
+bindsym $mod+$alt+m exec ~/.config/i3/move-to-next-window-of-type.sh ferdi
 
 # Focus pcmanfm
 bindsym $mod+$alt+e exec ~/.config/i3/move-to-next-window-of-type.sh pcmanfm
-
-# Focus slack
-bindsym $mod+$alt+m exec ~/.config/i3/move-to-next-window-of-type.sh slack
 
 # Focus terminal alacritty
 bindsym $mod+$alt+Return exec ~/.config/i3/move-to-next-window-of-type.sh alacritty
