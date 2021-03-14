@@ -179,7 +179,7 @@ set_from_resource $active i3wm.color1   #ffffff
 set_from_resource $alert  i3wm.color13  #ffffff
 
 # Colour classes        border  background  text   indicator  child_border
-client.focused          $bg     $bg         $bg    $bg        $fg
+client.focused          $bg     $bg         $bg    $bg        $active
 client.focused_inactive $bg     $bg         $fg    $bg        $bg
 client.unfocused        $bg     $bg         $fg    $bg        $bg
 client.urgent           $bg     $bg         $fg    $bg        $bg
