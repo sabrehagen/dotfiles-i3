@@ -1,10 +1,10 @@
 PING_MS=$(ping -c 1 -W 15 1.1.1.1 | grep time= | cut -f4 -d= | sed 's/[\. ].*//')
 
 if [ -z "$PING_MS" ]; then
-  printf ' %5s\n' 0ms
-  printf ' %5s\n' 0ms
+  printf ' %1.4s\n' 0ms
+  printf ' %1.4s\n' 0ms
   echo "#FF0022"
 else
-  printf ' %5s\n' ${PING_MS}ms
-  printf ' %5s\n' ${PING_MS}ms
+  printf ' %1.4s\n' ${PING_MS}ms
+  printf ' %1.4s\n' ${PING_MS}ms
 fi
