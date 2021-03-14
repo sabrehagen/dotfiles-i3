@@ -36,12 +36,12 @@ interval=2
 [crypto]
 label=
 command=~/.config/i3blocks/crypto bitcoin
-interval=600
+interval=2
 
 [crypto]
 label=
 command=~/.config/i3blocks/crypto ethereum
-interval=600
+interval=2
 
 [clock]
 command=~/.config/i3blocks/clock
