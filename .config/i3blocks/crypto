@@ -1,0 +1,20 @@
+#!/usr/bin/env python3
+
+from requests import Session
+import json
+import sys
+
+session = Session()
+session.headers.update({ 'X-CMC_PRO_API_KEY': '115ec842-08dc-4ddf-86f9-cc3bec99c88b' })
+
+response = session.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest', params={ 'slug': sys.argv[1] })
+body = json.loads(response.text)['data']
+data = body[list(body.keys())[0]]
+
+percentChange = float(data['quote']['USD']['percent_change_24h'])
+
+if percentChange > 0: percentChangeIcon = '🠕'
+elif percentChange == 0: percentChangeIcon = ''
+else: percentChangeIcon = '🠗'
+
+print((' {:.2f}').format(percentChange))
