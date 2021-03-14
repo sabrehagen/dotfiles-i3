@@ -3,18 +3,23 @@
 from requests import Session
 import json
 import sys
+import time
 
-session = Session()
-session.headers.update({ 'X-CMC_PRO_API_KEY': '115ec842-08dc-4ddf-86f9-cc3bec99c88b' })
+# Wait 2 seconds for startup race condition
+time.sleep(2)
 
-response = session.get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest', params={ 'slug': sys.argv[1] })
+response = Session().get('https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest', params={
+  'CMC_PRO_API_KEY': 'd126fa8d-c095-4620-892f-46194a4d1c33',
+  'slug': sys.argv[1]
+})
 body = json.loads(response.text)['data']
 data = body[list(body.keys())[0]]
 
 percentChange = float(data['quote']['USD']['percent_change_24h'])
-
-if percentChange > 0: percentChangeIcon = '🠕'
-elif percentChange == 0: percentChangeIcon = ''
-else: percentChangeIcon = '🠗'
+if percentChange > 0: percentChangeColour = '#33AA33'
+elif percentChange == 0: percentChangeColour = ''
+else: percentChangeColour = '#DD0000'
 
 print((' {:.2f}').format(percentChange))
+print((' {:.2f}').format(percentChange))
+print(percentChangeColour)
