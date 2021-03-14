@@ -18,7 +18,7 @@ data = body[list(body.keys())[0]]
 percentChange = float(data['quote']['USD']['percent_change_24h'])
 if percentChange > 0: percentChangeColour = '#33AA33'
 elif percentChange == 0: percentChangeColour = ''
-else: percentChangeColour = '#DD0000'
+else: percentChangeColour = '#CD0000'
 
 print((' {:.2f}').format(percentChange))
 print((' {:.2f}').format(percentChange))
