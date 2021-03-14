@@ -36,3 +36,7 @@ interval=2
 [clock]
 command=~/.config/i3blocks/clock
 interval=1
+
+[picom]
+command=~/.config/i3blocks/picom
+interval=1

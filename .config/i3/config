@@ -104,7 +104,7 @@ bindsym $mod+u [urgent=latest] focus
 bindsym $mod+Shift+f focus mode_toggle
 
 # Restart i3 in-place
-bindsym $mod+Shift+r reload
+bindsym $mod+Shift+r exec i3-msg restart
 
 # Focus previous workspace
 bindsym $mod+minus exec i3-msg workspace back_and_forth
@@ -200,6 +200,7 @@ bar {
   }
   position bottom
   status_command i3blocks
+  tray_output none
 }
 
 # Save workspace layout and exit i3
@@ -233,14 +234,8 @@ bindsym $mod+b exec google-chrome
 # Launch chrome app from clipboard
 bindsym $mod+a exec clipboard | xargs -I@ google-chrome --app="@"
 
-# Launch web chrome
-bindsym $mod+shift+b exec google-chrome --app=https://chrome.jackson.cloud-computer.dev
-
 # Launch code
 bindsym $mod+c exec code
-
-# Launch web code
-bindsym $mod+shift+c exec google-chrome --app=https://code.jackson.cloud-computer.dev
 
 # Launch dmenu
 bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
@@ -248,14 +243,8 @@ bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -
 # Launch ferdi
 bindsym $mod+m exec ferdi
 
-# Launch web desktop
-bindsym $mod+shift+d exec google-chrome --app=https://desktop.jackson.cloud-computer.dev
-
 # Launch pcmanfm
 bindsym $mod+e exec pcmanfm
-
-# Launch web slack
-bindsym $mod+shift+m exec google-chrome --app=https://slack.jackson.cloud-computer.dev
 
 # Launch theme reload
 bindsym $mod+Shift+p exec wal -R
@@ -284,23 +273,20 @@ bindsym $mod+Return exec ~/.config/scripts/launch-alacritty.sh
 # Launch terminal retro
 bindsym $mod+Control+Return exec cool-retro-term
 
-# Launch terminal web
-bindsym $mod+shift+Return exec google-chrome --app=https://terminal.jackson.cloud-computer.dev
-
 # Focus chrome
-bindsym $mod+$alt+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chrome
+bindsym $mod+Shift+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chrome
 
 # Focus code
-bindsym $mod+$alt+c exec ~/.config/i3/move-to-next-window-of-type.sh code
+bindsym $mod+Shift+c exec ~/.config/i3/move-to-next-window-of-type.sh code
 
 # Focus ferdi
-bindsym $mod+$alt+m exec ~/.config/i3/move-to-next-window-of-type.sh ferdi
+bindsym $mod+Shift+m exec ~/.config/i3/move-to-next-window-of-type.sh ferdi
 
 # Focus pcmanfm
-bindsym $mod+$alt+e exec ~/.config/i3/move-to-next-window-of-type.sh pcmanfm
+bindsym $mod+Shift+e exec ~/.config/i3/move-to-next-window-of-type.sh pcmanfm
 
 # Focus terminal alacritty
-bindsym $mod+$alt+Return exec ~/.config/i3/move-to-next-window-of-type.sh alacritty
+bindsym $mod+Shift+Return exec ~/.config/i3/move-to-next-window-of-type.sh alacritty
 
 # Launch gotop on scratchpad
 bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
