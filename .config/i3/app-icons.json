@@ -1,5 +1,6 @@
 {
   "alacritty": "terminal",
+  "brave": "chrome",
   "code": "code",
   "discord": "comment",
   "firefox": "firefox",
@@ -8,5 +9,6 @@
   "pcmanfm": "folder-open",
   "skype": "skype",
   "slack": "slack",
-  "xava": "music"
+  "xava": "music",
+  "zathura": "file"
 }
