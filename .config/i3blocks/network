@@ -37,5 +37,9 @@ if [ "$DNS_CHECK" -ne 0 ]; then
 fi
 
 echo $ICON $STATUS
-echo $ICON $STATUS
-echo $COLOUR
+
+# Only print extended output if a colour is set
+if [ ! -z $COLOUR ]; then
+  echo $ICON $STATUS
+  echo $COLOUR
+fi
