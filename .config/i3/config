@@ -40,8 +40,8 @@ exec_always --no-startup-id exec i3-workspace-names-daemon --delimiter " | "
 exec --no-startup-id ~/.config/i3/renumber-workspaces.sh
 
 # Move focused window between monitors
-bindsym $mod+less move container to output up
-bindsym $mod+greater move container to output down
+bindsym $mod+less move container to output left
+bindsym $mod+greater move container to output right
 
 # Change monitor hardware brightness
 bindsym XF86MonBrightnessUp exec ~/.config/scripts/hardware-brightness.sh +
