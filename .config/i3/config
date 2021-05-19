@@ -249,7 +249,7 @@ bindsym $mod+e exec pcmanfm
 # Launch theme reload
 bindsym $mod+Shift+p exec wal -R
 
-# Launch wallpaper changer
+# Launch wallpaper cycle
 bindsym $mod+p exec ~/.config/scripts/wal.sh
 
 # Launch screenshot dump
