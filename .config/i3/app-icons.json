@@ -1,17 +1,17 @@
 {
   "alacritty": "terminal",
   "arandr": "desktop",
-  "brave": "chrome",
   "code": "code",
+  "de-discord": "comment",
   "de-gchat": "comments",
-  "discord": "comment",
+  "de-gmail": "envelope",
+  "de-gcal": "calendar",
+  "de-skype": "skype",
+  "de-slack": "slack",
   "firefox": "firefox",
-  "ferdi": "comment",
   "google-chrome": "chrome",
   "pavucontrol": "volume-up",
   "pcmanfm": "folder-open",
-  "skype": "skype",
-  "slack": "slack",
   "xava": "music",
   "zathura": "file"
 }

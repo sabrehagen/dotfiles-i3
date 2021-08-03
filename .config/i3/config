@@ -240,9 +240,6 @@ bindsym $mod+c exec code
 # Launch dmenu
 bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
 
-# Launch ferdi
-bindsym $mod+m exec ferdi
-
 # Launch pcmanfm
 bindsym $mod+e exec pcmanfm
 
@@ -270,17 +267,11 @@ bindsym $mod+Control+Delete exec ~/.config/i3/save-layout.sh && ~/.config/script
 # Launch terminal alacritty
 bindsym $mod+Return exec ~/.config/scripts/launch-alacritty.sh
 
-# Launch terminal retro
-bindsym $mod+Control+Return exec cool-retro-term
-
 # Focus chrome
 bindsym $mod+Shift+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chrome
 
 # Focus code
 bindsym $mod+Shift+c exec ~/.config/i3/move-to-next-window-of-type.sh code
-
-# Focus ferdi
-bindsym $mod+Shift+m exec ~/.config/i3/move-to-next-window-of-type.sh ferdi
 
 # Focus pcmanfm
 bindsym $mod+Shift+e exec ~/.config/i3/move-to-next-window-of-type.sh pcmanfm
