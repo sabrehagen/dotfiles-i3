@@ -100,9 +100,6 @@ bindsym $mod+space fullscreen toggle
 # Focus urgent window
 bindsym $mod+u [urgent=latest] focus
 
-# Change focus between tiling / floating windows
-bindsym $mod+Shift+f focus mode_toggle
-
 # Restart i3 in-place
 bindsym $mod+Shift+r exec i3-msg restart
 
@@ -264,8 +261,11 @@ bindsym $mod+Shift+x exec maim --window root | xclip -selection clipboard -t ima
 # Launch host reboot
 bindsym $mod+Control+Delete exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-restart.sh
 
-# Launch terminal alacritty
+# Launch alacritty
 bindsym $mod+Return exec ~/.config/scripts/launch-alacritty.sh
+
+# Focus alacritty
+bindsym $mod+Shift+Return exec ~/.config/i3/move-to-next-window-of-type.sh alacritty
 
 # Focus chrome
 bindsym $mod+Shift+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chrome
@@ -273,11 +273,20 @@ bindsym $mod+Shift+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chr
 # Focus code
 bindsym $mod+Shift+c exec ~/.config/i3/move-to-next-window-of-type.sh code
 
+# Focus gchat
+bindsym $mod+Shift+m exec ~/.config/i3/move-to-next-window-of-type.sh de-gchat
+
+# Focus gmail
+bindsym $mod+Shift+g exec ~/.config/i3/move-to-next-window-of-type.sh de-gmail
+
+# Focus messenger
+bindsym $mod+Shift+f exec ~/.config/i3/move-to-next-window-of-type.sh de-messenger
+
 # Focus pcmanfm
 bindsym $mod+Shift+e exec ~/.config/i3/move-to-next-window-of-type.sh pcmanfm
 
-# Focus terminal alacritty
-bindsym $mod+Shift+Return exec ~/.config/i3/move-to-next-window-of-type.sh alacritty
+# Focus slack
+bindsym $mod+Shift+s exec ~/.config/i3/move-to-next-window-of-type.sh de-slack
 
 # Launch gotop on scratchpad
 bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
