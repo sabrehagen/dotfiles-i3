@@ -235,7 +235,7 @@ bindsym $mod+a exec clipboard | xargs -I@ google-chrome --app="@"
 bindsym $mod+c exec code
 
 # Launch dmenu
-bindsym $mod+d exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
+bindsym $mod+d exec ~/.config/scripts/app-launcher.sh
 
 # Launch gchat
 bindsym $mod+m exec ~/apps/wooliesx/de-gchat-wooliesx-dark/de-gchat-wooliesx-dark
