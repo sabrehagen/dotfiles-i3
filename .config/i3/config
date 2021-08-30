@@ -219,6 +219,9 @@ bindsym $mod+F4 exec ~/repositories/sabrehagen/desktop-environment/docker/script
 # Launch build desktop environment from dotfiles
 bindsym $mod+F5 exec ~/.config/scripts/tmux-desktop-environment-build-dotfiles.sh
 
+# Launch kill build desktop environment from dotfiles
+bindsym $mod+Shift+F5 exec ~/.config/scripts/tmux-kill-desktop-environment-build-dotfiles.sh
+
 # Launch kill desktop environment tmux sessions
 bindsym $mod+F6 exec ~/.config/scripts/tmux-kill-desktop-environment-shell-sessions.sh
 
