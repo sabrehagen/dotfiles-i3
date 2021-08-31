@@ -37,7 +37,7 @@ exec --no-startup-id picom
 exec_always --no-startup-id exec i3-workspace-names-daemon --delimiter " | "
 
 # Start workspace renumbering
-exec --no-startup-id ~/.config/i3/renumber-workspaces.sh
+exec_always --no-startup-id ~/.config/i3/renumber-workspaces.sh
 
 # Move focused window between monitors
 bindsym $mod+less move container to output left
@@ -228,6 +228,9 @@ bindsym $mod+F6 exec ~/.config/scripts/tmux-kill-desktop-environment-shell-sessi
 # Launch alacritty
 bindsym $mod+Return exec ~/.config/scripts/launch-alacritty.sh
 
+# Launch app launcher
+bindsym $mod+o exec ~/.config/scripts/app-launcher.sh
+
 # Launch chrome
 bindsym $mod+b exec google-chrome
 
@@ -237,20 +240,20 @@ bindsym $mod+a exec clipboard | xargs -I@ google-chrome --app="@"
 # Launch code
 bindsym $mod+c exec code
 
-# Launch dmenu
-bindsym $mod+d exec ~/.config/scripts/app-launcher.sh
+# Launch discord
+bindsym $mod+d exec ~/.config/scripts/app-launcher.sh de-discord
 
 # Launch gchat
-bindsym $mod+m exec ~/apps/wooliesx/de-gchat-wooliesx-dark/de-gchat-wooliesx-dark
+bindsym $mod+m exec ~/.config/scripts/app-launcher.sh de-gchat
 
 # Launch gmail
-bindsym $mod+g exec ~/apps/wooliesx/de-gmail-wooliesx-dark/de-gmail-wooliesx-dark
+bindsym $mod+g exec ~/.config/scripts/app-launcher.sh de-gmail
 
 # Launch lockscreen
 bindsym $mod+slash exec i3lock-fancy --pixelate
 
 # Launch messenger
-bindsym $mod+v exec ~/apps/sabrehagen/de-messenger-dark/de-messenger-dark
+bindsym $mod+v exec ~/.config/scripts/app-launcher.sh de-messenger
 
 # Launch pcmanfm
 bindsym $mod+e exec pcmanfm
@@ -284,6 +287,9 @@ bindsym $mod+Shift+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chr
 
 # Focus code
 bindsym $mod+Shift+c exec ~/.config/i3/move-to-next-window-of-type.sh code
+
+# Focus discord
+bindsym $mod+Shift+d exec ~/.config/i3/move-to-next-window-of-type.sh de-discord
 
 # Focus gchat
 bindsym $mod+Shift+m exec ~/.config/i3/move-to-next-window-of-type.sh de-gchat
