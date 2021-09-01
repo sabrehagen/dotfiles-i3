@@ -6,7 +6,7 @@ set $alt Mod1
 for_window [class=".*"] border pixel 2
 new_window 1pixel
 
-# Set i3 windows font
+# Set i3 font
 font pango:monospace 12
 
 # Disable window borders when there is only one window

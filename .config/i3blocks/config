@@ -1,5 +1,4 @@
 separator_block_width=15
-markup=none
 
 [desktop-environment-build]
 command=~/.config/i3blocks/desktop-environment-build
