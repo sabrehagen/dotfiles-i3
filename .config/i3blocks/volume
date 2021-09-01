@@ -1,0 +1,24 @@
+#!/bin/bash
+VOLUME=$(pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
+
+# Exit if an audio level was not returned
+if ! [[ "$VOLUME" =~ ^[0-9]+$ ]]; then
+  exit 0
+fi
+
+# Volume partial
+if [ "$VOLUME" -ge 70 ]; then ICON=
+elif [ "$VOLUME" -ge 30 ]; then ICON=
+fi
+
+MUTED=$(amixer get Master | sed 5q | grep -q '\[on\]'; echo $?)
+if [ "$MUTED" -eq "1" ]; then
+  ICON=
+else
+  ICON=
+fi
+
+echo $ICON $VOLUME%
+echo $ICON $VOLUME%
+
+exit 0
