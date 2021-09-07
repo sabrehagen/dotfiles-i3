@@ -258,6 +258,12 @@ bindsym $mod+v exec ~/.config/scripts/app-launcher.sh de-messenger
 # Launch pcmanfm
 bindsym $mod+e exec pcmanfm
 
+# Launch slack
+bindsym $mod+s exec ~/.config/scripts/app-launcher.sh de-slack
+
+# Launch telegram
+bindsym $mod+t exec ~/.config/scripts/app-launcher.sh de-telegram
+
 # Launch theme reload
 bindsym $mod+Shift+p exec wal -R
 
@@ -305,6 +311,9 @@ bindsym $mod+Shift+e exec ~/.config/i3/move-to-next-window-of-type.sh pcmanfm
 
 # Focus slack
 bindsym $mod+Shift+s exec ~/.config/i3/move-to-next-window-of-type.sh de-slack
+
+# Focus telegram
+bindsym $mod+Shift+t exec ~/.config/i3/move-to-next-window-of-type.sh de-telegram
 
 # Launch gotop on scratchpad
 bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
