@@ -1,0 +1,1 @@
+/home/jackson/.cache/wal/i3lock-fancy.sh

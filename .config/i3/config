@@ -250,7 +250,7 @@ bindsym $mod+m exec ~/.config/scripts/app-launcher.sh de-gchat
 bindsym $mod+g exec ~/.config/scripts/app-launcher.sh de-gmail
 
 # Launch lockscreen
-bindsym $mod+slash exec i3lock-fancy --pixelate
+bindsym $mod+slash exec ~/.config/i3/lockscreen.sh
 
 # Launch messenger
 bindsym $mod+v exec ~/.config/scripts/app-launcher.sh de-messenger
