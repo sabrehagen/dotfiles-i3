@@ -1,1 +1,1 @@
-/home/jackson/.cache/wal/i3lock-fancy.sh
+/home/jackson/.cache/wal/lockscreen.sh
