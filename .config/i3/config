@@ -54,7 +54,7 @@ bindsym Shift+XF86MonBrightnessDown exec ~/.config/scripts/software-brightness.s
 # Change audio volume
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
-bindsym XF86AudioMute exec amixer set Master toggle
+bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
 
 # Kill focused window
 bindsym $mod+q kill
