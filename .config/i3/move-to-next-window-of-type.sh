@@ -6,11 +6,13 @@ NEXT_WORKSPACES=$(i3-msg -t get_workspaces | jq '.[].num' | sort -n | awk -v cur
 
 WORKSPACE_NUMBERS="$NEXT_WORKSPACES $PREVIOUS_WORKSPACES $CURRENT_WORKSPACE"
 
+FOCUSED_WINDOW=$(xdotool getactivewindow)
+
 for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
 
-  MATCHING_WORKSPACE_WINDOW=$(xdotool search --desktop $(( $WORKSPACE_NUMBER - 1 )) --class $WINDOW_CLASS | head -1)
+  MATCHING_WORKSPACE_WINDOW=$(xdotool search --desktop $(( $WORKSPACE_NUMBER - 1 )) --class $WINDOW_CLASS | grep -v $FOCUSED_WINDOW | head -1)
 
-  if [ ! -z $MATCHING_WORKSPACE_WINDOW ]; then
+  if [ ! -z "$MATCHING_WORKSPACE_WINDOW" ]; then
     xdotool windowactivate $MATCHING_WORKSPACE_WINDOW
     break
   fi
