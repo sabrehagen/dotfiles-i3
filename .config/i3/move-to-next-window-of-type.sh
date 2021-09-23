@@ -6,7 +6,7 @@ NEXT_WORKSPACES=$(i3-msg -t get_workspaces | jq '.[].num' | sort -n | awk -v cur
 
 WORKSPACE_NUMBERS="$NEXT_WORKSPACES $PREVIOUS_WORKSPACES $CURRENT_WORKSPACE"
 
-FOCUSED_WINDOW=$(xdotool getactivewindow)
+FOCUSED_WINDOW=$(xdotool getactivewindow 2>/dev/null || echo no-focused-window)
 
 for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
 
