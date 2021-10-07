@@ -1,4 +1,7 @@
 ICON=
 CLOCK=$(date '+%a %d %b %I:%M:%S ')
 
+# Open calendar on click
+[ ! -z $BLOCK_BUTTON ] && gsimplecal
+
 echo $ICON $CLOCK

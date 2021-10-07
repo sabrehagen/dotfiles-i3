@@ -333,3 +333,6 @@ bindsym $mod+grave [title="scratchpad_terminal"] scratchpad show
 bindsym $mod+i [title="scratchpad_wifi"] scratchpad show
 for_window [title="scratchpad_wifi"] floating enable, resize set 0 0, move scratchpad
 exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --option window.dimensions.columns=58 --option window.dimensions.lines=35 --title scratchpad_wifi --command zsh -c "~/.config/scripts/ssh-host-tty.sh sudo nmtui-connect"
+
+# Position i3bar calendar
+for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move up 26 px
