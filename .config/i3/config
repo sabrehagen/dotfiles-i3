@@ -244,6 +244,9 @@ bindsym $mod+a exec clipboard | xargs -I@ google-chrome --app="@"
 # Launch code
 bindsym $mod+c exec code
 
+# Launch dmenu
+bindsym $mod+Shift+o exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
+
 # Launch discord
 bindsym $mod+d exec ~/.config/scripts/app-launcher.sh de-discord
 
