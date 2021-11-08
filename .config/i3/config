@@ -302,7 +302,7 @@ bindsym $mod+Shift+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chr
 bindsym $mod+Shift+c exec ~/.config/i3/move-to-next-window-of-type.sh code
 
 # Focus discord
-bindsym $mod+Shift+d exec ~/.config/i3/move-to-next-window-of-type.sh de-discord
+bindsym $mod+Shift+d exec ~/.config/i3/move-to-next-window-of-type.sh discord
 
 # Focus gchat
 bindsym $mod+Shift+m exec ~/.config/i3/move-to-next-window-of-type.sh de-gchat
