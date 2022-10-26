@@ -30,8 +30,8 @@ if [[ "${PREV_TOTAL}" != "" ]] && [[ "${PREV_IDLE}" != "" ]]; then
   let "DIFF_IDLE=$IDLE-$PREV_IDLE"
   let "DIFF_TOTAL=$TOTAL-$PREV_TOTAL"
   let "DIFF_USAGE=(1000*($DIFF_TOTAL-$DIFF_IDLE)/$DIFF_TOTAL+5)/10"
-  printf " %d%%\n" "${DIFF_USAGE}"
-  printf " %d%%\n" "${DIFF_USAGE}"
+  printf " %2d%%\n" "${DIFF_USAGE}"
+  printf " %2d%%\n" "${DIFF_USAGE}"
   if [[ "${DIFF_USAGE}" -gt 0 ]] && [[ "${DIFF_USAGE}" -gt "${URGENT_VALUE}" ]]; then
     echo "#FF0022"
   fi
