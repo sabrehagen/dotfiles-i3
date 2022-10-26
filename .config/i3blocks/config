@@ -22,11 +22,6 @@ command=~/.config/i3blocks/cpu
 interval=2
 min_width=32
 
-[memory]
-label=
-command=~/.config/i3blocks/memory
-interval=2
-
 [ping]
 command=~/.config/i3blocks/ping
 interval=2
@@ -40,6 +35,16 @@ min_width=68
 [network]
 command=~/.config/i3blocks/network
 interval=2
+
+[crypto]
+label=
+command=~/.config/i3blocks/crypto bitcoin
+interval=600
+
+[crypto]
+label=
+command=~/.config/i3blocks/crypto ethereum
+interval=600
 
 [clock]
 command=~/.config/i3blocks/clock

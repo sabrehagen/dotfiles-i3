@@ -15,7 +15,7 @@ else ICON=
 fi
 
 # Battery charging
-CHARGING=$(acpi -b | grep "Battery 0" | grep -Eq 'Charging|Full|Unknown'; echo $?)
+CHARGING=$(acpi -b | grep "Battery 0" | grep -Eq 'Charging|Full'; echo $?)
 if [ "$CHARGING" -eq "0" ]; then
   ICON=
 fi
