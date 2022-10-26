@@ -236,10 +236,10 @@ bindsym $mod+Return exec ~/.config/scripts/launch-alacritty.sh
 bindsym $mod+o exec ~/.config/scripts/app-launcher.sh
 
 # Launch chrome
-bindsym $mod+b exec google-chrome
+bindsym $mod+b exec firefox
 
 # Launch chrome app from clipboard
-bindsym $mod+a exec clipboard | xargs -I@ google-chrome --app="@"
+bindsym $mod+a exec clipboard | xargs -I@ firefox --app="@"
 
 # Launch code
 bindsym $mod+c exec code
@@ -269,7 +269,7 @@ bindsym $mod+e exec pcmanfm
 bindsym $mod+s exec ~/.config/scripts/app-launcher.sh de-slack
 
 # Launch telegram
-bindsym $mod+t exec ~/.config/scripts/app-launcher.sh de-telegram
+bindsym $mod+t exec ~/.config/scripts/app-launcher.sh telegram
 
 # Launch theme reload
 bindsym $mod+Shift+p exec wal -R
@@ -296,7 +296,7 @@ bindsym $mod+Control+Delete exec ~/.config/i3/save-layout.sh && ~/.config/script
 bindsym $mod+Shift+Return exec ~/.config/i3/move-to-next-window-of-type.sh alacritty
 
 # Focus chrome
-bindsym $mod+Shift+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chrome
+bindsym $mod+Shift+b exec ~/.config/i3/move-to-next-window-of-type.sh firefox
 
 # Focus code
 bindsym $mod+Shift+c exec ~/.config/i3/move-to-next-window-of-type.sh code
@@ -320,7 +320,7 @@ bindsym $mod+Shift+e exec ~/.config/i3/move-to-next-window-of-type.sh pcmanfm
 bindsym $mod+Shift+s exec ~/.config/i3/move-to-next-window-of-type.sh de-slack
 
 # Focus telegram
-bindsym $mod+Shift+t exec ~/.config/i3/move-to-next-window-of-type.sh de-telegram
+bindsym $mod+Shift+t exec ~/.config/i3/move-to-next-window-of-type.sh telegram
 
 # Launch gotop on scratchpad
 bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
