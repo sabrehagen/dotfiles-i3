@@ -36,10 +36,10 @@ END {
 	}
 
 	# full text
-	printf("%.f%%\n", pct)
+	printf(" %.f%%\n", pct)
 
 	# short text
-	printf("%.f%%\n", pct)
+	printf(" %.f%%\n", pct)
 
 	# color
 	if (pct > 90) {
