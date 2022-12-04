@@ -320,7 +320,7 @@ bindsym $mod+Shift+e exec ~/.config/i3/move-to-next-window-of-type.sh pcmanfm
 bindsym $mod+Shift+s exec ~/.config/i3/move-to-next-window-of-type.sh de-slack
 
 # Focus telegram
-bindsym $mod+Shift+t exec ~/.config/i3/move-to-next-window-of-type.sh de-telegram
+bindsym $mod+Shift+t exec ~/.config/i3/move-to-next-window-of-type.sh telegram
 
 # Launch gotop on scratchpad
 bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
