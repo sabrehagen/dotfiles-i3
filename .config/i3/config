@@ -232,6 +232,9 @@ bindsym $mod+F6 exec ~/.config/scripts/tmux-kill-desktop-environment-shell-sessi
 # Launch alacritty
 bindsym $mod+Return exec ~/.config/scripts/launch-alacritty.sh
 
+# Launch beekeeper
+bindsym $mod+g exec beekeeper-studio
+
 # Launch app launcher
 bindsym $mod+o exec ~/.config/scripts/app-launcher.sh
 
@@ -248,34 +251,25 @@ bindsym $mod+c exec code
 bindsym $mod+Shift+o exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
 
 # Launch discord
-bindsym $mod+d exec ~/.config/scripts/app-launcher.sh de-discord
-
-# Launch gchat
-bindsym $mod+m exec ~/.config/scripts/app-launcher.sh de-gchat
-
-# Launch gmail
-bindsym $mod+g exec ~/.config/scripts/app-launcher.sh de-gmail
+bindsym $mod+d exec discord
 
 # Launch lockscreen
 bindsym $mod+slash exec ~/.config/i3/lockscreen.sh
 
-# Launch messenger
-bindsym $mod+v exec ~/.config/scripts/app-launcher.sh de-messenger
-
 # Launch pcmanfm
 bindsym $mod+e exec pcmanfm
 
-# Launch slack
-bindsym $mod+s exec ~/.config/scripts/app-launcher.sh de-slack
-
 # Launch telegram
-bindsym $mod+t exec ~/.config/scripts/app-launcher.sh de-telegram
+bindsym $mod+t exec /opt/Telegram/Telegram
 
 # Launch theme reload
 bindsym $mod+Shift+p exec wal -R
 
 # Launch wallpaper cycle
 bindsym $mod+p exec ~/.config/scripts/wal.sh
+
+# Launch whatsdesk
+bindsym $mod+m exec whatsdesk
 
 # Launch screenshot dump
 bindsym $mod+w exec xclip -out -selection clipboard > ~/pictures/screenshot-$(date +%s).png
@@ -295,6 +289,9 @@ bindsym $mod+Control+Delete exec ~/.config/i3/save-layout.sh && ~/.config/script
 # Focus alacritty
 bindsym $mod+Shift+Return exec ~/.config/i3/move-to-next-window-of-type.sh alacritty
 
+# Focus beekeeper
+bindsym $mod+Shift+g exec ~/.config/i3/move-to-next-window-of-type.sh beekeeper
+
 # Focus chrome
 bindsym $mod+Shift+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chrome
 
@@ -304,23 +301,14 @@ bindsym $mod+Shift+c exec ~/.config/i3/move-to-next-window-of-type.sh code
 # Focus discord
 bindsym $mod+Shift+d exec ~/.config/i3/move-to-next-window-of-type.sh discord
 
-# Focus gchat
-bindsym $mod+Shift+m exec ~/.config/i3/move-to-next-window-of-type.sh de-gchat
-
-# Focus gmail
-bindsym $mod+Shift+g exec ~/.config/i3/move-to-next-window-of-type.sh de-gmail
-
-# Focus messenger
-bindsym $mod+Shift+v exec ~/.config/i3/move-to-next-window-of-type.sh de-messenger
-
 # Focus pcmanfm
 bindsym $mod+Shift+e exec ~/.config/i3/move-to-next-window-of-type.sh pcmanfm
 
-# Focus slack
-bindsym $mod+Shift+s exec ~/.config/i3/move-to-next-window-of-type.sh de-slack
-
 # Focus telegram
 bindsym $mod+Shift+t exec ~/.config/i3/move-to-next-window-of-type.sh telegram
+
+# Focus whatsdesk
+bindsym $mod+Shift+m exec ~/.config/i3/move-to-next-window-of-type.sh whatsdesk
 
 # Launch gotop on scratchpad
 bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
