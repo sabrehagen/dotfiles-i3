@@ -283,6 +283,9 @@ bindsym $mod+x exec maim --select | xclip -selection clipboard -t image/png
 # Launch screenshot capture fullscreen
 bindsym $mod+Shift+x exec maim --window root | xclip -selection clipboard -t image/png
 
+# Launch screenshot capture selection with ksnip
+bindsym $mod+Mod1+x exec ksnip --rectarea
+
 # Launch host reboot
 bindsym $mod+Control+Delete exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-restart.sh
 
