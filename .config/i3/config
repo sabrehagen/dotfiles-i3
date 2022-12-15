@@ -47,9 +47,13 @@ bindsym $mod+greater move container to output right
 bindsym XF86MonBrightnessUp exec ~/.config/scripts/hardware-brightness.sh +
 bindsym XF86MonBrightnessDown exec ~/.config/scripts/hardware-brightness.sh -
 
+# Change monitor hardware brightness in smaller increment
+bindsym Shift+XF86MonBrightnessUp exec ~/.config/scripts/hardware-brightness.sh + 100
+bindsym Shift+XF86MonBrightnessDown exec ~/.config/scripts/hardware-brightness.sh - 100
+
 # Change monitor software brightness
-bindsym Shift+XF86MonBrightnessUp exec ~/.config/scripts/software-brightness.sh +
-bindsym Shift+XF86MonBrightnessDown exec ~/.config/scripts/software-brightness.sh -
+bindsym Mod1+XF86MonBrightnessUp exec ~/.config/scripts/software-brightness.sh +
+bindsym Mod1+XF86MonBrightnessDown exec ~/.config/scripts/software-brightness.sh -
 
 # Change audio volume
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
