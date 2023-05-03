@@ -261,7 +261,7 @@ bindsym $mod+d exec discord
 bindsym $mod+Shift+f exec warpd --hint
 
 # Launch lockscreen
-bindsym $mod+slash exec ~/.config/i3/lockscreen.sh
+bindsym $mod+slash exec sh ~/.config/i3/lockscreen.sh
 
 # Launch pcmanfm
 bindsym $mod+e exec pcmanfm
