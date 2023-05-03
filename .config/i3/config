@@ -52,8 +52,8 @@ bindsym Shift+XF86MonBrightnessUp exec ~/.config/scripts/hardware-brightness.sh 
 bindsym Shift+XF86MonBrightnessDown exec ~/.config/scripts/hardware-brightness.sh - 100
 
 # Change monitor software brightness
-bindsym Mod1+XF86MonBrightnessUp exec ~/.config/scripts/software-brightness.sh +
-bindsym Mod1+XF86MonBrightnessDown exec ~/.config/scripts/software-brightness.sh -
+bindsym $alt+XF86MonBrightnessUp exec ~/.config/scripts/software-brightness.sh +
+bindsym $alt+XF86MonBrightnessDown exec ~/.config/scripts/software-brightness.sh -
 
 # Change audio volume
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
@@ -258,7 +258,7 @@ bindsym $mod+Shift+o exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb
 bindsym $mod+d exec discord
 
 # Launch warpd
-bindsym $mod+Shift+f exec warpd --hint
+bindsym $mod+$alt+f exec warpd --hint
 
 # Launch lockscreen
 bindsym $mod+slash exec sh ~/.config/i3/lockscreen.sh
@@ -291,7 +291,7 @@ bindsym $mod+x exec maim --select | xclip -selection clipboard -t image/png
 bindsym $mod+Shift+x exec maim --window root | xclip -selection clipboard -t image/png
 
 # Launch screenshot capture selection with ksnip
-bindsym $mod+Mod1+x exec ksnip --rectarea
+bindsym $mod+$alt+x exec ksnip --rectarea
 
 # Launch host reboot
 bindsym $mod+Control+Delete exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-restart.sh
