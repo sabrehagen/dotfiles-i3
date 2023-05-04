@@ -258,7 +258,7 @@ bindsym $mod+Shift+o exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb
 bindsym $mod+d exec discord
 
 # Launch warpd
-bindsym $mod+$alt+f exec warpd --hint
+bindsym $mod+$alt+f exec warpd --hint2 --click 1
 
 # Launch lockscreen
 bindsym $mod+slash exec sh ~/.config/i3/lockscreen.sh
