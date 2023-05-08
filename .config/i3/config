@@ -337,3 +337,6 @@ exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --option window.dimen
 
 # Position i3bar calendar
 for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move up 26 px
+
+# Position i3bar networks
+for_window [title="wifi_networks"] floating enable, move position mouse, move up 26 px, move right 20 px
