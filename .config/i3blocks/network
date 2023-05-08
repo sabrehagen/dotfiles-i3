@@ -36,6 +36,12 @@ if [ "$DNS_CHECK" -ne 0 ]; then
   fi
 fi
 
+# Rescan wifi on click
+if [ ! -z $BLOCK_BUTTON ]; then
+  ICON=
+  ~/.config/scripts/wifi-rescan.sh &
+fi
+
 echo $ICON $STATUS
 
 # Only print extended output if a colour is set
