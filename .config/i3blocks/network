@@ -42,9 +42,8 @@ if [ ! -z $BLOCK_BUTTON ]; then
   ~/.config/scripts/launch-alacritty.sh \
     --option window.dimensions.columns=108 \
     --option window.dimensions.lines=10 \
-    --title wifi_networks \
-    --command zsh -c "~/.config/scripts/wifi-rescan.sh | head -n 9; read -s -t 5" >/dev/null 2>&1 &
-  # ~/.config/scripts/wifi-rescan.sh >/dev/null 2>&1 &
+    --title i3bar_networks \
+    --command zsh -c "~/.config/scripts/wifi-rescan.sh | head -n 9; read -s -t 8" >/dev/null 2>&1 &
 fi
 
 echo $ICON $STATUS

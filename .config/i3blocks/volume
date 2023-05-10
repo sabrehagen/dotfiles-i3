@@ -18,6 +18,20 @@ else
   ICON=
 fi
 
+# Show mixer on click
+if [ ! -z $BLOCK_BUTTON ]; then
+  # ~/.config/scripts/launch-alacritty.sh \
+  #   --option window.dimensions.columns=12 \
+  #   --option window.dimensions.lines=20 \
+  #   --title i3bar_volume \
+  #   --command zsh -c alsamixer &
+  ~/.config/scripts/launch-alacritty.sh \
+    --option window.dimensions.columns=108 \
+    --option window.dimensions.lines=6 \
+    --title i3bar_volume \
+    --command zsh -c pulsemixer &
+fi
+
 echo $ICON $VOLUME%
 echo $ICON $VOLUME%
 
