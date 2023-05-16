@@ -212,7 +212,7 @@ bar {
 bindsym $mod+Shift+q exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-desktop-environment-restart.sh
 
 # Restore workspace layout on startup
-exec ~/.config/i3/restore-layout.sh
+exec --no-startup-id ~/.config/i3/restore-layout.sh
 
 # Resize gaps
 bindsym $mod+equal exec ~/.config/i3/resize-gaps.sh -
