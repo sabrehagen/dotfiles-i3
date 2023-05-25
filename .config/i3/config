@@ -326,9 +326,9 @@ bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
 exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --title scratchpad_gotop --option window.dimensions.columns=152 --option window.dimensions.lines=41 --command gotop
 
 # Launch terminal on scratchpad
-for_window [title="scratchpad_terminal"] floating enable, resize set 0 0, move scratchpad
+for_window [title="scratchpad_terminal"] floating enable, move scratchpad
 bindsym $mod+grave [title="scratchpad_terminal"] scratchpad show
-exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --title scratchpad_terminal --command tmux new-session -ADs scratchpad_terminal zsh --login
+exec_always --no-startup-id ~/.config/scripts/launch-alacritty.sh --title scratchpad_terminal --option window.dimensions.columns=92 --option window.dimensions.lines=40 --command tmux new-session -ADs scratchpad_terminal zsh --login
 
 # Launch volume on scratchpad
 for_window [title="scratchpad_volume"] floating enable, move scratchpad
