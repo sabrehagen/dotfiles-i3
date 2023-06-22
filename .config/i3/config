@@ -330,7 +330,7 @@ exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --title scratchpad_te
 # Launch volume on scratchpad
 for_window [title="scratchpad_volume"] floating enable, move scratchpad
 bindsym $mod+v [title="scratchpad_volume"] scratchpad show
-exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --title scratchpad_volume --option window.dimensions.columns=120 --option window.dimensions.lines=28 --command zsh -c alsamixer &
+exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --title scratchpad_volume --option window.dimensions.columns=120 --option window.dimensions.lines=28 --command zsh -c alsamixer
 
 # Launch wifi on scratchpad
 for_window [title="scratchpad_wifi"] floating enable, move scratchpad
