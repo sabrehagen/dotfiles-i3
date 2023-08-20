@@ -168,16 +168,16 @@ bindsym $mod+Shift+less move workspace to output up
 bindsym $mod+Shift+greater move workspace to output down
 
 # Vim bindings
-bindsym $mod+Shift+Ctrl+h resize shrink width 10 px or 10 ppt
-bindsym $mod+Shift+Ctrl+j resize shrink height 10 px or 10 ppt
-bindsym $mod+Shift+Ctrl+l resize grow width 10 px or 10 ppt
-bindsym $mod+Shift+Ctrl+k resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+h resize shrink width 10 px
+bindsym $mod+Shift+Ctrl+j resize shrink height 10 px
+bindsym $mod+Shift+Ctrl+l resize grow width 10 px
+bindsym $mod+Shift+Ctrl+k resize grow height 10 px
 
 # Arrow keys
-bindsym $mod+Shift+Ctrl+Left resize shrink height 10 px or 10 ppt
-bindsym $mod+Shift+Ctrl+Down resize grow width 10 px or 10 ppt
-bindsym $mod+Shift+Ctrl+Up resize shrink width 10 px or 10 ppt
-bindsym $mod+Shift+Ctrl+Right resize grow height 10 px or 10 ppt
+bindsym $mod+Shift+Ctrl+Left resize shrink height 10 px
+bindsym $mod+Shift+Ctrl+Down resize grow width 10 px
+bindsym $mod+Shift+Ctrl+Up resize shrink width 10 px
+bindsym $mod+Shift+Ctrl+Right resize grow height 10 px
 
 # Load colours from Xresources
 set_from_resource $fg     i3wm.color7   #ffffff
