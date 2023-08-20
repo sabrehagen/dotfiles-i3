@@ -347,19 +347,3 @@ for_window [title="i3bar_networks"] floating enable, move position mouse, move u
 
 # Position i3bar calendar
 for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move up 26 px
-
-# Move and resize window
-mode "resize" {
-        bindsym Shift+h move left
-        bindsym Shift+j move down
-        bindsym Shift+k move up
-        bindsym Shift+l move right
-        bindsym h resize shrink width 10 px
-        bindsym j resize grow height 10 px
-        bindsym k resize shrink height 10 px
-        bindsym l resize grow width 10 px
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-bindsym $mod+r mode "resize"
