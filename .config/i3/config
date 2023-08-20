@@ -347,3 +347,5 @@ for_window [title="i3bar_networks"] floating enable, move position mouse, move u
 
 # Position i3bar calendar
 for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move up 26 px
+
+#
