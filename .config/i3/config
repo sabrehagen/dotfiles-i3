@@ -210,7 +210,7 @@ bar {
   tray_output none # eDP-1
 }
 
-# Restart desktop environment
+# Restart the desktop environment
 bindsym $mod+Shift+q exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-desktop-environment-restart.sh
 
 # Restore workspace layout on startup
