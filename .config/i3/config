@@ -210,7 +210,7 @@ bar {
   tray_output none # eDP-1
 }
 
-# Save workspace layout and exit i3
+# Restart desktop environment
 bindsym $mod+Shift+q exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-desktop-environment-restart.sh
 
 # Restore workspace layout on startup
@@ -221,7 +221,7 @@ bindsym $mod+equal exec ~/.config/i3/resize-gaps.sh -
 bindsym $mod+Shift+equal exec ~/.config/i3/resize-gaps.sh +
 
 # Set gaps on startup
-gaps inner 0
+gaps inner 60
 
 # Launch kill all containers except the desktop environment
 bindsym $mod+F4 exec ~/repositories/sabrehagen/desktop-environment/docker/scripts/kill-all.sh
