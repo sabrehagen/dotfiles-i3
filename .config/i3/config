@@ -103,6 +103,9 @@ bindsym $mod+f fullscreen toggle
 # Enter floating mode for the focused container
 bindsym $mod+space floating toggle
 
+# Move current window to the largest container
+bindsym $alt+Return exec --no-startup-id ~/.config/i3/promote-window.py
+
 # Focus urgent window
 bindsym $mod+u [urgent=latest] focus
 
@@ -112,7 +115,7 @@ bindsym $mod+Shift+r exec i3-msg restart
 # Focus previous workspace
 bindsym $mod+minus exec i3-msg workspace back_and_forth
 
-# Switch to previous window
+# Focus previous window
 bindsym $mod+Shift+minus exec i3-focus-last switch
 
 # Define names for default workspaces for which we configure key bindings later on.
@@ -221,7 +224,7 @@ bindsym $mod+equal exec ~/.config/i3/resize-gaps.sh -
 bindsym $mod+Shift+equal exec ~/.config/i3/resize-gaps.sh +
 
 # Set gaps on startup
-gaps inner 0
+gaps inner 80
 
 # Launch kill all containers except the desktop environment
 bindsym $mod+F4 exec ~/repositories/sabrehagen/desktop-environment/docker/scripts/kill-all.sh
