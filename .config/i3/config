@@ -104,7 +104,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+space floating toggle
 
 # Move current window to the largest container
-bindsym $alt+Return exec --no-startup-id ~/.config/i3/promote-window.py
+bindsym $mod+$alt+Return exec --no-startup-id ~/.config/i3/promote-window.py
 
 # Focus urgent window
 bindsym $mod+u [urgent=latest] focus
