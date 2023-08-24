@@ -198,6 +198,7 @@ client.background       $bg
 
 # i3bar configuration
 bar {
+  bindsym button3 exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
   colors {
     background $bg
     statusline $fg
