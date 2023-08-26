@@ -1,13 +1,13 @@
 RESURRECT_DIRECTORY=~/.config/i3/i3-resurrect
 
 # Restore all workspaces
-grep -rl , $RESURRECT_DIRECTORY | \
+grep -l , $RESURRECT_DIRECTORY/* | \
   sort | \
   sed 's;.*/;;' | \
   cut -c 11- | \
   sed 's;_.*;;' | \
   uniq | \
-  xargs -n 1 -I @ i3-resurrect restore --directory $RESURRECT_DIRECTORY --workspace "@"
+  xargs -I @ i3-resurrect restore --directory $RESURRECT_DIRECTORY --workspace "@"
 
 # Focus the previously focused workspace
 cat $RESURRECT_DIRECTORY/focused | xargs i3-msg workspace number
