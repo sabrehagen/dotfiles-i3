@@ -225,7 +225,7 @@ bindsym $mod+equal exec ~/.config/i3/resize-gaps.sh -
 bindsym $mod+Shift+equal exec ~/.config/i3/resize-gaps.sh +
 
 # Set gaps on startup
-gaps inner 80
+gaps inner 60
 
 # Launch kill all containers except the desktop environment
 bindsym $mod+F4 exec ~/repositories/sabrehagen/desktop-environment/docker/scripts/kill-all.sh
