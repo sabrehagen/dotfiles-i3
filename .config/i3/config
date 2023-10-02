@@ -7,7 +7,7 @@ for_window [class=".*"] border pixel 2
 new_window 1pixel
 
 # Set i3 font
-font pango:monospace 12
+font pango:monospace 25
 
 # Disable window borders when there is only one window
 smart_borders on
@@ -225,7 +225,7 @@ bindsym $mod+equal exec ~/.config/i3/resize-gaps.sh -
 bindsym $mod+Shift+equal exec ~/.config/i3/resize-gaps.sh +
 
 # Set gaps on startup
-gaps inner 60
+gaps inner 100
 
 # Launch kill all containers except the desktop environment
 bindsym $mod+F4 exec ~/repositories/sabrehagen/desktop-environment/docker/scripts/kill-all.sh
@@ -252,7 +252,7 @@ bindsym $mod+b exec chrome
 bindsym $mod+c exec code
 
 # Launch dmenu
-bindsym $mod+o exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
+bindsym $mod+o exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg -fn NotoSansMono:regular:pixelsize=29"
 
 # Launch discord
 bindsym $mod+d exec discord
