@@ -1,4 +1,4 @@
-PERCENTAGE=$(~/.config/scripts/ssh-host.sh "/usr/local/bin/brightness -l | grep brightness | sed 's/.*brightness //' | xargs -I@ echo '100 * @' | bc -l | sed 's/\..*//'")
+PERCENTAGE=$(~/.config/scripts/ssh-host-arm64.sh "/usr/local/bin/brightness -l | grep brightness | sed 's/.*brightness //' | xargs -I@ echo '100 * @' | bc -l | sed 's/\..*//'")
 
 if [ "$PERCENTAGE" -gt "50" ]; then
   ICON=
