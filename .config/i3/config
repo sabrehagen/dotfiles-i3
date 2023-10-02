@@ -246,10 +246,7 @@ bindsym $mod+Return exec ~/.config/scripts/launch-alacritty.sh
 bindsym $mod+g exec beekeeper-studio
 
 # Launch chrome
-bindsym $mod+b exec google-chrome
-
-# Launch chrome app from clipboard
-bindsym $mod+a exec clipboard | xargs -I@ google-chrome --app="@"
+bindsym $mod+b exec chrome
 
 # Launch code
 bindsym $mod+c exec code
