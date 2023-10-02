@@ -303,7 +303,7 @@ bindsym $mod+Shift+Return exec ~/.config/i3/move-to-next-window-of-type.sh alacr
 bindsym $mod+Shift+g exec ~/.config/i3/move-to-next-window-of-type.sh beekeeper
 
 # Focus chrome
-bindsym $mod+Shift+b exec ~/.config/i3/move-to-next-window-of-type.sh google-chrome
+bindsym $mod+Shift+b exec ~/.config/i3/move-to-next-window-of-type.sh chromium
 
 # Focus code
 bindsym $mod+Shift+c exec ~/.config/i3/move-to-next-window-of-type.sh code
