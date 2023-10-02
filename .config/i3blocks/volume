@@ -1,5 +1,5 @@
 #!/bin/bash
-VOLUME=$(pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
+VOLUME=$(~/.config/scripts/ssh-host.sh "osascript -e 'output volume of (get volume settings)'")
 
 # Exit if an audio level was not returned
 if ! [[ "$VOLUME" =~ ^[0-9]+$ ]]; then
@@ -11,7 +11,7 @@ if [ "$VOLUME" -ge 70 ]; then ICON=
 elif [ "$VOLUME" -ge 30 ]; then ICON=
 fi
 
-MUTED=$(amixer get Master | sed 5q | grep -q '\[on\]'; echo $?)
+MUTED=$(~/.config/scripts/ssh-host.sh "osascript -e 'output muted of (get volume settings)'" | grep -q false; echo $?)
 if [ "$MUTED" -eq "1" ]; then
   ICON=
 else

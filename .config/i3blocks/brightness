@@ -1,6 +1,4 @@
-BRIGHTNESS=$(~/.config/scripts/ssh-host.sh sudo cat /sys/class/backlight/intel_backlight/actual_brightness)
-MAX_BRIGHTNESS=$(~/.config/scripts/ssh-host.sh sudo cat /sys/class/backlight/intel_backlight/max_brightness)
-PERCENTAGE=$(printf %0.f $(echo 100/$MAX_BRIGHTNESS*$BRIGHTNESS | bc -l))
+PERCENTAGE=$(~/.config/scripts/ssh-host.sh "/usr/local/bin/brightness -l | grep brightness | sed 's/.*brightness //' | xargs -I@ echo '100 * @' | bc -l | sed 's/\..*//'")
 
 if [ "$PERCENTAGE" -gt "50" ]; then
   ICON=

@@ -1,5 +1,5 @@
 #!/bin/bash
-BATTERY=$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')
+BATTERY=$(~/.config/scripts/ssh-host.sh "pmset -g batt | grep % | sed -E 's/.*\t([0-9]+)%.*/\1/'")
 
 # Exit if a battery value was not returned
 if ! [[ "$BATTERY" =~ ^[0-9]+$ ]]; then
@@ -15,7 +15,7 @@ else ICON=
 fi
 
 # Battery charging
-CHARGING=$(acpi -b | grep "Battery 0" | grep -Eq 'Charging|Full|Unknown'; echo $?)
+CHARGING=$(~/.config/scripts/ssh-host.sh "pmset -g batt | grep %" | grep -Eq ' charging'; echo $?)
 if [ "$CHARGING" -eq "0" ]; then
   ICON=
 fi
