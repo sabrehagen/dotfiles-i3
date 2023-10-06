@@ -16,13 +16,13 @@ smart_borders on
 floating_modifier $mod
 
 # Set default monitor layout
-exec --no-startup-id ~/.screenlayout/default.sh
+exec --no-startup-id $HOME/.screenlayout/default.sh
 
 # Reload wal config
 exec_always --no-startup-id wal -R
 
 # Start autolock
-exec --no-startup-id xautolock -time 10 -locker ~/.config/i3/lockscreen.sh
+exec --no-startup-id xautolock -time 10 -locker $HOME/.config/i3/lockscreen.sh
 
 # Start i3altlayout
 exec --no-startup-id i3altlayout
@@ -37,23 +37,23 @@ exec --no-startup-id picom
 exec_always --no-startup-id exec i3-workspace-names-daemon --delimiter " | "
 
 # Start workspace renumbering
-exec_always --no-startup-id ~/.config/i3/renumber-workspaces.sh
+exec_always --no-startup-id $HOME/.config/i3/renumber-workspaces.sh
 
 # Move focused window between monitors
 bindsym $mod+less move container to output left
 bindsym $mod+greater move container to output right
 
 # Change monitor hardware brightness
-bindsym XF86MonBrightnessUp exec ~/.config/scripts/hardware-brightness.sh +
-bindsym XF86MonBrightnessDown exec ~/.config/scripts/hardware-brightness.sh -
+bindsym XF86MonBrightnessUp exec $HOME/.config/scripts/hardware-brightness.sh +
+bindsym XF86MonBrightnessDown exec $HOME/.config/scripts/hardware-brightness.sh -
 
 # Change monitor hardware brightness in smaller increment
-bindsym Shift+XF86MonBrightnessUp exec ~/.config/scripts/hardware-brightness.sh + 100
-bindsym Shift+XF86MonBrightnessDown exec ~/.config/scripts/hardware-brightness.sh - 100
+bindsym Shift+XF86MonBrightnessUp exec $HOME/.config/scripts/hardware-brightness.sh + 100
+bindsym Shift+XF86MonBrightnessDown exec $HOME/.config/scripts/hardware-brightness.sh - 100
 
 # Change monitor software brightness
-bindsym $alt+XF86MonBrightnessUp exec ~/.config/scripts/software-brightness.sh +
-bindsym $alt+XF86MonBrightnessDown exec ~/.config/scripts/software-brightness.sh -
+bindsym $alt+XF86MonBrightnessUp exec $HOME/.config/scripts/software-brightness.sh +
+bindsym $alt+XF86MonBrightnessDown exec $HOME/.config/scripts/software-brightness.sh -
 
 # Change audio volume
 bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
@@ -104,7 +104,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+space floating toggle
 
 # Move current window to the largest container
-bindsym $mod+$alt+Return exec --no-startup-id ~/.config/i3/promote-window.py
+bindsym $mod+$alt+Return exec --no-startup-id $HOME/.config/i3/promote-window.py
 
 # Focus urgent window
 bindsym $mod+u [urgent=latest] focus
@@ -132,10 +132,10 @@ set $ws9 "9"
 set $ws10 "10"
 
 # Create new workspace
-bindsym $mod+n exec ~/.config/i3/new-workspace.sh
+bindsym $mod+n exec $HOME/.config/i3/new-workspace.sh
 
 # Move window to new workspace
-bindsym $mod+Shift+n exec ~/.config/i3/move-window-to-new-workspace.sh
+bindsym $mod+Shift+n exec $HOME/.config/i3/move-window-to-new-workspace.sh
 
 # Switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -150,10 +150,10 @@ bindsym $mod+9 workspace number $ws9
 bindsym $mod+0 workspace number $ws10
 
 # Switch to adjacent workspace
-bindsym $mod+Control+h exec ~/.config/i3/move-to-adjacent-workspace.sh -
-bindsym $mod+Control+l exec ~/.config/i3/move-to-adjacent-workspace.sh +
-bindsym $mod+Shift+Tab exec ~/.config/i3/move-to-adjacent-workspace.sh -
-bindsym $mod+Tab exec ~/.config/i3/move-to-adjacent-workspace.sh +
+bindsym $mod+Control+h exec $HOME/.config/i3/move-to-adjacent-workspace.sh -
+bindsym $mod+Control+l exec $HOME/.config/i3/move-to-adjacent-workspace.sh +
+bindsym $mod+Shift+Tab exec $HOME/.config/i3/move-to-adjacent-workspace.sh -
+bindsym $mod+Tab exec $HOME/.config/i3/move-to-adjacent-workspace.sh +
 
 # Move focused container to workspace and switch to workspace
 bindsym $mod+Shift+1 exec i3-msg move container to workspace number $ws1; exec i3-msg workspace number $ws1
@@ -215,32 +215,32 @@ bar {
 }
 
 # Restart the desktop environment
-bindsym $mod+Shift+q exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-desktop-environment-restart.sh
+bindsym $mod+Shift+q exec $HOME/.config/i3/save-layout.sh && $HOME/.config/scripts/host-desktop-environment-restart.sh
 
 # Restore workspace layout on startup
-exec --no-startup-id ~/.config/i3/restore-layout.sh
+exec --no-startup-id $HOME/.config/i3/restore-layout.sh
 
 # Resize gaps
-bindsym $mod+equal exec ~/.config/i3/resize-gaps.sh -
-bindsym $mod+Shift+equal exec ~/.config/i3/resize-gaps.sh +
+bindsym $mod+equal exec $HOME/.config/i3/resize-gaps.sh -
+bindsym $mod+Shift+equal exec $HOME/.config/i3/resize-gaps.sh +
 
 # Set gaps on startup
 gaps inner 100
 
 # Launch kill all containers except the desktop environment
-bindsym $mod+F4 exec ~/repositories/sabrehagen/desktop-environment/docker/scripts/kill-all.sh
+bindsym $mod+F4 exec $HOME/repositories/sabrehagen/desktop-environment/docker/scripts/kill-all.sh
 
 # Launch build desktop environment from dotfiles
-bindsym $mod+F5 exec ~/.config/scripts/tmux-desktop-environment-build-dotfiles.sh
+bindsym $mod+F5 exec $HOME/.config/scripts/tmux-desktop-environment-build-dotfiles.sh
 
 # Launch kill build desktop environment from dotfiles
-bindsym $mod+Shift+F5 exec ~/.config/scripts/tmux-kill-desktop-environment-build-dotfiles.sh
+bindsym $mod+Shift+F5 exec $HOME/.config/scripts/tmux-kill-desktop-environment-build-dotfiles.sh
 
 # Launch kill desktop environment tmux sessions
-bindsym $mod+F6 exec ~/.config/scripts/tmux-kill-desktop-environment-shell-sessions.sh
+bindsym $mod+F6 exec $HOME/.config/scripts/tmux-kill-desktop-environment-shell-sessions.sh
 
 # Launch alacritty
-bindsym $mod+Return exec ~/.config/scripts/launch-alacritty.sh
+bindsym $mod+Return exec $HOME/.config/scripts/launch-alacritty.sh
 
 # Launch beekeeper
 bindsym $mod+g exec beekeeper-studio
@@ -261,7 +261,7 @@ bindsym $mod+d exec discord
 bindsym $mod+$alt+f exec warpd --hint2 --click 1
 
 # Launch lockscreen
-bindsym $mod+slash exec sh ~/.config/i3/lockscreen.sh
+bindsym $mod+slash exec sh $HOME/.config/i3/lockscreen.sh
 
 # Launch pcmanfm
 bindsym $mod+e exec pcmanfm
@@ -273,13 +273,13 @@ bindsym $mod+t exec /opt/Telegram/Telegram
 bindsym $mod+Shift+p exec wal -R
 
 # Launch wallpaper cycle
-bindsym $mod+p exec ~/.config/scripts/wal.sh
+bindsym $mod+p exec $HOME/.config/scripts/wal.sh
 
 # Launch whatsdesk
 bindsym $mod+m exec whatsdesk
 
 # Launch screenshot dump
-bindsym $mod+w exec xclip -out -selection clipboard > ~/pictures/screenshot-$(date +%s).png
+bindsym $mod+w exec xclip -out -selection clipboard > $HOME/pictures/screenshot-$(date +%s).png
 
 # Launch screenshot upload
 bindsym $mod+Shift+w exec xclip -out -selection clipboard | imgur-uploader | clipboard
@@ -294,51 +294,51 @@ bindsym $mod+Shift+x exec maim --hidecursor --window root | xclip -selection cli
 bindsym $mod+$alt+x exec ksnip --rectarea
 
 # Launch host reboot
-bindsym $mod+Control+Delete exec ~/.config/i3/save-layout.sh && ~/.config/scripts/host-restart.sh
+bindsym $mod+Control+Delete exec $HOME/.config/i3/save-layout.sh && $HOME/.config/scripts/host-restart.sh
 
 # Focus alacritty
-bindsym $mod+Shift+Return exec ~/.config/i3/move-to-next-window-of-type.sh alacritty
+bindsym $mod+Shift+Return exec $HOME/.config/i3/move-to-next-window-of-type.sh alacritty
 
 # Focus beekeeper
-bindsym $mod+Shift+g exec ~/.config/i3/move-to-next-window-of-type.sh beekeeper
+bindsym $mod+Shift+g exec $HOME/.config/i3/move-to-next-window-of-type.sh beekeeper
 
 # Focus chrome
-bindsym $mod+Shift+b exec ~/.config/i3/move-to-next-window-of-type.sh chromium
+bindsym $mod+Shift+b exec $HOME/.config/i3/move-to-next-window-of-type.sh chromium
 
 # Focus code
-bindsym $mod+Shift+c exec ~/.config/i3/move-to-next-window-of-type.sh code
+bindsym $mod+Shift+c exec $HOME/.config/i3/move-to-next-window-of-type.sh code
 
 # Focus discord
-bindsym $mod+Shift+d exec ~/.config/i3/move-to-next-window-of-type.sh discord
+bindsym $mod+Shift+d exec $HOME/.config/i3/move-to-next-window-of-type.sh discord
 
 # Focus pcmanfm
-bindsym $mod+Shift+e exec ~/.config/i3/move-to-next-window-of-type.sh pcmanfm
+bindsym $mod+Shift+e exec $HOME/.config/i3/move-to-next-window-of-type.sh pcmanfm
 
 # Focus telegram
-bindsym $mod+Shift+t exec ~/.config/i3/move-to-next-window-of-type.sh telegram
+bindsym $mod+Shift+t exec $HOME/.config/i3/move-to-next-window-of-type.sh telegram
 
 # Focus whatsdesk
-bindsym $mod+Shift+m exec ~/.config/i3/move-to-next-window-of-type.sh whatsdesk
+bindsym $mod+Shift+m exec $HOME/.config/i3/move-to-next-window-of-type.sh whatsdesk
 
 # Launch gotop on scratchpad
 for_window [title="scratchpad_gotop"] floating enable, move scratchpad
 bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
-exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --title scratchpad_gotop --option window.dimensions.columns=152 --option window.dimensions.lines=41 --command gotop
+exec --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_gotop --option window.dimensions.columns=152 --option window.dimensions.lines=41 --command gotop
 
 # Launch terminal on scratchpad
 for_window [title="scratchpad_terminal"] floating enable, move scratchpad
 bindsym $mod+grave [title="scratchpad_terminal"] scratchpad show
-exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --title scratchpad_terminal --option window.dimensions.columns=98 --option window.dimensions.lines=40 --command tmux new-session -ADs scratchpad_terminal zsh --login
+exec --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_terminal --option window.dimensions.columns=98 --option window.dimensions.lines=40 --command tmux new-session -ADs scratchpad_terminal zsh --login
 
 # Launch volume on scratchpad
 for_window [title="scratchpad_volume"] floating enable, move scratchpad
 bindsym $mod+v [title="scratchpad_volume"] scratchpad show
-exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --title scratchpad_volume --option window.dimensions.columns=120 --option window.dimensions.lines=7 --command pulsemixer
+exec --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_volume --option window.dimensions.columns=120 --option window.dimensions.lines=7 --command pulsemixer
 
 # Launch wifi on scratchpad
 for_window [title="scratchpad_wifi"] floating enable, move scratchpad
 bindsym $mod+i [title="scratchpad_wifi"] scratchpad show
-exec --no-startup-id ~/.config/scripts/launch-alacritty.sh --title scratchpad_wifi --option window.dimensions.columns=58 --option window.dimensions.lines=35 --command zsh -c "~/.config/scripts/ssh-host-tty.sh sudo nmtui-connect"
+exec --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_wifi --option window.dimensions.columns=58 --option window.dimensions.lines=35 --command zsh -c "$HOME/.config/scripts/ssh-host-tty.sh sudo nmtui-connect"
 
 # Position i3bar volume
 for_window [title="i3bar_volume"] floating enable, move position mouse, move up 26 px, move right 20 px
