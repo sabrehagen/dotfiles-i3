@@ -4,7 +4,7 @@ import -window root $LOCKSCREEN_IMAGE
 convert $LOCKSCREEN_IMAGE -level 0%,100%,0.6 -scale 10% -scale 1000% $LOCKSCREEN_IMAGE
 
 # Start screensaver
-~/.config/scripts/screensaver.sh
+$HOME/.config/scripts/screensaver.sh
 
 # Start lockscreen on screensaver exit
 i3lock \

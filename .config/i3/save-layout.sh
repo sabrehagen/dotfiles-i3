@@ -1,4 +1,4 @@
-RESURRECT_DIRECTORY=~/.config/i3/i3-resurrect
+RESURRECT_DIRECTORY=$HOME/.config/i3/i3-resurrect
 
 # Clear previous workspace history
 rm -rf $RESURRECT_DIRECTORY/*
