@@ -1,7 +1,7 @@
 # Collect host network information rather than docker network information
-HOST_WIRELESS_INTERFACE=$(~/.config/scripts/ssh-host.sh iw dev | awk '$1=="Interface"{print $2}')
-HOST_SSID=$(~/.config/scripts/ssh-host.sh iw dev $HOST_WIRELESS_INTERFACE link | grep SSID | cut -f2 -d:)
-HOST_IP=$(~/.config/scripts/ssh-host.sh ip addr | grep $HOST_WIRELESS_INTERFACE | grep inet | sed -E 's;.*inet (.*)/.*;\1;')
+HOST_WIRELESS_INTERFACE=$($HOME/.config/scripts/ssh-host.sh iw dev | awk '$1=="Interface"{print $2}')
+HOST_SSID=$($HOME/.config/scripts/ssh-host.sh iw dev $HOST_WIRELESS_INTERFACE link | grep SSID | cut -f2 -d:)
+HOST_IP=$($HOME/.config/scripts/ssh-host.sh ip addr | grep $HOST_WIRELESS_INTERFACE | grep inet | sed -E 's;.*inet (.*)/.*;\1;')
 ICON=
 
 # Source wal colours
@@ -39,11 +39,11 @@ fi
 # Rescan wifi on click
 if [ ! -z $BLOCK_BUTTON ]; then
   ICON=
-  ~/.config/scripts/launch-alacritty.sh \
+  $HOME/.config/scripts/launch-alacritty.sh \
     --option window.dimensions.columns=108 \
     --option window.dimensions.lines=10 \
     --title i3bar_networks \
-    --command zsh -c "~/.config/scripts/wifi-rescan.sh | head -n 9; read -s -t 8" >/dev/null 2>&1 &
+    --command zsh -c "$HOME/.config/scripts/wifi-rescan.sh | head -n 9; read -s -t 8" >/dev/null 2>&1 &
 fi
 
 echo $ICON $STATUS

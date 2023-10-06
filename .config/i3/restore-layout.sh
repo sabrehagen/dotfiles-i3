@@ -1,4 +1,4 @@
-RESURRECT_DIRECTORY=~/.config/i3/i3-resurrect
+RESURRECT_DIRECTORY=$HOME/.config/i3/i3-resurrect
 
 # Restore all workspaces
 grep -l , $RESURRECT_DIRECTORY/* | \

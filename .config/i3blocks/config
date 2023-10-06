@@ -1,46 +1,46 @@
 separator_block_width=15
 
 [desktop-environment-build]
-command=~/.config/i3blocks/desktop-environment-build
+command=$HOME/.config/i3blocks/desktop-environment-build
 interval=1
 
 [battery]
-command=~/.config/i3blocks/battery
+command=$HOME/.config/i3blocks/battery
 interval=1
 
 [volume]
-command=~/.config/i3blocks/volume
+command=$HOME/.config/i3blocks/volume
 interval=1
 
 [brightness]
-command=~/.config/i3blocks/brightness
+command=$HOME/.config/i3blocks/brightness
 interval=1
 
 [cpu]
 label=
-command=~/.config/i3blocks/cpu
+command=$HOME/.config/i3blocks/cpu
 interval=2
 min_width=32
 
 [memory]
 label=
-command=~/.config/i3blocks/memory
+command=$HOME/.config/i3blocks/memory
 interval=2
 
 [ping]
-command=~/.config/i3blocks/ping
+command=$HOME/.config/i3blocks/ping
 interval=2
 min_width=65
 
 [bandwidth]
-command=~/.config/i3blocks/bandwidth
+command=$HOME/.config/i3blocks/bandwidth
 interval=2
 min_width=68
 
 [network]
-command=~/.config/i3blocks/network
+command=$HOME/.config/i3blocks/network
 interval=2
 
 [clock]
-command=~/.config/i3blocks/clock
+command=$HOME/.config/i3blocks/clock
 interval=1
