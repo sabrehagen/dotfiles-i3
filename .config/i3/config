@@ -19,7 +19,7 @@ floating_modifier $mod
 exec --no-startup-id $HOME/.screenlayout/default.sh
 
 # Reload wal config
-exec_always --no-startup-id wal -R
+exec_always --no-startup-id $HOME/.config/scripts/wal.sh
 
 # Start autolock
 exec --no-startup-id xautolock -time 10 -locker $HOME/.config/i3/lockscreen.sh
@@ -104,7 +104,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+space floating toggle
 
 # Move current window to the largest container
-bindsym $mod+$alt+Return exec --no-startup-id $HOME/.config/i3/promote-window.py
+bindsym $mod+Control+Return exec --no-startup-id $HOME/.config/i3/promote-window.py
 
 # Focus urgent window
 bindsym $mod+u [urgent=latest] focus
