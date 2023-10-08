@@ -24,11 +24,14 @@ exec --no-startup-id $HOME/.screenlayout/default.sh
 # Reload wal config
 exec --no-startup-id $HOME/.config/scripts/wal.sh
 
+# Restore workspace layout on startup
+exec --no-startup-id $HOME/.config/i3/restore-layout.sh
+
+# Start i3altlayout after workspace restore
+exec --no-startup-id i3altlayout
+
 # Start autolock
 exec --no-startup-id xautolock -time 10 -locker $HOME/.config/i3/lockscreen.sh
-
-# Start i3altlayout
-exec --no-startup-id i3altlayout
 
 # Start i3 focus last window
 exec --no-startup-id i3-focus-last
@@ -225,9 +228,6 @@ bar {
 
 # Restart the desktop environment
 bindsym $mod+Shift+q exec $HOME/.config/i3/save-layout.sh && $HOME/.config/scripts/host-desktop-environment-restart.sh
-
-# Restore workspace layout on startup
-exec --no-startup-id $HOME/.config/i3/restore-layout.sh
 
 # Resize gaps
 bindsym $mod+equal exec $HOME/.config/i3/resize-gaps.sh -
