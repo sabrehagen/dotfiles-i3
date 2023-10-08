@@ -96,6 +96,9 @@ bindsym $mod+Shift+r exec i3-msg restart
 # Focus parent container
 bindsym $mod+a focus parent
 
+# Focus child container
+bindsym $mod+Shift+a focus child
+
 # Change container layout
 bindsym $mod+backslash split toggle
 
