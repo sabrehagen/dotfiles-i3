@@ -234,7 +234,7 @@ bindsym $mod+equal exec $HOME/.config/i3/resize-gaps.sh -
 bindsym $mod+Shift+equal exec $HOME/.config/i3/resize-gaps.sh +
 
 # Set gaps on startup
-gaps inner 60
+gaps inner 40
 
 # Launch kill all containers except the desktop environment
 bindsym $mod+F4 exec $HOME/repositories/sabrehagen/desktop-environment/docker/scripts/kill-all.sh
@@ -357,3 +357,8 @@ for_window [title="i3bar_networks"] floating enable, move position mouse, move u
 
 # Position i3bar calendar
 for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move up 26 px
+
+# Start i3 launched chromium-browser in marked placeholders
+for_window [class="i3-chromium-launch"] move window to mark PLACEHOLDER
+# for_window [class="i3-chromium-launch"] floating enable, move scratchpad
+no_focus [class="i3-chromium-launch"]
