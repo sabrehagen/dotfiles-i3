@@ -3,11 +3,11 @@ set $mod Mod4
 set $alt Mod1
 
 # Set window border size
-for_window [class=".*"] border pixel 2
-new_window 1pixel
+default_border pixel 2
+default_floating_border pixel 2
 
 # Set i3 font
-font pango:monospace 12
+font pango:monospace 1
 
 # Disable window borders when there is only one window
 smart_borders on
@@ -211,7 +211,6 @@ client.background       $bg
 
 # i3bar configuration
 bar {
-  bindsym button3 exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
   colors {
     background $bg
     statusline $fg
@@ -222,9 +221,12 @@ bar {
     inactive_workspace $bg      $bg         $fg
     urgent_workspace   $bg      $alert      $fg
   }
+  font pango:monospace 12
   position bottom
   status_command i3blocks
   tray_output none
+
+  bindsym button3 exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
 }
 
 # Restart the desktop environment
@@ -358,8 +360,3 @@ for_window [title="i3bar_networks"] floating enable, move position mouse, move u
 
 # Position i3bar calendar
 for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move up 26 px
-
-# Start i3 launched chromium-browser in marked placeholders
-for_window [class="i3-chromium-launch"] move window to mark PLACEHOLDER
-# for_window [class="i3-chromium-launch"] floating enable, move scratchpad
-no_focus [class="i3-chromium-launch"]
