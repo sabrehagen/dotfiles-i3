@@ -1,6 +1,6 @@
 # Collect host network information rather than docker network information
-HOST_SSID=$(cat /mnt/host/macos/wifi-network)
-HOST_IP=$(cat /mnt/host/macos/ip-address-en0)
+HOST_SSID=$(cat /mnt/host/sabrehagen/macos/wifi-network)
+HOST_IP=$(cat /mnt/host/sabrehagen/macos/ip-address-en0)
 ICON=
 
 # Source wal colours
