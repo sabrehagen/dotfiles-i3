@@ -30,25 +30,29 @@ for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
     # Move to parent and mark as destination for the restored chromium window
     i3-msg focus parent
     i3-msg mark PLACEHOLDER
+
+    # Kill chromium
+    pkill -f chromium-browser
+
+    # Start chromium and wait until window is visible
+    i3-msg "exec chrome --class=i3-chromium-launch"
+    sleep 1
+
+    # Remove placeholder screenshot
+    pkill -f chromium-screenshot
+
+    # Move chromium-browser out of tabbed holding container
+    i3-msg '[con_mark="PLACEHOLDER"] focus, focus child'
+    $HOME/.config/i3/move-to-parent.sh
+
+    # Restore window that was focused before starting replacement
+    xdotool windowactivate $FOCUSED_WINDOW
+
+    # Early exit as only one browser window is supported currently
+    exit 0
+
   fi
 
   WORKSPACE_COUNTER=$(( $WORKSPACE_COUNTER + 1 ))
 
 done
-
-# Kill chromium
-pkill -f chromium-browser
-
-# Start chromium and wait until window is visible
-i3-msg "exec chrome --class=i3-chromium-launch"
-sleep 1
-
-# Remove placeholder screenshot
-pkill -f chromium-screenshot
-
-# Move chromium-browser out of tabbed holding container
-i3-msg '[con_mark="PLACEHOLDER"] focus, focus child'
-$HOME/.config/i3/move-to-parent.sh
-
-# Restore window that was focused before starting replacement
-xdotool windowactivate $FOCUSED_WINDOW
