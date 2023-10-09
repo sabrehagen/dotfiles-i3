@@ -9,21 +9,25 @@ for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
 
   if [ ! -z "$CHROMIUM_WINDOW" ]; then
 
-    # Switch to workspace
-    i3-msg workspace number $WORKSPACE_NUMBER
-
-    # Focus chromium-browser
-    xdotool windowactivate $CHROMIUM_WINDOW
-
-    # Take screenshot of window to display during replacement
+    # Take screenshot of chromium window to display during replacement
     SCREENSHOT_PATH=/tmp/chromium-screenshot-$CHROMIUM_WINDOW.png
     maim --window $CHROMIUM_WINDOW > $SCREENSHOT_PATH
 
-    # Open screenshot placeholder in sibling tabbed container
+    # Switch to workspace
+    i3-msg workspace number $WORKSPACE_NUMBER
+
+    # Focus chromium
+    xdotool windowactivate --sync $CHROMIUM_WINDOW
+
+    # Create tabbed container around chromium to hold screenshot placeholder in
     i3-msg split h
     i3-msg layout tabbed
-    i3-msg mark TABBED
-    i3-msg exec feh $SCREENSHOT_PATH
+
+    # Wait for screenshot to open in tabbed container
+    feh $SCREENSHOT_PATH &
+    xdotool search --pid $! --sync
+
+    # Move to parent and mark as destination for the restored chromium window
     i3-msg focus parent
     i3-msg mark PLACEHOLDER
   fi
@@ -32,21 +36,19 @@ for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
 
 done
 
-sleep 0.5
-
 # Kill chromium
 pkill -f chromium-browser
 
-# Set chromium windows to open in placeholders
-i3-msg "[class="i3-chromium-launch"] move window to mark PLACEHOLDER"
-
-# Start chromium
+# Start chromium and wait until window is visible
 i3-msg "exec chrome --class=i3-chromium-launch"
+sleep 1
 
-sleep 1.5
-
-# Remove screenshot placeholders
+# Remove placeholder screenshot
 pkill -f chromium-screenshot
 
-# Restore focused window
+# Move chromium-browser out of tabbed holding container
+i3-msg '[con_mark="PLACEHOLDER"] focus, focus child'
+$HOME/.config/i3/move-to-parent.sh
+
+# Restore window that was focused before starting replacement
 xdotool windowactivate $FOCUSED_WINDOW
