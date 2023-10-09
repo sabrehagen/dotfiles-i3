@@ -3,11 +3,10 @@ set $mod Mod4
 set $alt Mod1
 
 # Set window border size
-default_border pixel 2
-default_floating_border pixel 2
+for_window [class=".*"] border pixel 2
 
-# Set i3 font
-font pango:monospace 1
+# Set container title font size
+font pango:monospace 0
 
 # Disable window borders when there is only one window
 smart_borders on
@@ -17,6 +16,9 @@ floating_modifier $mod
 
 # Allow popups when a window is fullscreen
 popup_during_fullscreen smart
+
+# Set window gaps
+gaps inner 60
 
 # Set default monitor layout
 exec --no-startup-id $HOME/.screenlayout/default.sh
@@ -66,9 +68,6 @@ bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
 
-# Kill focused window
-bindsym $mod+q kill
-
 # Vim bindings for focus window
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -96,6 +95,12 @@ bindsym $mod+Shift+Right move right
 # Restart i3 in-place
 bindsym $mod+Shift+r exec i3-msg restart
 
+# Create new workspace
+bindsym $mod+n exec $HOME/.config/i3/new-workspace.sh
+
+# Move window to new workspace
+bindsym $mod+Shift+n exec $HOME/.config/i3/move-window-to-new-workspace.sh
+
 # Focus parent container
 bindsym $mod+a focus parent
 
@@ -114,11 +119,15 @@ bindsym $mod+f fullscreen toggle
 # Enter floating mode for the focused container
 bindsym $mod+space floating toggle
 
+# Kill focused window
+bindsym $mod+q kill
+
+# Resize gaps
+bindsym $mod+equal exec $HOME/.config/i3/resize-gaps.sh -
+bindsym $mod+Shift+equal exec $HOME/.config/i3/resize-gaps.sh +
+
 # Move current window to the largest container
 bindsym $mod+Control+Return exec --no-startup-id $HOME/.config/i3/promote-window.py
-
-# Focus urgent window
-bindsym $mod+u [urgent=latest] focus
 
 # Focus previous workspace
 bindsym $mod+minus exec i3-msg workspace back_and_forth
@@ -126,13 +135,29 @@ bindsym $mod+minus exec i3-msg workspace back_and_forth
 # Focus previous window
 bindsym $mod+Shift+minus exec i3-focus-last switch
 
-# Enter Picture-in-Picture mode for the focused container
+# Focus urgent window
+bindsym $mod+u [urgent=latest] focus
+
+# Enter picture-in-picture mode for the focused container
 bindsym $mod+bracketright fullscreen disable, floating enable, resize set 23 ppt 23 ppt, sticky enable, move position 74 ppt 69 ppt
-# , move up 85 px, move left 50 px
 bindsym $mod+shift+bracketright floating disable, sticky disable
 
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
+# Move to parent
+bindsym $mod+s exec $HOME/.config/i3/move-to-parent.sh
+
+# Dunst close notification
+bindsym Control+space exec dunstctl close
+
+# Dunst close all notifications
+bindsym Control+Shift+space exec dunstctl close-all
+
+# Dunst show notification history
+bindsym Control+grave exec dunstctl history
+
+# Dunst trigger notification context
+bindsym Control+period exec dunstctl context
+
+# Define names for workspaces to be used in key bindings
 set $ws1 "1"
 set $ws2 "2"
 set $ws3 "3"
@@ -143,12 +168,6 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
-
-# Create new workspace
-bindsym $mod+n exec $HOME/.config/i3/new-workspace.sh
-
-# Move window to new workspace
-bindsym $mod+Shift+n exec $HOME/.config/i3/move-window-to-new-workspace.sh
 
 # Switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -183,61 +202,20 @@ bindsym $mod+Shift+9 exec i3-msg move container to workspace number $ws9; exec i
 bindsym $mod+Shift+less move workspace to output up
 bindsym $mod+Shift+greater move workspace to output down
 
-# Vim bindings
+# Vim bindings for resize window
 bindsym $mod+Shift+Ctrl+h resize shrink width 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+j resize grow height 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+k resize shrink height 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+l resize grow width 10 px or 2 ppt
 
-# Arrow keys
+# Arrow keys for resize window
 bindsym $mod+Shift+Ctrl+Left resize shrink width 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+Down resize grow height 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+Up resize shrink height 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+Right resize grow width 10 px or 2 ppt
 
-# Load colours from Xresources
-set_from_resource $fg     i3wm.color7   #ffffff
-set_from_resource $bg     i3wm.color0   #4c7899
-set_from_resource $active i3wm.color1   #ffffff
-set_from_resource $alert  i3wm.color13  #ffffff
-
-# Colour classes        border  background  text   indicator  child_border
-client.focused          $bg     $bg         $bg    $bg        $active
-client.focused_inactive $bg     $bg         $fg    $bg        $bg
-client.unfocused        $bg     $bg         $fg    $bg        $bg
-client.urgent           $bg     $bg         $fg    $bg        $bg
-client.placeholder      $bg     $bg         $fg    $bg        $bg
-client.background       $bg
-
-# i3bar configuration
-bar {
-  colors {
-    background $bg
-    statusline $fg
-
-    # Setting          border   background  font
-    focused_workspace  $bg      $active     $fg
-    active_workspace   $bg      $bg         $fg
-    inactive_workspace $bg      $bg         $fg
-    urgent_workspace   $bg      $alert      $fg
-  }
-  font pango:monospace 12
-  position bottom
-  status_command i3blocks
-  tray_output none
-
-  bindsym button3 exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
-}
-
 # Restart the desktop environment
 bindsym $mod+Shift+q exec $HOME/.config/i3/save-layout.sh && $HOME/.config/scripts/host-desktop-environment-restart.sh
-
-# Resize gaps
-bindsym $mod+equal exec $HOME/.config/i3/resize-gaps.sh -
-bindsym $mod+Shift+equal exec $HOME/.config/i3/resize-gaps.sh +
-
-# Set gaps on startup
-gaps inner 40
 
 # Launch kill all containers except the desktop environment
 bindsym $mod+F4 exec $HOME/repositories/sabrehagen/desktop-environment/docker/scripts/kill-all.sh
@@ -338,7 +316,7 @@ bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
 exec --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_gotop --command gotop
 
 # Launch terminal on scratchpad
-for_window [title="scratchpad_terminal"] floating enable, move scratchpad, resize set 55 ppt 65 ppt, move absolute position center
+for_window [title="scratchpad_terminal"] floating enable, move scratchpad, resize set 38 ppt 64 ppt, move absolute position center
 bindsym $mod+grave [title="scratchpad_terminal"] scratchpad show
 exec_always --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_terminal --command tmux new-session -ADs scratchpad_terminal zsh --login
 
@@ -360,3 +338,46 @@ for_window [title="i3bar_networks"] floating enable, move position mouse, move u
 
 # Position i3bar calendar
 for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move up 26 px
+
+# Position i3 managed chromium-browser windows
+for_window [class="i3-chromium-launch"] move window to mark PLACEHOLDER
+
+# Load colours from Xresources
+set_from_resource $fg     i3wm.color7   #ffffff
+set_from_resource $bg     i3wm.color0   #4c7899
+set_from_resource $active i3wm.color1   #ffffff
+set_from_resource $alert  i3wm.color13  #ffffff
+
+# Colour classes        border  background  text   indicator  child_border
+client.focused          $bg     $bg         $bg    $bg        $active
+client.focused_inactive $bg     $bg         $fg    $bg        $bg
+client.unfocused        $bg     $bg         $fg    $bg        $bg
+client.urgent           $bg     $bg         $fg    $bg        $bg
+client.placeholder      $bg     $bg         $fg    $bg        $bg
+client.background       $bg
+
+# i3bar configuration
+bar {
+  colors {
+    background $bg
+    statusline $fg
+
+    # Setting          border   background  font
+    focused_workspace  $bg      $active     $fg
+    active_workspace   $bg      $bg         $fg
+    inactive_workspace $bg      $bg         $fg
+    urgent_workspace   $bg      $alert      $fg
+  }
+  font pango:monospace 12
+  position bottom
+  status_command i3blocks
+  tray_output none
+
+  bindsym button3 exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
+}
+
+# Bindings for keyboards without navigation keys
+bindsym $alt+Up exec xdotool keyup Up key Page_Up
+bindsym $alt+Down exec xdotool keyup Down key Page_Down
+bindsym $alt+Left exec xdotool keyup Left key --clearmodifiers Home
+bindsym $alt+Right exec xdotool keyup Right key --clearmodifiers End
