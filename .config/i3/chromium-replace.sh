@@ -29,6 +29,7 @@ for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
 
     # Move to parent and mark as destination for the restored chromium window
     i3-msg focus parent
+    i3-msg focus parent
     i3-msg mark PLACEHOLDER
 
     # Kill chromium
