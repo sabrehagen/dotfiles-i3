@@ -1,5 +1,5 @@
 #!/bin/bash
-VOLUME=$($HOME/.config/scripts/ssh-host-arm64.sh "osascript -e 'output volume of (get volume settings)'")
+VOLUME=$($HOME/.config/scripts/arm64-ssh.sh "osascript -e 'output volume of (get volume settings)'")
 
 # Exit if an audio level was not returned
 if ! [[ "$VOLUME" =~ ^[0-9]+$ ]]; then
@@ -11,7 +11,7 @@ if [ "$VOLUME" -ge 70 ]; then ICON=
 elif [ "$VOLUME" -ge 30 ]; then ICON=
 fi
 
-MUTED=$($HOME/.config/scripts/ssh-host-arm64.sh "osascript -e 'output muted of (get volume settings)'" | grep -q false; echo $?)
+MUTED=$($HOME/.config/scripts/arm64-ssh.sh "osascript -e 'output muted of (get volume settings)'" | grep -q false; echo $?)
 if [ "$MUTED" -eq "1" ]; then
   ICON=
 else
