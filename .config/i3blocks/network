@@ -1,6 +1,6 @@
 # Collect host network information rather than docker network information
 HOST_SSID=$($HOME/.config/scripts/arm64-ssh.sh "/Sy*/L*/Priv*/Apple8*/V*/C*/R*/airport -I | grep ' SSID' | sed 's/.*: //'")
-HOST_IP=$($HOME/.config/scripts/arm64-ssh.sh)
+HOST_IP=$($HOME/.config/scripts/host-ssh.sh "ip route get 1.1.1.1 | grep dev | sed 's/.*src \(.*\) uid.*/\1/'")
 ICON=
 
 # Source wal colours
