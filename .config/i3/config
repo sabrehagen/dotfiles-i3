@@ -266,7 +266,7 @@ bindsym $mod+Shift+p exec wal -R
 bindsym $mod+p exec $HOME/.config/scripts/wal.sh
 
 # Launch teams
-bindsym $mod+m exec chrome-arm64 --app=https://teams.microsoft.com
+bindsym $mod+m exec chrome-teams --app=https://teams.microsoft.com
 
 # Launch screenshot dump
 bindsym $mod+w exec xclip -out -selection clipboard > $HOME/pictures/screenshot-$(date +%s).png
