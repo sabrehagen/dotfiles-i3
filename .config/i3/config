@@ -281,7 +281,7 @@ bindsym $mod+Shift+Return exec $HOME/.config/i3/move-to-next-window-of-type.sh a
 bindsym $mod+Shift+g exec $HOME/.config/i3/move-to-next-window-of-type.sh beekeeper
 
 # Focus chrome
-bindsym $mod+Shift+b exec $HOME/.config/i3/move-to-next-window-of-type.sh chromium
+bindsym $mod+Shift+b exec $HOME/.config/i3/move-to-next-window-of-type.sh browser
 
 # Focus code
 bindsym $mod+Shift+c exec $HOME/.config/i3/move-to-next-window-of-type.sh code
