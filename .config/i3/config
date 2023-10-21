@@ -313,7 +313,7 @@ bindsym $mod+Shift+t exec $HOME/.config/i3/move-to-next-window-of-type.sh telegr
 # Launch gotop on scratchpad
 for_window [title="scratchpad_gotop"] floating enable, move scratchpad, resize set 56 ppt 62 ppt, move absolute position center
 bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
-exec --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_gotop --command gotop
+exec_always --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_gotop --command tmux new-session -ADs scratchpad_gotop gotop
 
 # Launch terminal on scratchpad
 for_window [title="scratchpad_terminal"] floating enable, move scratchpad, resize set 38 ppt 64 ppt, move absolute position center
