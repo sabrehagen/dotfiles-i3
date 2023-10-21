@@ -145,18 +145,6 @@ bindsym $mod+shift+bracketright floating disable, sticky disable
 # Move to parent
 bindsym $mod+s exec $HOME/.config/i3/move-to-parent.sh
 
-# Dunst close notification
-bindsym Control+space exec dunstctl close
-
-# Dunst close all notifications
-bindsym Control+Shift+space exec dunstctl close-all
-
-# Dunst show notification history
-bindsym Control+grave exec dunstctl history
-
-# Dunst trigger notification context
-bindsym Control+period exec dunstctl context
-
 # Define names for workspaces to be used in key bindings
 set $ws1 "1"
 set $ws2 "2"
