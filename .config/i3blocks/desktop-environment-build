@@ -1,4 +1,4 @@
-DESKTOP_ENVIRONMENT_BUILD_LAST_EXIT_CODE=$(grep exit-code $HOME/repositories/sabrehagen/desktop-environment/.dotfiles-cachebust | cut -d: -f2)
+DESKTOP_ENVIRONMENT_BUILD_LAST_EXIT_CODE=$(cat $HOME/repositories/sabrehagen/desktop-environment/.build-exit-code)
 BUILD_STARTED=$(tmux ls | grep build-dotfiles.*: | sed -E 's/.*build-dotfiles-([^:]*):.*/\1/' | sort -nr | head -1)
 
 if [ ! -z "$BUILD_STARTED" ]; then
