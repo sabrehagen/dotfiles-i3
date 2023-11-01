@@ -19,7 +19,7 @@ floating_modifier $mod
 exec --no-startup-id $HOME/.screenlayout/default.sh
 
 # Reload wal config
-exec_always --no-startup-id $HOME/.config/scripts/wal.sh
+exec --no-startup-id $HOME/.config/scripts/wal.sh
 
 # Start autolock
 exec --no-startup-id xautolock -time 10 -locker $HOME/.config/i3/lockscreen.sh
