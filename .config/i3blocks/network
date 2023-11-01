@@ -1,7 +1,7 @@
 # Collect host network information rather than docker network information
-HOST_WIRELESS_INTERFACE=$($HOME/.config/scripts/ssh-host.sh iw dev | awk '$1=="Interface"{print $2}')
-HOST_SSID=$($HOME/.config/scripts/ssh-host.sh iw dev $HOST_WIRELESS_INTERFACE link | grep SSID | cut -f2 -d:)
-HOST_IP=$($HOME/.config/scripts/ssh-host.sh ip addr | grep $HOST_WIRELESS_INTERFACE | grep inet | sed -E 's;.*inet (.*)/.*;\1;')
+HOST_WIRELESS_INTERFACE=$($HOME/.config/scripts/host-ssh.sh iw dev | awk '$1=="Interface"{print $2}')
+HOST_SSID=$($HOME/.config/scripts/host-ssh.sh iw dev $HOST_WIRELESS_INTERFACE link | grep SSID | cut -f2 -d:)
+HOST_IP=$($HOME/.config/scripts/host-ssh.sh ip addr | grep $HOST_WIRELESS_INTERFACE | grep inet | sed -E 's;.*inet (.*)/.*;\1;')
 ICON=
 
 # Source wal colours
