@@ -304,7 +304,7 @@ bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
 exec_always --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_gotop --command tmux new-session -ADs scratchpad_gotop zsh -c "gotop; tmux set-option -t scratchpad_gotop status off"
 
 # Launch terminal on scratchpad
-for_window [title="scratchpad_terminal"] floating enable, move scratchpad, resize set 68 ppt 64 ppt, move absolute position center, move up 2 ppt
+for_window [title="scratchpad_terminal"] floating enable, move scratchpad, resize set 66 ppt 68 ppt, move absolute position center, move up 2 ppt
 bindsym $mod+grave [title="scratchpad_terminal"] scratchpad show
 exec_always --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_terminal --command tmux new-session -ADs scratchpad_terminal zsh --login
 
