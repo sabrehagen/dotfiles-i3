@@ -1,13 +1,19 @@
+DESKTOP_ENVIRONMENT_BUILD_LAST_EXIT_CODE=$(cat $HOME/repositories/sabrehagen/desktop-environment/.build-exit-code)
 BUILD_STARTED=$(tmux ls | grep build-dotfiles.*: | sed -E 's/.*build-dotfiles-([^:]*):.*/\1/' | sort -nr | head -1)
 
 if [ ! -z "$BUILD_STARTED" ]; then
   echo -n " "
   echo $BUILD_STARTED | timeago
 else
-  echo -n " "
   CONTAINER_CREATED_DATE=$(docker inspect desktop-environment --format='{{.Created}}' | xargs date +%s -d)
   CONTAINER_IMAGE_ID=$(docker inspect desktop-environment --format='{{.Config.Image}}')
   IMAGE_BUILD_DATE=$(docker inspect $CONTAINER_IMAGE_ID --format='{{.Created}}' | xargs date +%s -d)
+
+  if [ "$DESKTOP_ENVIRONMENT_BUILD_LAST_EXIT_CODE" -ne 0 ]; then
+    echo -n " "
+  else
+    echo -n " "
+  fi
 
   echo $IMAGE_BUILD_DATE | timeago
   echo $IMAGE_BUILD_DATE | timeago
