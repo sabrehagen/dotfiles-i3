@@ -257,7 +257,7 @@ bindsym $mod+p exec $HOME/.config/scripts/wal.sh
 bindsym $mod+m exec chrome-teams --app=https://teams.microsoft.com
 
 # Launch screenshot dump
-bindsym $mod+w exec xclip -out -selection clipboard > $HOME/pictures/screenshot-$(date +%s).png
+bindsym $mod+w exec xclip -out -selection clipboard > $HOME/pictures/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png
 
 # Launch screenshot upload
 bindsym $mod+Shift+w exec xclip -out -selection clipboard | imgur-uploader | clipboard
