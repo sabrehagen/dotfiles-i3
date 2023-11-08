@@ -232,6 +232,9 @@ bindsym $mod+c exec code
 # Launch dmenu
 bindsym $mod+o exec i3-dmenu-desktop --dmenu="$HOME/.config/scripts/dmenu.sh"
 
+# Launch dmenu scripts
+bindsym $mod+Shift+o exec $HOME/.config/scripts/dmenu-scripts.sh
+
 # Launch discord
 bindsym $mod+d exec discord
 
