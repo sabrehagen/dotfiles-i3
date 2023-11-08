@@ -230,7 +230,7 @@ bindsym $mod+b exec chrome
 bindsym $mod+c exec code
 
 # Launch dmenu
-bindsym $mod+o exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
+bindsym $mod+o exec i3-dmenu-desktop --dmenu="$HOME/.config/scripts/dmenu.sh"
 
 # Launch discord
 bindsym $mod+d exec discord
@@ -361,7 +361,7 @@ bar {
   status_command i3blocks
   tray_output none
 
-  bindsym button3 exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
+  bindsym button3 exec --no-startup-id i3-dmenu-desktop --dmenu="$HOME/.config/scripts/dmenu.sh"
 }
 
 # Bindings for keyboards without navigation keys
