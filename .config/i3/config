@@ -229,8 +229,11 @@ bindsym $mod+b exec chrome
 # Launch code
 bindsym $mod+c exec code
 
-# Launch dmenu
-bindsym $mod+o exec i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
+# Launch dmenu scripts
+bindsym $mod+o exec $HOME/.config/scripts/dmenu-scripts.sh
+
+# Launch dmenu programs
+bindsym $mod+Shift+o exec i3-dmenu-desktop --dmenu="$HOME/.config/scripts/dmenu.sh"
 
 # Launch discord
 bindsym $mod+d exec discord
@@ -257,7 +260,7 @@ bindsym $mod+p exec $HOME/.config/scripts/wal.sh
 bindsym $mod+m exec chrome-teams --app=https://teams.microsoft.com
 
 # Launch screenshot dump
-bindsym $mod+w exec xclip -out -selection clipboard > $HOME/pictures/screenshot-$(date +%Y-%m-%d-%H-%M-%S).png
+bindsym $mod+w exec xclip -out -selection clipboard > $HOME/pictures/screenshot-$(date +%s).png
 
 # Launch screenshot upload
 bindsym $mod+Shift+w exec xclip -out -selection clipboard | imgur-uploader | clipboard
@@ -281,7 +284,7 @@ bindsym $mod+Shift+Return exec $HOME/.config/i3/move-to-next-window-of-type.sh a
 bindsym $mod+Shift+g exec $HOME/.config/i3/move-to-next-window-of-type.sh beekeeper
 
 # Focus chrome
-bindsym $mod+Shift+b exec $HOME/.config/i3/move-to-next-window-of-type.sh chrome
+bindsym $mod+Shift+b exec $HOME/.config/i3/move-to-next-window-of-type.sh browser
 
 # Focus code
 bindsym $mod+Shift+c exec $HOME/.config/i3/move-to-next-window-of-type.sh code
@@ -361,7 +364,7 @@ bar {
   status_command i3blocks
   tray_output none
 
-  bindsym button3 exec --no-startup-id i3-dmenu-desktop --dmenu="dmenu -i -nb $bg -nf $fg -sb $fg -sf $bg"
+  bindsym button3 exec --no-startup-id i3-dmenu-desktop --dmenu="$HOME/.config/scripts/dmenu.sh"
 }
 
 # Bindings for keyboards without navigation keys
