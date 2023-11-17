@@ -7,18 +7,23 @@ NEXT_WORKSPACES=$(i3-msg -t get_workspaces | jq '.[].num' | sort -n | awk -v cur
 WORKSPACE_NUMBERS="$CURRENT_WORKSPACE $NEXT_WORKSPACES $PREVIOUS_WORKSPACES"
 
 FOCUSED_WINDOW=$(xdotool getactivewindow 2>/dev/null || echo no-focused-window)
+FOCUSED_WINDOW_CLASS=$(xdotool getactivewindow | xargs -n1 xprop WM_CLASS -id | cut -d'"' -f2 2>/dev/null || echo no-focused-window)
 
 for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
 
-  WORKSPACE_MATCHING_WINDOW=$(xdotool search --desktop $(( $WORKSPACE_NUMBER - 1 )) --class $WINDOW_CLASS)
+  WORKSPACE_MATCHING_WINDOWS=$(xdotool search --desktop $(( $WORKSPACE_NUMBER - 1 )) --class $WINDOW_CLASS)
 
-  # If searching the current workspace, only search for windows after the focused window
-  if [ "$WORKSPACE_NUMBER" -eq "$CURRENT_WORKSPACE" ]; then
-    WORKSPACE_MATCHING_WINDOW=$(echo $WORKSPACE_MATCHING_WINDOW | tr ' ' \\n | awk "/$FOCUSED_WINDOW/{p=1;next} p")
+  # If searching the current workspace, only search for windows after the focused window if the focused window is of the desired window type
+  if [ "$WORKSPACE_NUMBER" -eq "$CURRENT_WORKSPACE" ] && [ "$FOCUSED_WINDOW_CLASS" = "$WINDOW_CLASS" ]; then
+
+    WORKSPACE_MATCHING_WINDOWS=$(echo $WORKSPACE_MATCHING_WINDOWS | tr ' ' \\n | awk "/$FOCUSED_WINDOW/{p=1;next} p")
+
   fi
 
-  if [ -n "$WORKSPACE_MATCHING_WINDOW" ]; then
-    xdotool windowactivate $WORKSPACE_MATCHING_WINDOW
+  WORKSPACE_FIRST_MATCHING_WINDOW=$(echo $WORKSPACE_MATCHING_WINDOWS | tr ' ' \\n | head -n1)
+
+  if [ -n "$WORKSPACE_FIRST_MATCHING_WINDOW" ]; then
+    xdotool windowactivate $WORKSPACE_FIRST_MATCHING_WINDOW
     break
   fi
 
