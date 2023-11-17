@@ -36,7 +36,7 @@ if [ "$DNS_CHECK" -ne 0 ]; then
 fi
 
 # Rescan wifi on click
-if [ ! -z $BLOCK_BUTTON ]; then
+if [ -n "$BLOCK_BUTTON" ]; then
   ICON=
   $HOME/.config/scripts/launch-alacritty.sh \
     --option window.dimensions.columns=108 \
@@ -48,7 +48,7 @@ fi
 echo $ICON $STATUS
 
 # Only print extended output if a colour is set
-if [ ! -z $COLOUR ]; then
+if [ -n "$COLOUR" ]; then
   echo $ICON $STATUS
   echo $COLOUR
 fi

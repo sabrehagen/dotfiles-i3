@@ -12,7 +12,7 @@ for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
 
   MATCHING_WORKSPACE_WINDOW=$(xdotool search --desktop $(( $WORKSPACE_NUMBER - 1 )) --name $WINDOW_NAME | grep -v $FOCUSED_WINDOW | head -1)
 
-  if [ ! -z "$MATCHING_WORKSPACE_WINDOW" ]; then
+  if [ -n "$MATCHING_WORKSPACE_WINDOW" ]; then
     xdotool windowactivate $MATCHING_WORKSPACE_WINDOW
     break
   fi

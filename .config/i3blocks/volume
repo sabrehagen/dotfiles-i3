@@ -19,7 +19,7 @@ else
 fi
 
 # Show mixer on click
-if [ ! -z $BLOCK_BUTTON ]; then
+if [ -n "$BLOCK_BUTTON" ]; then
   # $HOME/.config/scripts/launch-alacritty.sh \
   #   --option window.dimensions.columns=12 \
   #   --option window.dimensions.lines=20 \
