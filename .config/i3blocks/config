@@ -1,7 +1,7 @@
 separator_block_width=15
 
 [desktop-environment-build]
-command=$HOME/.config/i3blocks/desktop-environment-build
+command=$HOME/.config/i3blocks/desktop-environment-build < /dev/null
 interval=1
 
 [battery]

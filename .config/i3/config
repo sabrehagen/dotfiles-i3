@@ -322,13 +322,16 @@ bindsym $mod+i [title="scratchpad_wifi"] scratchpad show
 exec --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_wifi --option window.dimensions.columns=58 --option window.dimensions.lines=35 --command zsh -c "$HOME/.config/scripts/host-ssh-tty.sh sudo nmtui-connect"
 
 # Position i3bar volume
-for_window [title="i3bar_volume"] floating enable, move position mouse, move up 26 px, move right 20 px
+for_window [title="i3bar_volume"] floating enable, move position mouse, move up 3 ppt
 
 # Position i3bar networks
-for_window [title="i3bar_networks"] floating enable, move position mouse, move up 26 px, move right 20 px
+for_window [title="i3bar_networks"] floating enable, move position mouse, move up 3 ppt
+
+# Position i3bar desktop-environment build log
+for_window [title="i3bar_desktop-environment-build"] floating enable, move position mouse, move up 3 ppt
 
 # Position i3bar calendar
-for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move up 26 px
+for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move up 3 ppt
 
 # Position i3 managed chromium-browser windows
 for_window [class="i3-chromium-launch"] move window to mark PLACEHOLDER

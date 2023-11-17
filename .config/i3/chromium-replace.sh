@@ -7,7 +7,7 @@ for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
 
   CHROMIUM_WINDOW=$(xdotool search --desktop "$(( $WORKSPACE_NUMBER - 1 ))" --class chromium | head -1)
 
-  if [ ! -z "$CHROMIUM_WINDOW" ]; then
+  if [ -n "$CHROMIUM_WINDOW" ]; then
 
     # Take screenshot of chromium window to display during replacement
     SCREENSHOT_PATH=/tmp/chromium-screenshot-$CHROMIUM_WINDOW.png
