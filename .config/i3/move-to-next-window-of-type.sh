@@ -11,10 +11,10 @@ FOCUSED_WINDOW_CLASS=$(xdotool getactivewindow | xargs -n1 xprop WM_CLASS -id | 
 
 for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
 
-  WORKSPACE_MATCHING_WINDOWS=$(xdotool search --desktop $(( $WORKSPACE_NUMBER - 1 )) --class $WINDOW_CLASS)
+  WORKSPACE_MATCHING_WINDOWS=$(xdotool search --desktop $(( $WORKSPACE_NUMBER - 1 )) --class "$WINDOW_CLASS|$FOCUSED_WINDOW_CLASS")
 
-  # If searching the current workspace, only search for windows after the focused window if the focused window is of the desired window type
-  if [ "$WORKSPACE_NUMBER" -eq "$CURRENT_WORKSPACE" ] && [ "$FOCUSED_WINDOW_CLASS" = "$WINDOW_CLASS" ]; then
+  # If searching the current workspace, only search for windows after the focused window
+  if [ "$WORKSPACE_NUMBER" -eq "$CURRENT_WORKSPACE" ]; then
 
     WORKSPACE_MATCHING_WINDOWS=$(echo $WORKSPACE_MATCHING_WINDOWS | tr ' ' \\n | awk "/$FOCUSED_WINDOW/{p=1;next} p")
 
