@@ -10,10 +10,10 @@ FOCUSED_WINDOW=$(xdotool getactivewindow 2>/dev/null || echo no-focused-window)
 
 for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
 
-  MATCHING_WORKSPACE_WINDOW=$(xdotool search --desktop $(( $WORKSPACE_NUMBER - 1 )) --name $WINDOW_NAME | grep -v $FOCUSED_WINDOW | head -1)
+  WORKSPACE_MATCHING_WINDOW=$(xdotool search --desktop $(( $WORKSPACE_NUMBER - 1 )) --name $WINDOW_NAME | grep -v $FOCUSED_WINDOW | head -1)
 
-  if [ ! -z "$MATCHING_WORKSPACE_WINDOW" ]; then
-    xdotool windowactivate $MATCHING_WORKSPACE_WINDOW
+  if [ -n "$WORKSPACE_MATCHING_WINDOW" ]; then
+    xdotool windowactivate $WORKSPACE_MATCHING_WINDOW
     break
   fi
 
