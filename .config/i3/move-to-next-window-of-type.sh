@@ -16,14 +16,16 @@ for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
   # If searching the current workspace, we need to search for windows after or before the focused window
   if [ "$WORKSPACE_NUMBER" -eq "$CURRENT_WORKSPACE" ]; then
 
-    # Search for windows after the focused window on the first search of current workspace, or search for windows before the focused window on final search of current workspace
+    WORKSPACE_WINDOWS=$(xdotool search --all --onlyvisible --desktop $(( $WORKSPACE_NUMBER - 1 )) "" 2>/dev/null | xargs -I@ sh -c "echo @-\$(xprop -id @ | grep WM_CLASS | cut -d'\"' -f2)")
+
+    # Get windows after the focused window on the first search of current workspace, or get windows before the focused window on the second search of current workspace
     if [ "$FIRST_ITERATION" = "true" ]; then
-      WORKSPACE_WINDOWS_AFTER_FOCUSED_WINDOW=$(xdotool search --all --onlyvisible --desktop $(( $WORKSPACE_NUMBER - 1 )) "" 2>/dev/null | xargs -I@ sh -c "echo @-\$(xprop -id @ | grep WM_CLASS | cut -d'\"' -f2)" | awk "/$FOCUSED_WINDOW.*/{p=1;next} p")
+      WORKSPACE_WINDOWS_AFTER_FOCUSED_WINDOW=$(echo $WORKSPACE_WINDOWS | tr ' ' '\n' | awk "/$FOCUSED_WINDOW.*/{p=1;next} p")
     else
-      WORKSPACE_WINDOWS_BEFORE_FOCUSED_WINDOW=$(xdotool search --all --onlyvisible --desktop $(( $WORKSPACE_NUMBER - 1 )) "" 2>/dev/null | xargs -I@ sh -c "echo @-\$(xprop -id @ | grep WM_CLASS | cut -d'\"' -f2)" | awk "/$FOCUSED_WINDOW.*/{found=1} !found{print}")
+      WORKSPACE_WINDOWS_BEFORE_FOCUSED_WINDOW=$(echo $WORKSPACE_WINDOWS | tr ' ' '\n' | awk "/$FOCUSED_WINDOW.*/{found=1} !found{print}")
     fi
 
-    WORKSPACE_MATCHING_WINDOW=$(echo ${WORKSPACE_WINDOWS_BEFORE_FOCUSED_WINDOW-$WORKSPACE_WINDOWS_AFTER_FOCUSED_WINDOW} | tr ' ' \\n | grep $WINDOW_CLASS | cut -d- -f1 | head -n1)
+    WORKSPACE_MATCHING_WINDOW=$(echo $WORKSPACE_WINDOWS_BEFORE_FOCUSED_WINDOW $WORKSPACE_WINDOWS_AFTER_FOCUSED_WINDOW | tr ' ' '\n' | grep $WINDOW_CLASS | cut -d- -f1 | head -n1)
 
   else
 
