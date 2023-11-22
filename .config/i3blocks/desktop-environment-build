@@ -29,6 +29,6 @@ else
   echo $IMAGE_BUILD_DATE | timeago
 
   if [ "$IMAGE_BUILD_DATE" -gt "$CONTAINER_CREATED_DATE" ]; then
-    echo $(xrdb -query | grep '\*color2' | cut -d: -f2)
+    echo $(xrdb -query | grep *color2 | cut -d: -f2)
   fi
 fi
