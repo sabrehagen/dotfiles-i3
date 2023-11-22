@@ -230,10 +230,10 @@ bindsym $mod+b exec thorium-browser
 bindsym $mod+c exec code
 
 # Launch dmenu scripts
-bindsym $mod+o exec $HOME/.config/scripts/dmenu-scripts.sh
+bindsym $mod+Shift+o exec $HOME/.config/scripts/dmenu-scripts.sh
 
 # Launch dmenu programs
-bindsym $mod+Shift+o exec i3-dmenu-desktop --dmenu="$HOME/.config/scripts/dmenu.sh"
+bindsym $mod+o exec i3-dmenu-desktop --dmenu="$HOME/.config/scripts/dmenu.sh"
 
 # Launch discord
 bindsym $mod+d exec discord
