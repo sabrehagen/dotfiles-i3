@@ -223,8 +223,8 @@ bindsym $mod+Return exec $HOME/.config/scripts/launch-alacritty.sh
 # Launch beekeeper
 bindsym $mod+g exec beekeeper-studio
 
-# Launch chrome
-bindsym $mod+b exec chrome
+# Launch browser
+bindsym $mod+b exec thorium-browser
 
 # Launch code
 bindsym $mod+c exec code

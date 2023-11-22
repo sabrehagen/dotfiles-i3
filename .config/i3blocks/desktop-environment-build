@@ -1,6 +1,6 @@
 DESKTOP_ENVIRONMENT_BUILD_LAST_EXIT_CODE=$(cat $HOME/repositories/sabrehagen/desktop-environment/.build-exit-code)
 DESKTOP_ENVIRONMENT_BUILD_LAST_EXIT_TIME=$(cat $HOME/repositories/sabrehagen/desktop-environment/.build-exit-time)
-BUILD_START_TIME=$(tmux ls | grep build-dotfiles.*: | sed -E 's/.*build-dotfiles-([^:]*):.*/\1/' | sort -nr | head -1)
+BUILD_START_TIME=$(tmux list-sessions | grep build-dotfiles.*: | sed -E 's/.*build-dotfiles-([^:]*):.*/\1/' | sort -nr | head -1)
 
 if [ -n "$BUILD_START_TIME" ] && [ "$BUILD_START_TIME" -gt "$DESKTOP_ENVIRONMENT_BUILD_LAST_EXIT_TIME" ]; then
   echo -n " "
@@ -26,17 +26,25 @@ fi
 
 # Show build log on left click
 if [ "$BLOCK_BUTTON" = "1" ]; then
-  BUILD_TMUX_SESSION=$(tmux ls | grep build-dotfiles.*: | cut -d: -f1 | sort -nr | head -1)
-  BUILD_POPUP_SESSION_NAME=i3bar_desktop-environment-build-$(date +%s)
+  BUILD_TMUX_SESSION=$(tmux list-sessions | grep build-dotfiles.*: | cut -d: -f1 | sort -nr | head -1)
 
-  $HOME/.config/scripts/launch-alacritty.sh \
-    --option window.dimensions.columns=108 \
-    --option window.dimensions.lines=50 \
-    --title i3bar_desktop-environment-build \
-    --command zsh -c "tmux new-session -s $BUILD_POPUP_SESSION_NAME -t $BUILD_TMUX_SESSION" >/dev/null 2>&1 &
+  if [ -n "$BUILD_TMUX_SESSION" ]; then
+    BUILD_LOG_SESSION_NAME=i3bar_desktop-environment-build-$(date +%s)
 
-  until tmux ls | grep -q $BUILD_POPUP_SESSION_NAME; do sleep 0.05; done
-  tmux set-option -t $BUILD_POPUP_SESSION_NAME status off
+    # Kill any previous build log session
+    tmux kill-session -t i3bar_desktop-environment-build*
+
+    # Create a new build log viewer
+    $HOME/.config/scripts/launch-alacritty.sh \
+      --option window.dimensions.columns=108 \
+      --option window.dimensions.lines=50 \
+      --title i3bar_desktop-environment-build \
+      --command zsh -c "tmux new-session -s $BUILD_LOG_SESSION_NAME -t $BUILD_TMUX_SESSION" >/dev/null 2>&1 &
+
+    # Turn off status bar in build log session
+    until tmux list-sessions | grep -q $BUILD_LOG_SESSION_NAME; do sleep 0.05; done
+    tmux set-option -t $BUILD_LOG_SESSION_NAME status off
+  fi
 fi
 
 # Run desktop environment build on right click
