@@ -5,6 +5,7 @@ rm -rf $RESURRECT_DIRECTORY/*
 
 # Kill any i3bar build log windows before saving
 tmux kill-session -t i3bar_desktop-environment-build*
+sleep 0.5
 
 # Save all workspaces
 i3-msg -t get_workspaces | \
