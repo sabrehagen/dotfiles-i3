@@ -48,6 +48,6 @@ if [ "$BLOCK_BUTTON" = "1" ]; then
 fi
 
 # Run desktop environment build on right click
-if [ "$BLOCK_BUTTON" = "2" ]; then
+if [ "$BLOCK_BUTTON" = "3" ]; then
   $HOME/.config/scripts/tmux-desktop-environment-build-dotfiles.sh
 fi
