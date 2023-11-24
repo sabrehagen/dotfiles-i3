@@ -230,10 +230,10 @@ bindsym $mod+b exec chrome
 bindsym $mod+c exec code
 
 # Launch dmenu scripts
-bindsym $mod+o exec $HOME/.config/scripts/dmenu-scripts.sh
+bindsym $mod+Shift+o exec $HOME/.config/scripts/dmenu-scripts.sh
 
 # Launch dmenu programs
-bindsym $mod+Shift+o exec i3-dmenu-desktop --dmenu="$HOME/.config/scripts/dmenu.sh"
+bindsym $mod+o exec i3-dmenu-desktop --dmenu="$HOME/.config/scripts/dmenu.sh"
 
 # Launch discord
 bindsym $mod+d exec discord
@@ -302,9 +302,10 @@ bindsym $mod+Shift+m exec $HOME/.config/i3/move-to-next-window-of-name.sh teams
 bindsym $mod+Shift+t exec $HOME/.config/i3/move-to-next-window-of-type.sh telegram
 
 # Launch gotop on scratchpad
-for_window [title="scratchpad_gotop"] floating enable, move scratchpad, resize set 56 ppt 62 ppt, move absolute position center, move up 2 ppt
+for_window [title="scratchpad_gotop"] floating enable, move scratchpad, resize set 60 ppt 66 ppt, move absolute position center, move up 2 ppt
+
 bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
-exec_always --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_gotop --command tmux new-session -ADs scratchpad_gotop zsh -c "gotop; sleep 5; tmux set-option -t scratchpad_gotop status off"
+exec_always --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_gotop --command tmux new-session -ADs scratchpad_gotop zsh -c "sleep 1 && tmux set-option -t scratchpad_gotop status off & gotop"
 
 # Launch terminal on scratchpad
 for_window [title="scratchpad_terminal"] floating enable, move scratchpad, resize set 55 ppt 58 ppt, move absolute position center, move up 2 ppt
@@ -314,7 +315,7 @@ exec_always --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title sc
 # Launch volume on scratchpad
 for_window [title="scratchpad_volume"] floating enable, move scratchpad, resize set 44 ppt 45 ppt, move absolute position center, move up 2 ppt
 bindsym $mod+v [title="scratchpad_volume"] scratchpad show
-exec_always --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_volume --command tmux new-session -ADs scratchpad_volume zsh -c "alsamixer; sleep 5; tmux set-option -t scratchpad_volume status off"
+exec_always --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_volume --command tmux new-session -ADs scratchpad_volume zsh -c "sleep 1 && tmux set-option -t scratchpad_volume status off & alsamixer"
 
 # Launch wifi on scratchpad
 for_window [title="scratchpad_wifi"] floating enable, move scratchpad, position center
