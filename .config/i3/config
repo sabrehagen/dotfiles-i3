@@ -256,8 +256,8 @@ bindsym $mod+Shift+p exec wal -R
 # Launch wallpaper cycle
 bindsym $mod+p exec $HOME/.config/scripts/wal.sh
 
-# Launch teams
-bindsym $mod+m exec chrome-teams --app=https://teams.microsoft.com
+# Launch slack
+bindsym $mod+m exec slack
 
 # Launch screenshot dump
 bindsym $mod+w exec xclip -out -selection clipboard > $HOME/pictures/screenshot-$(date +%s).png
@@ -295,8 +295,8 @@ bindsym $mod+Shift+d exec $HOME/.config/i3/move-to-next-window-of-type.sh discor
 # Focus pcmanfm
 bindsym $mod+Shift+e exec $HOME/.config/i3/move-to-next-window-of-type.sh pcmanfm
 
-# Focus teams
-bindsym $mod+Shift+m exec $HOME/.config/i3/move-to-next-window-of-name.sh teams
+# Focus slack
+bindsym $mod+Shift+m exec $HOME/.config/i3/move-to-next-window-of-name.sh slack
 
 # Focus telegram
 bindsym $mod+Shift+t exec $HOME/.config/i3/move-to-next-window-of-type.sh telegram
