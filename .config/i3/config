@@ -18,7 +18,7 @@ floating_modifier $mod
 popup_during_fullscreen smart
 
 # Set window gaps
-gaps inner 40
+gaps inner 20
 
 # Set default monitor layout
 exec --no-startup-id $HOME/.screenlayout/default.sh
@@ -213,6 +213,9 @@ bindsym $mod+F5 exec $HOME/.config/scripts/tmux-desktop-environment-build-dotfil
 
 # Launch kill build desktop environment from dotfiles
 bindsym $mod+Shift+F5 exec $HOME/.config/scripts/tmux-kill-desktop-environment-build-dotfiles.sh
+
+# Launch desktop environment build log viewer
+bindsym $mod+$alt+F5 exec $HOME/.config/scripts/launch-desktop-environment-build-log-viewer.sh
 
 # Launch kill desktop environment tmux sessions
 bindsym $mod+F6 exec $HOME/.config/scripts/tmux-kill-desktop-environment-shell-sessions.sh
