@@ -304,10 +304,14 @@ bindsym $mod+Shift+m exec $HOME/.config/i3/move-to-next-window-of-name.sh slack
 # Focus telegram
 bindsym $mod+Shift+t exec $HOME/.config/i3/move-to-next-window-of-type.sh telegram
 
+# Launch chatgpt on scratchpad
+for_window [class="Chat-gpt"] floating enable, move scratchpad, resize set 60 ppt 66 ppt, move absolute position center, move up 2 ppt
+bindsym $mod+Escape [class="Chat-gpt"] scratchpad show
+exec --no-startup-id chat-gpt
+
 # Launch gotop on scratchpad
 for_window [title="scratchpad_gotop"] floating enable, move scratchpad, resize set 60 ppt 66 ppt, move absolute position center, move up 2 ppt
-
-bindsym $mod+Escape [title="scratchpad_gotop"] scratchpad show
+bindsym $mod+Shift+Escape [title="scratchpad_gotop"] scratchpad show
 exec_always --no-startup-id $HOME/.config/scripts/launch-alacritty.sh --title scratchpad_gotop --command tmux new-session -ADs scratchpad_gotop zsh -c "sleep 1 && tmux set-option -t scratchpad_gotop status off & gotop"
 
 # Launch terminal on scratchpad
