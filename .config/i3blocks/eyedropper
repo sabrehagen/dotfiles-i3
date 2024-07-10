@@ -1,0 +1,10 @@
+if [ -z "$BLOCK_BUTTON" ]; then
+  echo " "
+  exit 0
+fi
+
+sleep 0.5
+COLOUR=$(xcolor 2>/dev/null)
+printf $COLOUR | clipboard
+
+echo " <span foreground=\"$COLOUR\">$COLOUR</span>"

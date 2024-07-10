@@ -48,3 +48,8 @@ interval=1
 [microphone]
 command=$HOME/.config/i3blocks/microphone
 interval=1
+
+[eyedropper]
+command=$HOME/.config/i3blocks/eyedropper
+markup=pango
+interval=10
