@@ -1,0 +1,10 @@
+SOURCE=alsa_input.pci-0000_00_1f.3.analog-stereo
+
+case $BLOCK_BUTTON in
+	1|3) pactl set-source-mute $SOURCE toggle ;;
+esac
+
+case $(pacmd list-sources | grep -A 11 "$SOURCE" | awk '/muted/ {print $2; exit}') in
+    yes) echo " " ;;
+    no) echo " " ;;
+esac
