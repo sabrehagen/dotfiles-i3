@@ -68,6 +68,9 @@ bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
 bindsym XF86AudioLowerVolume exec amixer set Master 5%-
 bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
 
+# Change microphone mute
+bindsym XF86AudioMicMute exec pactl set-source-mute alsa_input.pci-0000_00_1f.3.analog-stereo toggle
+
 # Vim bindings for focus window
 bindsym $mod+h focus left
 bindsym $mod+j focus down

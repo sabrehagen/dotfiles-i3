@@ -47,4 +47,4 @@ interval=1
 
 [microphone]
 command=$HOME/.config/i3blocks/microphone
-interval=2
+interval=1
