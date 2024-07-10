@@ -290,7 +290,7 @@ bindsym $mod+Shift+g exec $HOME/.config/i3/move-to-next-window-of-type.sh beekee
 bindsym $mod+Shift+b exec $HOME/.config/i3/move-to-next-window-of-type.sh browser
 
 # Focus code
-bindsym $mod+Shift+c exec $HOME/.config/i3/move-to-next-window-of-type.sh code
+bindsym $mod+Shift+c exec $HOME/.config/i3/move-to-next-window-of-type.sh 'code|cursor'
 
 # Focus discord
 bindsym $mod+Shift+d exec $HOME/.config/i3/move-to-next-window-of-type.sh discord
