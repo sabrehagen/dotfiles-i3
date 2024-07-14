@@ -39,7 +39,7 @@ exec --no-startup-id xautolock -time 10 -locker $HOME/.config/i3/lockscreen.sh
 exec --no-startup-id i3-focus-last
 
 # Start picom
-exec --no-startup-id picom
+# exec --no-startup-id picom
 
 # Start workspace names
 exec_always --no-startup-id exec i3-workspace-names-daemon --delimiter " | "
