@@ -18,7 +18,7 @@ floating_modifier $mod
 popup_during_fullscreen smart
 
 # Set window gaps
-gaps inner 20
+gaps inner 40
 
 # Set default monitor layout
 exec --no-startup-id $HOME/.screenlayout/default.sh
@@ -256,11 +256,11 @@ bindsym $mod+e exec pcmanfm
 # Launch telegram
 bindsym $mod+t exec /opt/Telegram/Telegram
 
-# Launch theme reload
-bindsym $mod+Shift+p exec wal -R
-
 # Launch wallpaper cycle
 bindsym $mod+p exec $HOME/.config/scripts/wal.sh
+
+# Launch wallpaper selector
+bindsym $mod+Shift+p exec $HOME/.config/scripts/wallpaper-select.sh
 
 # Launch slack
 bindsym $mod+m exec slack
@@ -346,6 +346,9 @@ for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move u
 
 # Position i3 managed chromium-browser windows
 for_window [class="i3-chromium-launch"] move window to mark PLACEHOLDER
+
+# Float sxiv
+for_window [class="Sxiv"] floating enable, move position center, move up 2 ppt
 
 # Load colours from Xresources
 set_from_resource $fg     i3wm.color7   #ffffff
