@@ -39,7 +39,7 @@ fi
 # Rescan wifi on click
 if [ -n "$BLOCK_BUTTON" ]; then
   ICON=
-  $HOME/.config/scripts/launch-alacritty.sh \
+  alacritty \
     --option window.dimensions.columns=108 \
     --option window.dimensions.lines=10 \
     --title i3bar_networks \
