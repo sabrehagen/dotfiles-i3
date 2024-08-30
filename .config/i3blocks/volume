@@ -1,31 +1,30 @@
-#!/bin/bash
 VOLUME=$(pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
 
 # Exit if an audio level was not returned
-if ! [[ "$VOLUME" =~ ^[0-9]+$ ]]; then
+if [ "$VOLUME" != "${VOLUME#*[!0-9]*}" ]; then
   exit 0
 fi
 
 # Volume partial
-if [ "$VOLUME" -ge 70 ]; then ICON=
-elif [ "$VOLUME" -ge 30 ]; then ICON=
+if [ "$VOLUME" -ge 50 ]; then
+  ICON=
+else
+  ICON=
 fi
 
 MUTED=$(amixer get Master | sed 5q | grep -q '\[on\]'; echo $?)
 if [ "$MUTED" -eq "1" ]; then
   ICON=
-else
-  ICON=
 fi
 
 # Show mixer on click
 if [ -n "$BLOCK_BUTTON" ]; then
-  # $HOME/.config/scripts/launch-alacritty.sh \
+  # alacritty \
   #   --option window.dimensions.columns=12 \
   #   --option window.dimensions.lines=20 \
   #   --title i3bar_volume \
   #   --command zsh -c alsamixer &
-  $HOME/.config/scripts/launch-alacritty.sh \
+  alacritty \
     --option window.dimensions.columns=108 \
     --option window.dimensions.lines=6 \
     --title i3bar_volume \
