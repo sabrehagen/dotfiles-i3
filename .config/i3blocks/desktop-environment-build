@@ -26,7 +26,7 @@ fi
 
 # Launch desktop environment build log viewer on left click
 if [ "$BLOCK_BUTTON" = "1" ]; then
-  $HOME/.config/scripts/launch-desktop-environment-build-log-viewer.sh
+  $HOME/.config/i3/launch-desktop-environment-build-log-viewer.sh
 fi
 
 # Run desktop environment build on right click
