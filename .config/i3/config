@@ -218,7 +218,7 @@ bindsym $mod+F5 exec $HOME/.config/scripts/tmux-desktop-environment-build-dotfil
 bindsym $mod+Shift+F5 exec $HOME/.config/scripts/tmux-kill-desktop-environment-build-dotfiles.sh
 
 # Launch desktop environment build log viewer
-bindsym $mod+$alt+F5 exec $HOME/.config/scripts/launch-desktop-environment-build-log-viewer.sh
+bindsym $mod+$alt+F5 exec $HOME/.config/i3/launch-desktop-environment-build-log-viewer.sh
 
 # Launch kill desktop environment tmux sessions
 bindsym $mod+F6 exec $HOME/.config/scripts/tmux-kill-desktop-environment-shell-sessions.sh
