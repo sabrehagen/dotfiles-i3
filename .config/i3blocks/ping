@@ -5,6 +5,6 @@ if [ -z "$PING_MS" ]; then
   printf ' %1.4s\n' 0ms
   echo "#FF0022"
 else
-  printf ' %1.4s\n' ${PING_MS}ms
-  printf ' %1.4s\n' ${PING_MS}ms
+  printf ' %1.6s\n' ${PING_MS}ms
+  printf ' %1.6s\n' ${PING_MS}ms
 fi
