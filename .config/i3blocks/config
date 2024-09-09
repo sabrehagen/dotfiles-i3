@@ -30,7 +30,6 @@ interval=2
 [ping]
 command=$HOME/.config/i3blocks/ping
 interval=2
-min_width=55
 
 [bandwidth]
 command=$HOME/.config/i3blocks/bandwidth
