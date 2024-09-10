@@ -126,6 +126,9 @@ bindsym $mod+f fullscreen toggle
 # Enter floating mode for the focused container
 bindsym $mod+space floating toggle
 
+# Center the floating window
+bindsym $mod+Shift+space move position center
+
 # Kill focused window
 bindsym $mod+q kill
 
