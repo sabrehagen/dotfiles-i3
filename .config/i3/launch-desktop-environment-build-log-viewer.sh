@@ -11,8 +11,18 @@ if [ -n "$BUILD_TMUX_SESSION" ]; then
     # Capture the current mouse position
     eval $(xdotool getmouselocation --shell)
 
+    OUTPUT_ORIGIN_X=$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).rect.x')
+    OUTPUT_ORIGIN_Y=$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).rect.y')
+    OUTPUT_WIDTH=$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).rect.width')
+    OUTPUT_HEIGHT=$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).rect.height')
+
+    BLOCK_X_OFFSET=1125
+    BLOCK_Y_OFFSET=20
+    BLOCK_X1=$(($OUTPUT_ORIGIN_X + $OUTPUT_WIDTH - $BLOCK_X_OFFSET))
+    BLOCK_Y1=$(($OUTPUT_ORIGIN_Y + $OUTPUT_HEIGHT + $BLOCK_Y_OFFSET))
+
     # Move the mouse to the desktop-environment-build i3block
-    xdotool mousemove 742 1079
+    xdotool mousemove $BLOCK_X1 $BLOCK_Y1
   fi
 
   # Create a new build log viewer
@@ -28,7 +38,7 @@ if [ -n "$BUILD_TMUX_SESSION" ]; then
 
   # If the script has been invoked manually, return mouse to its original position
   if [ -z "$BLOCK_X" ] && [ -z "$BLOCK_Y" ]; then
-    # Move mouse to coordinates captured by xdotool
+    # Move mouse to original coordinates captured by xdotool
     xdotool mousemove $X $Y
 
     # Focus build log viewer after moving mouse
