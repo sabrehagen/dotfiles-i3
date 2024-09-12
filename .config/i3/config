@@ -346,7 +346,7 @@ for_window [title="i3bar_volume"] floating enable, move position mouse, move up 
 for_window [title="i3bar_networks"] floating enable, move position mouse, move up 3 ppt
 
 # Position i3bar desktop-environment build log
-for_window [title="i3bar_desktop-environment-build"] floating enable, move position mouse, move up 3 ppt
+for_window [title="i3bar_desktop-environment-build"] floating enable, move position mouse, move up 32 px
 
 # Position i3bar calendar
 for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move up 3 ppt
