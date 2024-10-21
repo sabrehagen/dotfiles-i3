@@ -309,7 +309,7 @@ bindsym $mod+Shift+d $exec $HOME/.config/i3/move-to-next-window-of-type.sh disco
 bindsym $mod+Shift+e $exec $HOME/.config/i3/move-to-next-window-of-type.sh pcmanfm
 
 # Focus slack
-bindsym $mod+Shift+m $exec $HOME/.config/i3/move-to-next-window-of-name.sh slack
+bindsym $mod+Shift+m $exec $HOME/.config/i3/move-to-next-window-of-type.sh slack
 
 # Focus telegram
 bindsym $mod+Shift+t $exec $HOME/.config/i3/move-to-next-window-of-type.sh telegram
