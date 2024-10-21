@@ -6,7 +6,7 @@ FOCUSED_WINDOW=$(xdotool getwindowfocus)
 
 for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
 
-  CHROMIUM_WINDOW=$(xdotool search --desktop $WORKSPACE_NUMBER --class $BROWSER_NAME | head -1)
+  CHROMIUM_WINDOW=$(xdotool search --desktop $(( $WORKSPACE_NUMBER - 1 )) --class $BROWSER_NAME | head -1)
 
   if [ -n "$CHROMIUM_WINDOW" ]; then
 
