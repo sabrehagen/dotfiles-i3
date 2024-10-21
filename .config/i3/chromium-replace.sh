@@ -1,16 +1,17 @@
 WORKSPACE_COUNTER=1
 WORKSPACE_NUMBERS=$(i3-msg -t get_workspaces | jq '.[].num' | sort -n)
 
+BROWSER_NAME=thorium-browser
 FOCUSED_WINDOW=$(xdotool getwindowfocus)
 
 for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
 
-  CHROMIUM_WINDOW=$(xdotool search --desktop $WORKSPACE_NUMBER --class chromium | head -1)
+  CHROMIUM_WINDOW=$(xdotool search --desktop $WORKSPACE_NUMBER --class $BROWSER_NAME | head -1)
 
   if [ -n "$CHROMIUM_WINDOW" ]; then
 
     # Take screenshot of chromium window to display during replacement
-    SCREENSHOT_PATH=/tmp/chromium-screenshot-$CHROMIUM_WINDOW.png
+    SCREENSHOT_PATH=/tmp/$BROWSER_NAME-screenshot-$CHROMIUM_WINDOW.png
     maim --window $CHROMIUM_WINDOW > $SCREENSHOT_PATH
 
     # Switch to workspace
@@ -33,14 +34,14 @@ for WORKSPACE_NUMBER in $WORKSPACE_NUMBERS; do
     i3-msg mark PLACEHOLDER
 
     # Kill chromium
-    pkill -f chromium-browser
+    pkill -f $BROWSER_NAME
 
     # Start chromium and wait until window is visible
     i3-msg "exec chrome --class=i3-chromium-launch"
     sleep 1
 
     # Remove placeholder screenshot
-    pkill -f chromium-screenshot
+    pkill -f $BROWSER_NAME-screenshot
 
     # Move chromium-browser out of tabbed holding container
     i3-msg '[con_mark="PLACEHOLDER"] focus, focus child'
