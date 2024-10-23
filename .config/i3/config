@@ -255,10 +255,13 @@ bindsym $mod+d exec discord
 bindsym $mod+$alt+f exec warpd --hint2 --click 1
 
 # Launch lockscreen
-bindsym $mod+slash exec sh $HOME/.config/i3/lockscreen.sh
+bindsym $mod+slash $exec sh $HOME/.config/i3/lockscreen.sh
 
 # Launch pcmanfm
 bindsym $mod+e exec pcmanfm
+
+# Launch screen recorder
+bindsym $mod+r $exec $HOME/.config/scripts/screen-recorder.sh
 
 # Launch telegram
 bindsym $mod+t exec /opt/telegram/telegram
