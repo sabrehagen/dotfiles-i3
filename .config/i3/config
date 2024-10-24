@@ -109,10 +109,13 @@ bindsym $mod+n $exec $HOME/.config/i3/new-workspace.sh
 bindsym $mod+Shift+n $exec $HOME/.config/i3/move-window-to-new-workspace.sh
 
 # Focus parent container
-bindsym $mod+a focus parent
+bindsym $mod+y focus parent
 
 # Focus child container
-bindsym $mod+Shift+a focus child
+bindsym $mod+Shift+y focus child
+
+# Move window to parent container
+bindsym $mod+$alt+y $exec $HOME/.config/i3/move-to-parent.sh
 
 # Change container layout
 bindsym $mod+backslash split toggle
@@ -124,7 +127,7 @@ bindsym $mod+bracketleft open
 bindsym $mod+f fullscreen toggle
 
 # Enter floating mode for the focused container
-bindsym $mod+space floating toggle
+bindsym $mod+Shift+f floating toggle
 
 # Center the floating window
 bindsym $mod+Shift+space move position center
@@ -151,9 +154,6 @@ bindsym $mod+u [urgent=latest] focus
 # Enter picture-in-picture mode for the focused container
 bindsym $mod+bracketright fullscreen disable, floating enable, resize set 23 ppt 23 ppt, sticky enable, move position 74 ppt 69 ppt
 bindsym $mod+shift+bracketright floating disable, sticky disable
-
-# Move to parent
-bindsym $mod+s $exec $HOME/.config/i3/move-to-parent.sh
 
 # Define names for workspaces to be used in key bindings
 set $ws1 "1"
@@ -279,7 +279,7 @@ bindsym $mod+m exec slack
 bindsym $mod+w exec xclip -out -selection clipboard > $HOME/pictures/screenshot-$(date +%s).png
 
 # Launch screenshot upload
-bindsym $mod+Shift+w exec xclip -out -selection clipboard | imgur-uploader | clipboard
+bindsym $mod+Shift+w exec xclip -out -selection clipboard | imgur-uploader | clipboard && clipboard | xargs -I@ notify-send 'Uploaded to Imgur' @
 
 # Launch screenshot capture selection
 bindsym $mod+x exec maim --hidecursor --select | xclip -selection clipboard -t image/png
