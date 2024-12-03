@@ -239,8 +239,8 @@ bindsym $mod+g exec beekeeper-studio
 # Launch browser
 bindsym $mod+b exec thorium-browser
 
-# Launch code
-bindsym $mod+c exec code
+# Launch cursor
+bindsym $mod+c exec cursor
 
 # Launch dmenu scripts
 bindsym $mod+Shift+o $exec $HOME/.config/scripts/dmenu-scripts.sh
