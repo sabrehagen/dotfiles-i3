@@ -22,7 +22,7 @@ floating_modifier $mod
 popup_during_fullscreen smart
 
 # Set window gaps
-gaps inner 20
+gaps inner 0
 
 # Set default monitor layout
 $exec $HOME/.screenlayout/default.sh
