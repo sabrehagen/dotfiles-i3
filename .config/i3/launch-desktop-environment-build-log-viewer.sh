@@ -1,4 +1,5 @@
-BUILD_TMUX_SESSION=$(tmux list-sessions | grep build-dotfiles.*: | cut -d: -f1 | sort -nr | head -1)
+BUILD_TMUX_SESSION_MOST_RECENT=$(tmux list-sessions | grep 'desktop-environment-build-[clean|dotfiles].*:' | cut -d: -f1 | cut -d- -f5 | sort -nr | head -1)
+BUILD_TMUX_SESSION=$(tmux list-sessions | grep 'desktop-environment-build-[clean|dotfiles].*:' | cut -d: -f1 | grep $BUILD_TMUX_SESSION_MOST_RECENT)
 
 if [ -n "$BUILD_TMUX_SESSION" ]; then
   BUILD_LOG_SESSION_NAME=i3bar_desktop-environment-build-$(date +%s)
