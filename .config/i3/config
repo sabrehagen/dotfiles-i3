@@ -221,14 +221,14 @@ bindsym $mod+F4 $exec $HOME/repositories/sabrehagen/desktop-environment/docker/s
 # Launch build desktop environment from dotfiles
 bindsym $mod+F5 $exec $HOME/.config/scripts/tmux-desktop-environment-build-dotfiles.sh
 
-# Launch kill build desktop environment from dotfiles
-bindsym $mod+Shift+F5 $exec $HOME/.config/scripts/tmux-kill-desktop-environment-build-dotfiles.sh
+# Launch build desktop environment from clean state
+bindsym $mod+Shift+F5 $exec $HOME/.config/scripts/tmux-desktop-environment-build-clean.sh
 
 # Launch desktop environment build log viewer
 bindsym $mod+$alt+F5 $exec $HOME/.config/i3/launch-desktop-environment-build-log-viewer.sh
 
-# Launch kill desktop environment tmux sessions
-bindsym $mod+F6 $exec $HOME/.config/scripts/tmux-kill-desktop-environment-shell-sessions.sh
+# Launch kill desktop environment builds
+bindsym $mod+F6 $exec $HOME/.config/scripts/tmux-kill-desktop-environment-build.sh
 
 # Launch alacritty
 bindsym $mod+Return exec alacritty
