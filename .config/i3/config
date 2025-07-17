@@ -22,7 +22,7 @@ floating_modifier $mod
 popup_during_fullscreen smart
 
 # Set window gaps
-gaps inner 0
+gaps inner 20
 
 # Set default monitor layout
 $exec $HOME/.screenlayout/default.sh
@@ -51,7 +51,7 @@ $exec_always i3-workspace-names-daemon --delimiter " | "
 # Start workspace renumbering
 $exec_always $HOME/.config/i3/renumber-workspaces.sh
 
-# Move focused window between monitors
+# Move container between monitors
 bindsym $mod+less move container to output left
 bindsym $mod+greater move container to output right
 
@@ -87,13 +87,13 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-# Vim bindings for move focused window
+# Vim bindings for move container
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# Arrow keys for move focused window
+# Arrow keys for move container
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
@@ -105,8 +105,8 @@ bindsym $mod+Shift+r exec i3-msg restart
 # Create new workspace
 bindsym $mod+n $exec $HOME/.config/i3/new-workspace.sh
 
-# Move window to new workspace
-bindsym $mod+Shift+n $exec $HOME/.config/i3/move-window-to-new-workspace.sh
+# Move container to new workspace
+bindsym $mod+Shift+n $exec $HOME/.config/i3/move-container-to-new-workspace.sh
 
 # Focus parent container
 bindsym $mod+y focus parent
@@ -114,8 +114,8 @@ bindsym $mod+y focus parent
 # Focus child container
 bindsym $mod+Shift+y focus child
 
-# Move window to parent container
-bindsym $mod+$alt+y $exec $HOME/.config/i3/move-to-parent.sh
+# Move container to parent container
+bindsym $mod+$alt+y $exec $HOME/.config/i3/move-container-to-parent-container.sh
 
 # Change container layout
 bindsym $mod+backslash split toggle
@@ -123,24 +123,24 @@ bindsym $mod+backslash split toggle
 # Create empty container
 bindsym $mod+bracketleft open
 
-# Enter fullscreen mode for the focused container
+# Toggle container fullscreen mode
 bindsym $mod+f fullscreen toggle
 
-# Enter floating mode for the focused container
+# Toggle container floating mode
 bindsym $mod+Shift+f floating toggle
 
-# Center the floating window
+# Center floating container
 bindsym $mod+Shift+space move position center
 
-# Kill focused window
+# Kill container
 bindsym $mod+q kill
 
 # Resize gaps
 bindsym $mod+equal $exec $HOME/.config/i3/resize-gaps.sh -
 bindsym $mod+Shift+equal $exec $HOME/.config/i3/resize-gaps.sh +
 
-# Move current window to the largest container
-bindsym $mod+Control+Return $exec $HOME/.config/i3/promote-window.py
+# Swap current container with largest container
+bindsym $mod+Control+Return $exec $HOME/.config/i3/promote-container.py
 
 # Focus previous workspace
 bindsym $mod+minus exec i3-msg workspace back_and_forth
@@ -151,7 +151,7 @@ bindsym $mod+Shift+minus exec i3-focus-last switch
 # Focus urgent window
 bindsym $mod+u [urgent=latest] focus
 
-# Enter picture-in-picture mode for the focused container
+# Move container to picture-in-picture mode
 bindsym $mod+bracketright fullscreen disable, floating enable, resize set 23 ppt 23 ppt, sticky enable, move position 74 ppt 69 ppt
 bindsym $mod+shift+bracketright floating disable, sticky disable
 
@@ -185,7 +185,7 @@ bindsym $mod+Control+l $exec $HOME/.config/i3/move-to-adjacent-workspace.sh +
 bindsym $mod+Shift+Tab $exec $HOME/.config/i3/move-to-adjacent-workspace.sh -
 bindsym $mod+Tab $exec $HOME/.config/i3/move-to-adjacent-workspace.sh +
 
-# Move focused container to workspace and switch to workspace
+# Move container to workspace number
 bindsym $mod+Shift+1 exec i3-msg move container to workspace number $ws1; exec i3-msg workspace number $ws1
 bindsym $mod+Shift+2 exec i3-msg move container to workspace number $ws2; exec i3-msg workspace number $ws2
 bindsym $mod+Shift+3 exec i3-msg move container to workspace number $ws3; exec i3-msg workspace number $ws3
@@ -196,17 +196,21 @@ bindsym $mod+Shift+7 exec i3-msg move container to workspace number $ws7; exec i
 bindsym $mod+Shift+8 exec i3-msg move container to workspace number $ws8; exec i3-msg workspace number $ws8
 bindsym $mod+Shift+9 exec i3-msg move container to workspace number $ws9; exec i3-msg workspace number $ws9
 
+# Move container to adjacent workspace
+bindsym $mod+$alt+Shift+h $exec $HOME/.config/i3/move-container-to-adjacent-workspace.sh -
+bindsym $mod+$alt+Shift+l $exec $HOME/.config/i3/move-container-to-adjacent-workspace.sh +
+
 # Move workspace to adjacent screen
 bindsym $mod+Shift+less move workspace to output up
 bindsym $mod+Shift+greater move workspace to output down
 
-# Vim bindings for resize window
+# Vim bindings for resize container
 bindsym $mod+Shift+Ctrl+h resize shrink width 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+j resize grow height 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+k resize shrink height 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+l resize grow width 10 px or 2 ppt
 
-# Arrow keys for resize window
+# Arrow keys for resize container
 bindsym $mod+Shift+Ctrl+Left resize shrink width 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+Down resize grow height 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+Up resize shrink height 10 px or 2 ppt
