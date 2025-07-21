@@ -6,6 +6,7 @@
   "beekeeper": "database",
   "chromium-browser": "chrome",
   "claude": "bolt",
+  "clockify": "clock",
   "code": "code",
   "cursor": "code",
   "chat-gpt": "bolt",
