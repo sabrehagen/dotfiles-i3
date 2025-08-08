@@ -2,7 +2,7 @@ DESKTOP_ENVIRONMENT_BUILD_LAST_EXIT_CODE=$(cat $HOME/repositories/sabrehagen/des
 DESKTOP_ENVIRONMENT_BUILD_LAST_EXIT_TIME=$(cat $HOME/repositories/sabrehagen/desktop-environment/.build-exit-time)
 BUILD_START_TIME=$(tmux list-sessions | grep desktop-environment-build.*: | cut -d- -f5 | cut -d: -f1 | sort -nr | head -1)
 
-if [ -n "$BUILD_START_TIME" ] && [ "$BUILD_START_TIME" -gt "$DESKTOP_ENVIRONMENT_BUILD_LAST_EXIT_TIME" ]; then
+if [ -n "$BUILD_START_TIME" ] && [ "$BUILD_START_TIME" -gt "${DESKTOP_ENVIRONMENT_BUILD_LAST_EXIT_TIME:-0}" ]; then
   echo -n " "
   echo $BUILD_START_TIME | timeago
 else
