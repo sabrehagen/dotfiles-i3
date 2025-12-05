@@ -1,1 +1,1 @@
-/home/jackson/.cache/wal/lockscreen.sh
+../../.cache/wal/lockscreen.sh
