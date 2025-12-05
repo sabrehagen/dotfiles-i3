@@ -22,7 +22,7 @@ floating_modifier $mod
 popup_during_fullscreen smart
 
 # Set window gaps
-gaps inner 0
+gaps inner 20
 
 # Set default monitor layout
 $exec $HOME/.screenlayout/default.sh
@@ -364,6 +364,9 @@ for_window [class="i3-chromium-launch"] move window to mark PLACEHOLDER
 # Float sxiv
 for_window [class="Sxiv"] floating enable, move position center, move up 2 ppt
 
+# Unfloat fasttracker2
+for_window [class="fasttracker2"] floating disable
+
 # Load colours from Xresources
 set_from_resource $fg     i3wm.color7   #ffffff
 set_from_resource $bg     i3wm.color0   #4c7899
@@ -397,9 +400,3 @@ bar {
 
   bindsym button3 $exec i3-dmenu-desktop --dmenu=$HOME/.config/scripts/dmenu.sh
 }
-
-# Bindings for keyboards without navigation keys
-bindsym $alt+Up exec xdotool keyup Up key Page_Up
-bindsym $alt+Down exec xdotool keyup Down key Page_Down
-bindsym $alt+Left exec xdotool keyup Left key --clearmodifiers Home
-bindsym $alt+Right exec xdotool keyup Right key --clearmodifiers End
