@@ -329,22 +329,22 @@ $exec thorium-browser --app=https://claude.ai
 # Launch gotop on scratchpad
 for_window [title="scratchpad_gotop"] floating enable, move scratchpad, position center, move up 2 ppt
 bindsym $mod+Shift+Escape [title="scratchpad_gotop"] scratchpad show
-$exec alacritty --title scratchpad_gotop --option window.dimensions.columns=180 --option window.dimensions.lines=48 --command tmux new-session -ADs scratchpad_gotop zsh -c "sleep 1 && tmux set-option -t scratchpad_gotop status off & gotop"
+$exec_always alacritty --title scratchpad_gotop --option window.dimensions.columns=180 --option window.dimensions.lines=48 --command tmux new-session -ADs scratchpad_gotop zsh -c "sleep 1 && tmux set-option -t scratchpad_gotop status off & gotop"
 
 # Launch terminal on scratchpad
 for_window [title="scratchpad_terminal"] floating enable, move scratchpad, position center, move up 2 ppt
 bindsym $mod+grave [title="scratchpad_terminal"] scratchpad show
-$exec alacritty --title scratchpad_terminal --option window.dimensions.columns=180 --option window.dimensions.lines=48 --command tmux new-session -ADs scratchpad_terminal zsh --login
+$exec_always alacritty --title scratchpad_terminal --option window.dimensions.columns=180 --option window.dimensions.lines=48 --command tmux new-session -ADs scratchpad_terminal zsh --login
 
 # Launch volume on scratchpad
 for_window [title="scratchpad_volume"] floating enable, move scratchpad, position center, move up 2 ppt
 bindsym $mod+v [title="scratchpad_volume"] scratchpad show
-$exec alacritty --title scratchpad_volume --option window.dimensions.columns=180 --option window.dimensions.lines=48 --command tmux new-session -ADs scratchpad_volume zsh -c "sleep 1 && tmux set-option -t scratchpad_volume status off & alsamixer"
+$exec_always alacritty --title scratchpad_volume --option window.dimensions.columns=180 --option window.dimensions.lines=48 --command tmux new-session -ADs scratchpad_volume zsh -c "sleep 1 && tmux set-option -t scratchpad_volume status off & alsamixer"
 
 # Launch wifi on scratchpad
 for_window [title="scratchpad_wifi"] floating enable, move scratchpad, position center
 bindsym $mod+i [title="scratchpad_wifi"] scratchpad show
-$exec alacritty --title scratchpad_wifi --option window.dimensions.columns=58 --option window.dimensions.lines=35 --command zsh -c "$HOME/.config/scripts/host-ssh-tty.sh sudo nmtui-connect"
+$exec_always alacritty --title scratchpad_wifi --option window.dimensions.columns=58 --option window.dimensions.lines=35 --command zsh -c "$HOME/.config/scripts/host-ssh-tty.sh sudo nmtui-connect"
 
 # Position i3bar volume
 for_window [title="i3bar_volume"] floating enable, move position mouse, move up 3 ppt
