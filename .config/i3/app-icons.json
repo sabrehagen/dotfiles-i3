@@ -1,5 +1,6 @@
 {
   "alacritty": "terminal",
+  "alsa-scarlett": "plug",
   "anydesk": "home",
   "arandr": "desktop",
   "ardour": "music",
@@ -22,9 +23,11 @@
   "gsimplecal": "calendar",
   "krita": "image",
   "mpv": "play",
+  "nicotine": "fire",
   "obsidian": "book",
   "pavucontrol": "volume-up",
   "pcmanfm": "folder-open",
+  "qjackctl": "plug",
   "signal": "phone",
   "slack": "slack",
   "teams": "comment",
