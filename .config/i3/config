@@ -246,8 +246,8 @@ bindsym $mod+b exec thorium-browser
 # Launch cursor
 bindsym $mod+c exec cursor
 
-# Launch dmenu scripts
-bindsym $mod+Shift+o $exec $HOME/.config/scripts/dmenu-scripts.sh
+# Launch dmenu focus window
+bindsym $mod+Shift+o $exec $HOME/.config/scripts/dmenu-focus-window.sh
 
 # Launch dmenu programs
 bindsym $mod+o exec i3-dmenu-desktop --dmenu=$HOME/.config/scripts/dmenu.sh
