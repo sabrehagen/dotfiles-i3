@@ -326,6 +326,9 @@ for_window [instance="claude.ai"] floating enable, move scratchpad, position cen
 bindsym $mod+Escape [instance="claude.ai"] scratchpad show
 $exec thorium-browser --app=https://claude.ai
 
+# Float QjackCtl window
+for_window [class="QjackCtl"] floating enable
+
 # Launch gotop on scratchpad
 for_window [title="scratchpad_gotop"] floating enable, move scratchpad, position center, move up 2 ppt
 bindsym $mod+Shift+Escape [title="scratchpad_gotop"] scratchpad show
