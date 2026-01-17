@@ -22,7 +22,7 @@ floating_modifier $mod
 popup_during_fullscreen smart
 
 # Set window gaps
-gaps inner 20
+gaps inner 0
 
 # Set default monitor layout
 $exec $HOME/.screenlayout/default.sh
@@ -205,10 +205,10 @@ bindsym $mod+Shift+less move workspace to output up
 bindsym $mod+Shift+greater move workspace to output down
 
 # Vim bindings for resize container
-bindsym $mod+Shift+Ctrl+h resize shrink width 10 px or 2 ppt
-bindsym $mod+Shift+Ctrl+j resize grow height 10 px or 2 ppt
-bindsym $mod+Shift+Ctrl+k resize shrink height 10 px or 2 ppt
-bindsym $mod+Shift+Ctrl+l resize grow width 10 px or 2 ppt
+bindsym $mod+Shift+Ctrl+h $exec $HOME/.config/i3/resize-container.sh h
+bindsym $mod+Shift+Ctrl+j $exec $HOME/.config/i3/resize-container.sh j
+bindsym $mod+Shift+Ctrl+k $exec $HOME/.config/i3/resize-container.sh k
+bindsym $mod+Shift+Ctrl+l $exec $HOME/.config/i3/resize-container.sh l
 
 # Arrow keys for resize container
 bindsym $mod+Shift+Ctrl+Left resize shrink width 10 px or 2 ppt
