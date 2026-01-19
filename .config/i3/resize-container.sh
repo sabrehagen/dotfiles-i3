@@ -10,7 +10,7 @@ fi
 delta="${2:-10 px or 2 ppt}"
 margin=5
 
-IFS=$' \t' read -r container_x container_y container_width container_height floating_state < <(
+IFS=$' \t' read -r container_x container_y container_width container_height < <(
   i3-msg -t get_tree | jq -r '
     .. | objects
     | select(
@@ -21,7 +21,7 @@ IFS=$' \t' read -r container_x container_y container_width container_height floa
           or ((.nodes // []) | length) == 0
         )
       )
-    | "\(.rect.x) \(.rect.y) \(.rect.width) \(.rect.height) \(.floating // "auto_off")"' | head -n1
+    | "\(.rect.x) \(.rect.y) \(.rect.width) \(.rect.height)"' | head -n1
 )
 
 if [[ -z "$container_x" ]]; then
@@ -29,7 +29,13 @@ if [[ -z "$container_x" ]]; then
 fi
 
 is_floating=0
-if [[ "$floating_state" == "auto_on" || "$floating_state" == "user_on" ]]; then
+floating_marker=$(i3-msg -t get_tree | jq -r '
+  ..
+  | objects
+  | select(.focused? == true and .type? == "floating_con")
+  | 1' | head -n1 || true)
+
+if [[ "$floating_marker" == "1" ]]; then
   is_floating=1
 fi
 
