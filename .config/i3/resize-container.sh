@@ -10,7 +10,7 @@ fi
 delta="${2:-10 px or 2 ppt}"
 margin=5
 
-IFS=$' \t' read -r container_x container_y container_width container_height < <(
+IFS=$' \t' read -r container_x container_y container_width container_height floating_state < <(
   i3-msg -t get_tree | jq -r '
     .. | objects
     | select(
@@ -21,7 +21,7 @@ IFS=$' \t' read -r container_x container_y container_width container_height < <(
           or ((.nodes // []) | length) == 0
         )
       )
-    | "\(.rect.x) \(.rect.y) \(.rect.width) \(.rect.height)"' | head -n1
+    | "\(.rect.x) \(.rect.y) \(.rect.width) \(.rect.height) \(.floating // "auto_off")"' | head -n1
 )
 
 if [[ -z "$container_x" ]]; then
@@ -29,31 +29,25 @@ if [[ -z "$container_x" ]]; then
 fi
 
 is_floating=0
-floating_marker=$(i3-msg -t get_tree | jq -r '
-  ..
-  | objects
-  | select(.focused? == true and .type? == "floating_con")
-  | 1' | head -n1 || true)
-
-if [[ "$floating_marker" == "1" ]]; then
+if [[ "$floating_state" == "auto_on" || "$floating_state" == "user_on" ]]; then
   is_floating=1
 fi
 
 if (( ! is_floating )); then
-  IFS=$' \t' read -r workspace_x workspace_y workspace_width workspace_height < <(
-    i3-msg -t get_workspaces | jq -r '
-      .[]
-      | select(.focused == true)
-      | .rect
-      | "\(.x) \(.y) \(.width) \(.height)"'
-  )
+IFS=$' \t' read -r workspace_x workspace_y workspace_width workspace_height < <(
+  i3-msg -t get_workspaces | jq -r '
+    .[]
+    | select(.focused == true)
+    | .rect
+    | "\(.x) \(.y) \(.width) \(.height)"'
+)
 
   if [[ -z "$workspace_x" ]]; then
-    exit 0
-  fi
+  exit 0
+fi
 
-  right_edge=$(( (container_x + container_width) >= (workspace_x + workspace_width - margin) ))
-  bottom_edge=$(( (container_y + container_height) >= (workspace_y + workspace_height - margin) ))
+right_edge=$(( (container_x + container_width) >= (workspace_x + workspace_width - margin) ))
+bottom_edge=$(( (container_y + container_height) >= (workspace_y + workspace_height - margin) ))
 fi
 
 if (( is_floating )); then
@@ -65,40 +59,40 @@ if (( is_floating )); then
     *) echo "Invalid direction: $resize_key" >&2; exit 1 ;;
   esac
 else
-  case "$resize_key" in
-    h)
-      if (( right_edge )); then
-        cmd="resize grow width $delta"
-      else
-        cmd="resize shrink width $delta"
-      fi
-      ;;
-    l)
-      if (( right_edge )); then
-        cmd="resize shrink width $delta"
-      else
-        cmd="resize grow width $delta"
-      fi
-      ;;
-    k)
-      if (( bottom_edge )); then
-        cmd="resize grow height $delta"
-      else
-        cmd="resize shrink height $delta"
-      fi
-      ;;
-    j)
-      if (( bottom_edge )); then
-        cmd="resize shrink height $delta"
-      else
-        cmd="resize grow height $delta"
-      fi
-      ;;
-    *)
-      echo "Invalid direction: $resize_key" >&2
-      exit 1
-      ;;
-  esac
+case "$resize_key" in
+  h)
+    if (( right_edge )); then
+      cmd="resize grow width $delta"
+    else
+      cmd="resize shrink width $delta"
+    fi
+    ;;
+  l)
+    if (( right_edge )); then
+      cmd="resize shrink width $delta"
+    else
+      cmd="resize grow width $delta"
+    fi
+    ;;
+  k)
+    if (( bottom_edge )); then
+      cmd="resize grow height $delta"
+    else
+      cmd="resize shrink height $delta"
+    fi
+    ;;
+  j)
+    if (( bottom_edge )); then
+      cmd="resize shrink height $delta"
+    else
+      cmd="resize grow height $delta"
+    fi
+    ;;
+  *)
+    echo "Invalid direction: $resize_key" >&2
+    exit 1
+    ;;
+esac
 fi
 
 i3-msg "$cmd" >/dev/null
