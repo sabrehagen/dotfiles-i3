@@ -326,7 +326,7 @@ bindsym $mod+Shift+t $exec $HOME/.config/i3/move-to-next-window-of-type.sh teleg
 # Launch claude on scratchpad
 for_window [instance="claude.ai"] floating enable, move scratchpad, resize set 70 ppt 65 ppt, move up 2 ppt
 bindsym $mod+Escape [instance="claude.ai"] scratchpad show, move position center
-$exec_always thorium-browser --app=https://claude.ai
+$exec thorium-browser --app=https://claude.ai
 
 # Float QjackCtl window
 for_window [class="QjackCtl"] floating enable
