@@ -209,6 +209,8 @@ bindsym $mod+Shift+Ctrl+h $exec $HOME/.config/i3/resize-container.sh h
 bindsym $mod+Shift+Ctrl+j $exec $HOME/.config/i3/resize-container.sh j
 bindsym $mod+Shift+Ctrl+k $exec $HOME/.config/i3/resize-container.sh k
 bindsym $mod+Shift+Ctrl+l $exec $HOME/.config/i3/resize-container.sh l
+bindsym $mod+Shift+Ctrl+u move down, $exec $HOME/.config/i3/resize-container.sh k
+bindsym $mod+Shift+Ctrl+i move up, $exec $HOME/.config/i3/resize-container.sh j
 
 # Arrow keys for resize container
 bindsym $mod+Shift+Ctrl+Left resize shrink width 10 px or 2 ppt
