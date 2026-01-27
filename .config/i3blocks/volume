@@ -1,37 +1,76 @@
-VOLUME=$(pactl list sinks | grep '^[[:space:]]Volume:' | head -n $(( $SINK + 1 )) | tail -n 1 | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,')
+#!/bin/sh
 
-# Exit if an audio level was not returned
-if [ "$VOLUME" != "${VOLUME#*[!0-9]*}" ]; then
+SINK=${SINK:-0}
+ALSA_CONTROL=${ALSA_CONTROL:-Master}
+ALSA_CARD_OPT=""
+[ -n "$ALSA_CARD" ] && ALSA_CARD_OPT="-c $ALSA_CARD"
+
+backend="alsa"
+if pgrep -x jackd >/dev/null 2>&1; then
+  backend="jack"
+fi
+
+if [ "$backend" != "jack" ] && pactl info >/dev/null 2>&1; then
+  backend="pulse"
+fi
+
+VOLUME=""
+MUTED=0
+
+if [ "$backend" = "pulse" ]; then
+  pulse_data=$(pactl list sinks 2>/dev/null || true)
+  volume_line=$(printf '%s\n' "$pulse_data" | grep '^[[:space:]]Volume:' | head -n $((SINK + 1)) | tail -n 1)
+  mute_line=$(printf '%s\n' "$pulse_data" | grep '^[[:space:]]Mute:' | head -n $((SINK + 1)) | tail -n 1)
+  VOLUME=$(printf '%s\n' "$volume_line" | sed -e 's,.* \([0-9][0-9]*\)%.*,\1,' )
+  if printf '%s\n' "$mute_line" | grep -qi 'yes'; then
+    MUTED=1
+  fi
+fi
+
+if [ -z "$VOLUME" ]; then
+  if [ "$backend" = "pulse" ]; then
+    backend="alsa"
+  fi
+  alsa_data=$(amixer $ALSA_CARD_OPT get "$ALSA_CONTROL" 2>/dev/null || true)
+  VOLUME=$(printf '%s\n' "$alsa_data" | grep -m1 -o '[0-9]\+%' | tr -d '%')
+  if printf '%s\n' "$alsa_data" | grep -q '\[off\]'; then
+    MUTED=1
+  fi
+fi
+
+if [ -z "$VOLUME" ]; then
   exit 0
 fi
 
-# Volume partial
 if [ "$VOLUME" -ge 50 ]; then
   ICON=
 else
   ICON=
 fi
 
-MUTED=$(amixer get Master | sed 5q | grep -q '\[on\]'; echo $?)
-if [ "$MUTED" -eq "1" ]; then
+if [ "$MUTED" -eq 1 ]; then
   ICON=
 fi
 
-# Show mixer on click
 if [ -n "$BLOCK_BUTTON" ]; then
-  # alacritty \
-  #   --option window.dimensions.columns=12 \
-  #   --option window.dimensions.lines=20 \
-  #   --title i3bar_volume \
-  #   --command zsh -c alsamixer &
+  if [ "$backend" = "pulse" ]; then
+    mixer_cmd="pulsemixer"
+    columns=108
+    lines=6
+  else
+    mixer_cmd="alsamixer"
+    columns=80
+    lines=20
+  fi
+
   alacritty \
-    --option window.dimensions.columns=108 \
-    --option window.dimensions.lines=6 \
+    --option window.dimensions.columns="$columns" \
+    --option window.dimensions.lines="$lines" \
     --title i3bar_volume \
-    --command zsh -c pulsemixer &
+    --command zsh -c "$mixer_cmd" &
 fi
 
-echo $ICON $VOLUME%
-echo $ICON $VOLUME%
+printf '%s %s%%\n' "$ICON" "$VOLUME"
+printf '%s %s%%\n' "$ICON" "$VOLUME"
 
 exit 0
