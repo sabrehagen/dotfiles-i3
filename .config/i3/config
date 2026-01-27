@@ -130,7 +130,7 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+f floating toggle
 
 # Center floating container
-bindsym $mod+Shift+space move position [absolute] center
+bindsym $mod+Shift+space move position center
 
 # Kill container
 bindsym $mod+q kill
@@ -324,8 +324,8 @@ bindsym $mod+Shift+m $exec $HOME/.config/i3/move-to-next-window-of-type.sh slack
 bindsym $mod+Shift+t $exec $HOME/.config/i3/move-to-next-window-of-type.sh telegram
 
 # Launch claude on scratchpad
-for_window [instance="claude.ai"] floating enable, move scratchpad, move position [absolute] center, resize set 80 ppt 45 ppt, move up 2 ppt
-bindsym $mod+Escape [instance="claude.ai"] scratchpad show
+for_window [instance="claude.ai"] floating enable, move scratchpad, resize set 70 ppt 65 ppt, move up 2 ppt
+bindsym $mod+Escape [instance="claude.ai"] scratchpad show, move position center
 $exec_always thorium-browser --app=https://claude.ai
 
 # Float QjackCtl window
