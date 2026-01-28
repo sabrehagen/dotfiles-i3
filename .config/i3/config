@@ -22,7 +22,7 @@ floating_modifier $mod
 popup_during_fullscreen smart
 
 # Set window gaps
-gaps inner 20
+gaps inner 0
 
 # Set default monitor layout
 $exec $HOME/.screenlayout/default.sh
@@ -30,8 +30,8 @@ $exec $HOME/.screenlayout/default.sh
 # Reload wal config
 $exec $HOME/.config/scripts/wal.sh
 
-# Restore workspace layout on startup
-$exec $HOME/.config/i3/restore-layout.sh
+# Restore workspace layout on startup and auto-save sessions
+$exec /opt/i3-restore/i3-restore --save-interval 10
 
 # Start i3altlayout after workspace restore
 $exec i3altlayout
@@ -219,7 +219,7 @@ bindsym $mod+Shift+Ctrl+Up resize shrink height 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+Right resize grow width 10 px or 2 ppt
 
 # Restart the desktop environment
-bindsym $mod+Shift+q $exec $HOME/.config/i3/save-layout.sh && $HOME/.config/scripts/host-desktop-environment-restart.sh
+bindsym $mod+Shift+q $exec /opt/i3-restore/i3-save && $HOME/.config/scripts/host-desktop-environment-restart.sh
 
 # Launch kill all containers except the desktop environment
 bindsym $mod+F4 $exec $HOME/repositories/sabrehagen/desktop-environment/docker/scripts/kill-all.sh
@@ -297,7 +297,7 @@ bindsym $mod+Shift+x exec maim --hidecursor --window root | xclip -selection cli
 bindsym $mod+$alt+x exec ksnip --rectarea
 
 # Launch host reboot
-bindsym $mod+Control+Delete $exec $HOME/.config/i3/save-layout.sh && $HOME/.config/scripts/host-restart.sh
+bindsym $mod+Control+Delete $exec /opt/i3-restore/i3-save && $HOME/.config/scripts/host-restart.sh
 
 # Focus alacritty
 bindsym $mod+Shift+Return $exec $HOME/.config/i3/move-to-next-window-of-type.sh alacritty
