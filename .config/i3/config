@@ -324,30 +324,27 @@ bindsym $mod+Shift+m $exec $HOME/.config/i3/move-to-next-window-of-type.sh slack
 bindsym $mod+Shift+t $exec $HOME/.config/i3/move-to-next-window-of-type.sh telegram
 
 # Launch claude on scratchpad
-for_window [instance="claude.ai"] floating enable, move scratchpad, resize set 70 ppt 65 ppt, move up 2 ppt
-bindsym $mod+Escape [instance="claude.ai"] scratchpad show, move position center
+for_window [instance="claude.ai"] floating enable, resize set 61 ppt 62 ppt, move position center, move scratchpad
+bindsym $mod+Escape [instance="claude.ai"] scratchpad show
 $exec thorium-browser --app=https://claude.ai
 
-# Float QjackCtl window
-for_window [class="QjackCtl"] floating enable
-
 # Launch gotop on scratchpad
-for_window [title="scratchpad_gotop"] floating enable, move scratchpad, move position [absolute] center, move up 2 ppt
+for_window [title="scratchpad_gotop"] floating enable, move scratchpad
 bindsym $mod+Shift+Escape [title="scratchpad_gotop"] scratchpad show
-$exec_always alacritty --title scratchpad_gotop --option window.dimensions.columns=180 --option window.dimensions.lines=48 --command tmux new-session -ADs scratchpad_gotop zsh -c "sleep 1 && tmux set-option -t scratchpad_gotop status off & gotop"
+$exec_always alacritty --title scratchpad_gotop --option window.dimensions.columns=177 --option window.dimensions.lines=47 --command tmux new-session -ADs scratchpad_gotop zsh -c "sleep 1 && tmux set-option -t scratchpad_gotop status off & gotop"
 
 # Launch terminal on scratchpad
-for_window [title="scratchpad_terminal"] floating enable, move scratchpad, move position [absolute] center, move up 2 ppt
+for_window [title="scratchpad_terminal"] floating enable, move scratchpad
 bindsym $mod+grave [title="scratchpad_terminal"] scratchpad show
-$exec_always alacritty --title scratchpad_terminal --option window.dimensions.columns=180 --option window.dimensions.lines=48 --command tmux new-session -ADs scratchpad_terminal zsh --login
+$exec_always alacritty --title scratchpad_terminal --option window.dimensions.columns=186 --option window.dimensions.lines=52 --command tmux new-session -ADs scratchpad_terminal zsh --login
 
 # Launch volume on scratchpad
-for_window [title="scratchpad_volume"] floating enable, move scratchpad, move position [absolute] center, move up 2 ppt
+for_window [title="scratchpad_volume"] floating enable, move scratchpad
 bindsym $mod+v [title="scratchpad_volume"] scratchpad show
-$exec_always alacritty --title scratchpad_volume --option window.dimensions.columns=180 --option window.dimensions.lines=48 --command tmux new-session -ADs scratchpad_volume zsh -c "sleep 1 && tmux set-option -t scratchpad_volume status off & alsamixer"
+$exec_always alacritty --title scratchpad_volume --option window.dimensions.columns=172 --option window.dimensions.lines=40 --command tmux new-session -ADs scratchpad_volume zsh -c "sleep 1 && tmux set-option -t scratchpad_volume status off & alsamixer"
 
 # Launch wifi on scratchpad
-for_window [title="scratchpad_wifi"] floating enable, move scratchpad, move position [absolute] center
+for_window [title="scratchpad_wifi"] floating enable, move scratchpad
 bindsym $mod+i [title="scratchpad_wifi"] scratchpad show
 $exec alacritty --title scratchpad_wifi --option window.dimensions.columns=58 --option window.dimensions.lines=35 --command zsh -c "$HOME/.config/scripts/host-ssh-tty.sh sudo nmtui-connect"
 
@@ -365,6 +362,9 @@ for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move u
 
 # Position i3 managed chromium-browser windows
 for_window [class="i3-chromium-launch"] move window to mark PLACEHOLDER
+
+# Float QjackCtl window
+for_window [class="QjackCtl"] floating enable
 
 # Float sxiv
 for_window [class="Sxiv"] floating enable, move position [absolute] center, move up 2 ppt
