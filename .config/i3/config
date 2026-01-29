@@ -43,7 +43,10 @@ $exec xautolock -time 10 -locker $HOME/.config/i3/lockscreen.sh
 $exec i3-focus-last
 
 # Start picom
-# $exec picom
+$exec picom
+
+# Start hintsd
+$exec hintsd
 
 # Start workspace names
 $exec_always i3-workspace-names-daemon --delimiter " | "
@@ -269,6 +272,9 @@ bindsym $mod+slash $exec sh $HOME/.config/i3/lockscreen.sh
 # Launch pcmanfm
 bindsym $mod+e exec pcmanfm
 
+# Launch hints
+bindsym $mod+period $exec hints
+
 # Launch screen recorder
 bindsym $mod+r $exec $HOME/.config/scripts/screen-recorder.sh
 
@@ -370,7 +376,7 @@ for_window [class="i3-chromium-launch"] move window to mark PLACEHOLDER
 for_window [class="QjackCtl"] floating enable
 
 # Float sxiv
-for_window [class="Sxiv"] floating enable, move position [absolute] center, move up 2 ppt
+for_window [class="Sxiv"] floating enable, move position center, move up 2 ppt
 
 # Unfloat fasttracker2
 for_window [class="fasttracker2"] floating disable
