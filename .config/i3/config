@@ -51,6 +51,9 @@ $exec_always i3-workspace-names-daemon --delimiter " | "
 # Start workspace renumbering
 $exec_always $HOME/.config/i3/renumber-workspaces.sh
 
+# Bind print screen to menu key
+bindsym Print $exec sh -c "sleep 0.07 && xdotool key --clearmodifiers Menu"
+
 # Move container between monitors
 bindsym $mod+less move container to output left
 bindsym $mod+greater move container to output right
