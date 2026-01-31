@@ -17,7 +17,7 @@ renumber_workspaces() {
 }
 
 # Avoid conflicting with workspace restoration on startup
-until ps aux | grep -v grep | grep -vqz i3-resurrect; do sleep 1; done
+until ps aux | grep -v grep | grep -vqE 'i3-(resurrect|restore)'; do sleep 1; done
 
 # Trigger renumber whenever a workspace event occurs
 i3-msg -t subscribe -m '[ "workspace" ]' | \
