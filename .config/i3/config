@@ -74,12 +74,12 @@ bindsym $alt+XF86MonBrightnessUp $exec $HOME/.config/scripts/software-brightness
 bindsym $alt+XF86MonBrightnessDown $exec $HOME/.config/scripts/software-brightness.sh -
 
 # Change audio volume
-bindsym XF86AudioRaiseVolume exec amixer set Master 5%+
-bindsym XF86AudioLowerVolume exec amixer set Master 5%-
-bindsym XF86AudioMute exec amixer -q -D pulse sset Master toggle
+bindsym XF86AudioRaiseVolume $exec amixer set Master 5%+
+bindsym XF86AudioLowerVolume $exec amixer set Master 5%-
+bindsym XF86AudioMute $exec amixer -q -D pulse sset Master toggle
 
 # Change microphone mute
-bindsym XF86AudioMicMute exec pactl set-source-mute alsa_input.pci-0000_00_1f.3.analog-stereo toggle
+bindsym XF86AudioMicMute $exec pactl set-source-mute alsa_input.pci-0000_00_1f.3.analog-stereo toggle
 
 # Vim bindings for focus window
 bindsym $mod+h focus left
@@ -106,7 +106,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Restart i3 in-place
-bindsym $mod+Shift+r exec i3-msg restart
+bindsym $mod+Shift+r $exec i3-msg restart
 
 # Create new workspace
 bindsym $mod+n $exec $HOME/.config/i3/new-workspace.sh
@@ -149,10 +149,10 @@ bindsym $mod+Shift+equal $exec $HOME/.config/i3/resize-gaps.sh +
 bindsym $mod+Control+Return $exec $HOME/.config/i3/promote-container.py
 
 # Focus previous workspace
-bindsym $mod+minus exec i3-msg workspace back_and_forth
+bindsym $mod+minus $exec i3-msg workspace back_and_forth
 
 # Focus previous window
-bindsym $mod+Shift+minus exec i3-focus-last switch
+bindsym $mod+Shift+minus $exec i3-focus-last switch
 
 # Focus urgent window
 bindsym $mod+u [urgent=latest] focus
@@ -192,15 +192,15 @@ bindsym $mod+Shift+Tab $exec $HOME/.config/i3/move-to-adjacent-workspace.sh -
 bindsym $mod+Tab $exec $HOME/.config/i3/move-to-adjacent-workspace.sh +
 
 # Move container to workspace number
-bindsym $mod+Shift+1 exec i3-msg move container to workspace number $ws1; exec i3-msg workspace number $ws1
-bindsym $mod+Shift+2 exec i3-msg move container to workspace number $ws2; exec i3-msg workspace number $ws2
-bindsym $mod+Shift+3 exec i3-msg move container to workspace number $ws3; exec i3-msg workspace number $ws3
-bindsym $mod+Shift+4 exec i3-msg move container to workspace number $ws4; exec i3-msg workspace number $ws4
-bindsym $mod+Shift+5 exec i3-msg move container to workspace number $ws5; exec i3-msg workspace number $ws5
-bindsym $mod+Shift+6 exec i3-msg move container to workspace number $ws6; exec i3-msg workspace number $ws6
-bindsym $mod+Shift+7 exec i3-msg move container to workspace number $ws7; exec i3-msg workspace number $ws7
-bindsym $mod+Shift+8 exec i3-msg move container to workspace number $ws8; exec i3-msg workspace number $ws8
-bindsym $mod+Shift+9 exec i3-msg move container to workspace number $ws9; exec i3-msg workspace number $ws9
+bindsym $mod+Shift+1 $exec i3-msg move container to workspace number $ws1; $exec i3-msg workspace number $ws1
+bindsym $mod+Shift+2 $exec i3-msg move container to workspace number $ws2; $exec i3-msg workspace number $ws2
+bindsym $mod+Shift+3 $exec i3-msg move container to workspace number $ws3; $exec i3-msg workspace number $ws3
+bindsym $mod+Shift+4 $exec i3-msg move container to workspace number $ws4; $exec i3-msg workspace number $ws4
+bindsym $mod+Shift+5 $exec i3-msg move container to workspace number $ws5; $exec i3-msg workspace number $ws5
+bindsym $mod+Shift+6 $exec i3-msg move container to workspace number $ws6; $exec i3-msg workspace number $ws6
+bindsym $mod+Shift+7 $exec i3-msg move container to workspace number $ws7; $exec i3-msg workspace number $ws7
+bindsym $mod+Shift+8 $exec i3-msg move container to workspace number $ws8; $exec i3-msg workspace number $ws8
+bindsym $mod+Shift+9 $exec i3-msg move container to workspace number $ws9; $exec i3-msg workspace number $ws9
 
 # Move container to adjacent workspace
 bindsym $mod+$alt+Shift+h $exec $HOME/.config/i3/move-container-to-adjacent-workspace.sh -
@@ -243,34 +243,34 @@ bindsym $mod+$alt+F5 $exec $HOME/.config/i3/launch-desktop-environment-build-log
 bindsym $mod+F6 $exec $HOME/.config/scripts/tmux-kill-desktop-environment-build.sh
 
 # Launch alacritty
-bindsym $mod+Return exec alacritty
+bindsym $mod+Return $exec alacritty
 
 # Launch beekeeper
-bindsym $mod+g exec beekeeper-studio
+bindsym $mod+g $exec beekeeper-studio
 
 # Launch browser
-bindsym $mod+b exec thorium-browser
+bindsym $mod+b $exec thorium-browser
 
 # Launch cursor
-bindsym $mod+c exec cursor
+bindsym $mod+c $exec cursor
 
 # Launch dmenu focus window
 bindsym $mod+Shift+o $exec $HOME/.config/scripts/dmenu-focus-window.sh
 
 # Launch dmenu programs
-bindsym $mod+o exec i3-dmenu-desktop --dmenu=$HOME/.config/scripts/dmenu.sh
+bindsym $mod+o $exec i3-dmenu-desktop --dmenu=$HOME/.config/scripts/dmenu.sh
 
 # Launch discord
-bindsym $mod+d exec discord
+bindsym $mod+d $exec discord
 
 # Launch warpd
-bindsym $mod+$alt+f exec warpd --hint2 --click 1
+bindsym $mod+$alt+f $exec warpd --hint2 --click 1
 
 # Launch lockscreen
 bindsym $mod+slash $exec sh $HOME/.config/i3/lockscreen.sh
 
 # Launch pcmanfm
-bindsym $mod+e exec pcmanfm
+bindsym $mod+e $exec pcmanfm
 
 # Launch hints
 bindsym $mod+period $exec hints
@@ -279,7 +279,7 @@ bindsym $mod+period $exec hints
 bindsym $mod+r $exec $HOME/.config/scripts/screen-recorder.sh
 
 # Launch telegram
-bindsym $mod+t exec /opt/telegram/telegram
+bindsym $mod+t $exec /opt/telegram/telegram
 
 # Launch wallpaper cycle
 bindsym $mod+p $exec $HOME/.config/scripts/wal.sh
@@ -288,22 +288,22 @@ bindsym $mod+p $exec $HOME/.config/scripts/wal.sh
 bindsym $mod+Shift+p $exec $HOME/.config/scripts/wallpaper-select.sh
 
 # Launch slack
-bindsym $mod+m exec slack
+bindsym $mod+m $exec slack
 
 # Launch screenshot dump
-bindsym $mod+w exec xclip -out -selection clipboard > $HOME/pictures/screenshot-$(date +%s).png
+bindsym $mod+w $exec xclip -out -selection clipboard > $HOME/pictures/screenshot-$(date +%s).png
 
 # Launch screenshot upload
-bindsym $mod+Shift+w exec xclip -out -selection clipboard | imgur-uploader | clipboard && clipboard | xargs -I@ notify-send 'Uploaded to Imgur' @
+bindsym $mod+Shift+w $exec xclip -out -selection clipboard | imgur-uploader | clipboard && clipboard | xargs -I@ notify-send 'Uploaded to Imgur' @
 
 # Launch screenshot capture selection
-bindsym $mod+x exec maim --hidecursor --select | xclip -selection clipboard -t image/png
+bindsym $mod+x $exec maim --hidecursor --select | xclip -selection clipboard -t image/png
 
 # Launch screenshot capture fullscreen
-bindsym $mod+Shift+x exec maim --hidecursor --window root | xclip -selection clipboard -t image/png
+bindsym $mod+Shift+x $exec maim --hidecursor --window root | xclip -selection clipboard -t image/png
 
 # Launch screenshot capture selection with ksnip
-bindsym $mod+$alt+x exec ksnip --rectarea
+bindsym $mod+$alt+x $exec ksnip --rectarea
 
 # Launch host reboot
 bindsym $mod+Control+Delete $exec i3-save && $HOME/.config/scripts/host-restart.sh
