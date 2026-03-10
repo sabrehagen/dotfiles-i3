@@ -1,4 +1,4 @@
-separator_block_width=15
+separator_block_width=22
 
 [desktop-environment-build]
 command=$HOME/.config/i3blocks/desktop-environment-build </dev/null
