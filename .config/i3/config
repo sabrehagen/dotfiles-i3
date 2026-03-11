@@ -24,9 +24,6 @@ popup_during_fullscreen smart
 # Set window gaps
 gaps inner 40
 
-# Set default monitor layout
-$exec $HOME/.screenlayout/default.sh
-
 # Reload wal config
 $exec $HOME/.config/scripts/wal.sh
 
