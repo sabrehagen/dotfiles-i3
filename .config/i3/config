@@ -404,7 +404,7 @@ bar {
     inactive_workspace $bg      $bg         $fg
     urgent_workspace   $bg      $alert      $fg
   }
-  font pango:monospace 11
+  font pango:monospace 10
   position bottom
   status_command i3blocks
   tray_output none
