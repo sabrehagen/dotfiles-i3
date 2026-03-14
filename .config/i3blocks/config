@@ -22,6 +22,16 @@ command=$HOME/.config/i3blocks/cpu
 interval=2
 min_width=32
 
+[gpu]
+command=$HOME/.config/i3blocks/gpu
+interval=2
+min_width=32
+
+[gpu-fan]
+command=$HOME/.config/i3blocks/gpu-fan
+interval=2
+min_width=32
+
 [memory]
 label=
 command=$HOME/.config/i3blocks/memory

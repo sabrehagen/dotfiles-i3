@@ -1,0 +1,12 @@
+#!/bin/bash
+
+URGENT_VALUE=90
+
+SPEED=$(nvidia-smi --query-gpu=fan.speed --format=csv,noheader,nounits 2>/dev/null) || exit 0
+
+printf "󰈐 %d%%\n" "${SPEED}"
+printf "󰈐 %d%%\n" "${SPEED}"
+
+if [[ "${SPEED}" -gt "${URGENT_VALUE}" ]]; then
+  echo "#FF0022"
+fi

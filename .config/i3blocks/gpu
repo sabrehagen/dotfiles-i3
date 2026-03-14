@@ -1,0 +1,12 @@
+#!/bin/bash
+
+URGENT_VALUE=90
+
+USAGE=$(nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits 2>/dev/null) || exit 0
+
+printf "󰾲 %d%%\n" "${USAGE}"
+printf "󰾲 %d%%\n" "${USAGE}"
+
+if [[ "${USAGE}" -gt "${URGENT_VALUE}" ]]; then
+  echo "#FF0022"
+fi
