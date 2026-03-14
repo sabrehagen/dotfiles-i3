@@ -1,5 +1,5 @@
 #!/bin/bash
-BATTERY=$(acpi -b | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')
+BATTERY=$(acpi -b 2>/dev/null | grep "Battery 0" | grep -o '[0-9]\+%' | tr -d '%')
 
 # Exit if a battery value was not returned
 if ! [[ "$BATTERY" =~ ^[0-9]+$ ]]; then
