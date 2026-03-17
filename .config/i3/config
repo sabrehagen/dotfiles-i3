@@ -103,7 +103,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # Restart i3 in-place
-bindsym $mod+Shift+r $exec i3-msg restart
+bindsym $mod+Shift+r $exec i3-msg restart && wal -R
 
 # Create new workspace
 bindsym $mod+n $exec $HOME/.config/i3/new-workspace.sh
