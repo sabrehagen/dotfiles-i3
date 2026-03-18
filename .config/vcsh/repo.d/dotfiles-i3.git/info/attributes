@@ -1,4 +1,4 @@
-.config/i3/config diff=vcsh-exclude-i3-gaps-and-separator
-.config/i3/config filter=vcsh-exclude-i3-gaps-and-separator
-.config/i3blocks/config diff=vcsh-exclude-i3-gaps-and-separator
-.config/i3blocks/config filter=vcsh-exclude-i3-gaps-and-separator
+**/.config/i3/config diff=vcsh-exclude-i3-gaps-and-separator
+**/.config/i3/config filter=vcsh-exclude-i3-gaps-and-separator
+**/.config/i3blocks/config diff=vcsh-exclude-i3-gaps-and-separator
+**/.config/i3blocks/config filter=vcsh-exclude-i3-gaps-and-separator
