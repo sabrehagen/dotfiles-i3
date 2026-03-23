@@ -71,9 +71,9 @@ bindsym $alt+XF86MonBrightnessUp $exec $HOME/.config/scripts/software-brightness
 bindsym $alt+XF86MonBrightnessDown $exec $HOME/.config/scripts/software-brightness.sh -
 
 # Change audio volume
-bindsym XF86AudioRaiseVolume $exec amixer set Master 5%+
-bindsym XF86AudioLowerVolume $exec amixer set Master 5%-
-bindsym XF86AudioMute $exec amixer -q -D pulse sset Master toggle
+bindsym XF86AudioRaiseVolume $exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume $exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute $exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 # Change microphone mute
 bindsym XF86AudioMicMute $exec pactl set-source-mute alsa_input.pci-0000_00_1f.3.analog-stereo toggle
