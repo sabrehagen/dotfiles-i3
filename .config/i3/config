@@ -39,9 +39,6 @@ $exec xautolock -time 10 -locker $HOME/.config/i3/lockscreen.sh
 # Start i3 focus last window
 $exec i3-focus-last
 
-# Start picom
-$exec picom
-
 # Start hintsd
 $exec hintsd
 
