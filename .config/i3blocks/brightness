@@ -16,7 +16,7 @@ else
 fi
 
 # If brightness can't be attained display 100
-if [ "$PERCENTAGE" -eq "0" ]; then
+if [ -z "$PERCENTAGE" ]; then
   PERCENTAGE=100
 fi
 
