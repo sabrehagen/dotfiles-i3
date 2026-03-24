@@ -36,9 +36,6 @@ $exec i3altlayout
 # Start i3 focus last window
 $exec i3-focus-last
 
-# Start hintsd
-$exec hintsd
-
 # Start workspace names
 $exec_always i3-workspace-names-daemon --delimiter " | "
 
