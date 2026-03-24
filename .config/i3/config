@@ -212,7 +212,7 @@ bindsym $mod+Shift+Ctrl+Down resize grow height 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+Up resize shrink height 10 px or 2 ppt
 bindsym $mod+Shift+Ctrl+Right resize grow width 10 px or 2 ppt
 
-# Restart the desktop environment
+# Launch restart desktop environment
 bindsym $mod+Shift+q $exec $HOME/.config/i3/save-layout.sh && $HOME/.config/scripts/host-desktop-environment-restart.sh
 
 # Launch kill all containers except the desktop environment
