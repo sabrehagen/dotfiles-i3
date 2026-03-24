@@ -242,11 +242,11 @@ bindsym $mod+b $exec thorium-browser
 # Launch cursor
 bindsym $mod+c $exec cursor
 
-# Launch dmenu focus window
-bindsym $mod+Shift+o $exec $HOME/.config/scripts/dmenu-focus-window.sh
-
 # Launch dmenu launcher
 bindsym $mod+o $exec i3-dmenu-desktop --dmenu=$HOME/.config/scripts/dmenu.sh
+
+# Launch dmenu focus window
+bindsym $mod+Shift+o $exec $HOME/.config/scripts/dmenu-focus-window.sh
 
 # Launch discord
 bindsym $mod+d $exec discord
