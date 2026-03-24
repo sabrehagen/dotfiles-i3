@@ -33,9 +33,6 @@ $exec $HOME/.config/i3/restore-layout.sh
 # Start i3altlayout after workspace restore
 $exec i3altlayout
 
-# Start autolock
-$exec xautolock -time 10 -locker $HOME/.config/i3/lockscreen.sh
-
 # Start i3 focus last window
 $exec i3-focus-last
 
