@@ -260,6 +260,9 @@ bindsym $mod+e $exec pcmanfm
 # Launch hints
 bindsym $mod+period $exec hints
 
+# Launch x2x focus toggle
+bindsym $mod+semicolon $exec $HOME/.config/x2x/focus-toggle.sh
+
 # Launch screen recorder
 bindsym $mod+r $exec $HOME/.config/scripts/screen-recorder.sh
 
