@@ -251,9 +251,6 @@ bindsym $mod+Shift+o $exec $HOME/.config/scripts/dmenu-focus-window.sh
 # Launch discord
 bindsym $mod+d $exec discord
 
-# Launch warpd
-bindsym $mod+$alt+f $exec warpd --hint2 --click 1
-
 # Launch lockscreen
 bindsym $mod+slash $exec sh $HOME/.config/i3/lockscreen.sh
 
