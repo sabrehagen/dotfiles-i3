@@ -2,7 +2,8 @@
 
 URGENT_VALUE=90
 
-SPEED=$(nvidia-smi --query-gpu=fan.speed --format=csv,noheader,nounits 2>/dev/null) || exit 0
+SPEED=$(nvidia-smi --query-gpu=fan.speed --format=csv,noheader,nounits 2>/dev/null)
+[[ "${SPEED}" =~ ^[0-9]+$ ]] || exit 0
 
 printf "󰈐 %d%%\n" "${SPEED}"
 printf "󰈐 %d%%\n" "${SPEED}"
