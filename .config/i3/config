@@ -34,7 +34,7 @@ $exec $HOME/.config/i3/restore-layout.sh
 $exec i3altlayout
 
 # Start i3 focus last window
-$exec i3-focus-last
+$exec i3-focus-last >/dev/null 2>&1
 
 # Start workspace names
 $exec_always i3-workspace-names-daemon --delimiter " | "
