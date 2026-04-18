@@ -279,7 +279,7 @@ bindsym $mod+p $exec $HOME/.config/scripts/wal.sh
 bindsym $mod+Shift+p $exec $HOME/.config/scripts/wallpaper-select.sh
 
 # Launch slack
-bindsym $mod+m $exec slack
+bindsym $mod+m $exec slack >/dev/null 2>&1
 
 # Launch screenshot dump
 bindsym $mod+w $exec xclip -out -selection clipboard > $HOME/pictures/screenshot-$(date +%s).png
