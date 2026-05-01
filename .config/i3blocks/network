@@ -3,7 +3,7 @@ HOST_WIRELESS_INTERFACE=$($HOME/.config/scripts/host-ssh.sh iw dev | awk '$1=="I
 
 if [ -n "$HOST_WIRELESS_INTERFACE" ]; then
   HOST_IP=$($HOME/.config/scripts/host-ssh.sh ip addr | grep $HOST_WIRELESS_INTERFACE | grep inet | sed -E 's;.*inet (.*)/.*;\1;')
-  HOST_SSID=$($HOME/.config/scripts/host-ssh.sh iw dev $HOST_WIRELESS_INTERFACE link 2>/dev/null | grep SSID | cut -f2 -d:)
+  HOST_SSID=$($HOME/.config/scripts/host-ssh.sh iwgetid --raw $HOST_WIRELESS_INTERFACE 2>/dev/null)
 else
   HOST_IP=$($HOME/.config/scripts/host-ssh.sh ip route get 1.1.1.1 2>/dev/null | sed -n 's/.*src \([0-9.]*\).*/\1/p')
 fi
