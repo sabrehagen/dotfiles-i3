@@ -123,6 +123,9 @@ bindsym $mod+f fullscreen toggle
 # Toggle container floating mode
 bindsym $mod+Shift+f floating toggle
 
+# Toggle container sticky mode
+bindsym $mod+Shift+s sticky toggle
+
 # Center floating container
 bindsym $mod+Shift+space move position center
 
