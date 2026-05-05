@@ -8,7 +8,7 @@ NEXT_WORKSPACES=$(i3-msg -t get_workspaces | jq '.[].num' | sort --numeric-sort 
 FOCUSED_WINDOW=$(xdotool getactivewindow 2>/dev/null || echo no-focused-window)
 
 # All visible windows on the current workspace
-CURRENT_WORKSPACE_WINDOWS=$(xdotool search --all --onlyvisible --desktop $(( $CURRENT_WORKSPACE - 1 )) '' 2>/dev/null | xargs --replace=@ sh -c "echo @-\$(xprop -id @ | grep WM_CLASS | cut --delimiter '\"' --fields 2)")
+CURRENT_WORKSPACE_WINDOWS=$(xdotool search --all --onlyvisible --desktop $(( $CURRENT_WORKSPACE - 1 )) '' 2>/dev/null | xargs --replace sh -c "echo {}-\$(xprop -id {} | grep WM_CLASS | cut --delimiter '\"' --fields 2)")
 
 # Split the current workspace around the focused window
 WINDOWS_AFTER_FOCUSED=$(echo $CURRENT_WORKSPACE_WINDOWS | tr ' ' '\n' | awk "/$FOCUSED_WINDOW.*/{p=1;next} p")
