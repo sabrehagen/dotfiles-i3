@@ -303,28 +303,36 @@ bindsym $mod+$alt+x $exec ksnip --rectarea
 bindsym $mod+Control+Delete $exec $HOME/.config/i3/save-layout.sh && $HOME/.config/scripts/host-restart.sh
 
 # Focus alacritty
-bindsym $mod+Shift+Return $exec $HOME/.config/i3/move-to-next-window-of-type.sh alacritty
+bindsym $mod+Shift+Return $exec $HOME/.config/i3/move-to-window-of-type.sh alacritty next
+bindsym $mod+$alt+Return $exec $HOME/.config/i3/move-to-window-of-type.sh alacritty previous
 
 # Focus beekeeper
-bindsym $mod+Shift+g $exec $HOME/.config/i3/move-to-next-window-of-type.sh beekeeper
+bindsym $mod+Shift+g $exec $HOME/.config/i3/move-to-window-of-type.sh beekeeper next
+bindsym $mod+$alt+g $exec $HOME/.config/i3/move-to-window-of-type.sh beekeeper previous
 
 # Focus browser
-bindsym $mod+Shift+b $exec $HOME/.config/i3/move-to-next-window-of-type.sh browser
+bindsym $mod+Shift+b $exec $HOME/.config/i3/move-to-window-of-type.sh browser next
+bindsym $mod+$alt+b $exec $HOME/.config/i3/move-to-window-of-type.sh browser previous
 
 # Focus cursor
-bindsym $mod+Shift+c $exec $HOME/.config/i3/move-to-next-window-of-type.sh 'code|cursor'
+bindsym $mod+Shift+c $exec $HOME/.config/i3/move-to-window-of-type.sh 'code|cursor' next
+bindsym $mod+$alt+c $exec $HOME/.config/i3/move-to-window-of-type.sh 'code|cursor' previous
 
 # Focus discord
-bindsym $mod+Shift+d $exec $HOME/.config/i3/move-to-next-window-of-type.sh discord
+bindsym $mod+Shift+d $exec $HOME/.config/i3/move-to-window-of-type.sh discord next
+bindsym $mod+$alt+d $exec $HOME/.config/i3/move-to-window-of-type.sh discord previous
 
 # Focus pcmanfm
-bindsym $mod+Shift+e $exec $HOME/.config/i3/move-to-next-window-of-type.sh pcmanfm
+bindsym $mod+Shift+e $exec $HOME/.config/i3/move-to-window-of-type.sh pcmanfm next
+bindsym $mod+$alt+e $exec $HOME/.config/i3/move-to-window-of-type.sh pcmanfm previous
 
 # Focus slack
-bindsym $mod+Shift+m $exec $HOME/.config/i3/move-to-next-window-of-type.sh slack
+bindsym $mod+Shift+m $exec $HOME/.config/i3/move-to-window-of-type.sh slack next
+bindsym $mod+$alt+m $exec $HOME/.config/i3/move-to-window-of-type.sh slack previous
 
 # Focus telegram
-bindsym $mod+Shift+t $exec $HOME/.config/i3/move-to-next-window-of-type.sh telegram
+bindsym $mod+Shift+t $exec $HOME/.config/i3/move-to-window-of-type.sh telegram next
+bindsym $mod+$alt+t $exec $HOME/.config/i3/move-to-window-of-type.sh telegram previous
 
 # Launch claude on scratchpad
 for_window [instance="claude.ai"] floating enable, resize set 61 ppt 62 ppt, move position center, move scratchpad
