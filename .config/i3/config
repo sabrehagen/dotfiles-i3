@@ -121,7 +121,10 @@ bindsym $mod+bracketleft open
 bindsym $mod+f fullscreen toggle
 
 # Toggle container floating mode
-bindsym $mod+Shift+f floating toggle
+bindsym $mod+Shift+f [tiling con_id=__focused__] mark --add _tempfloat, move scratchpad, exec --no-startup-id i3-msg '[con_mark="_tempfloat"] scratchpad show'; [con_mark="_tempfloat" con_id=__focused__] floating disable, unmark _tempfloat
+
+# Toggle visibility of temp floaters
+bindsym $mod+$alt+f [con_mark="_tempfloat"] scratchpad show
 
 # Toggle container sticky mode
 bindsym $mod+Shift+s sticky toggle
