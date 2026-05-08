@@ -377,6 +377,12 @@ for_window [class="(?i)gsimplecal"] floating enable, move position mouse, move u
 # Position i3 managed chromium-browser windows
 for_window [class="i3-chromium-launch"] move window to mark PLACEHOLDER
 
+# Disable border on handy recording indicator
+for_window [class="Handy"] border none
+
+# Don't steal focus when handy recording indicator appears
+no_focus [class="Handy"]
+
 # Float QjackCtl window
 for_window [class="QjackCtl"] floating enable
 
