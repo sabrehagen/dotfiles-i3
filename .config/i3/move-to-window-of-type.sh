@@ -1,29 +1,29 @@
 WINDOW_CLASS=$1
 DIRECTION=$2
 
-CURRENT_WORKSPACE=$(i3-msg -t get_workspaces | jq '.[] | select(.focused==true).num')
-PREVIOUS_WORKSPACES=$(i3-msg -t get_workspaces | jq '.[].num' | sort --numeric-sort | awk --assign current=$CURRENT_WORKSPACE '$1 < current')
-NEXT_WORKSPACES=$(i3-msg -t get_workspaces | jq '.[].num' | sort --numeric-sort | awk --assign current=$CURRENT_WORKSPACE '$1 > current')
+TREE=$(i3-msg -t get_tree)
+CURRENT_WORKSPACE=$(i3-msg -t get_workspaces | jq '.[] | select(.focused == true) | .num')
+FOCUSED_WINDOW=$(echo $TREE | jq '.. | objects | select(.focused? == true and .window != null) | .window')
 
-FOCUSED_WINDOW=$(xdotool getactivewindow 2>/dev/null || echo no-focused-window)
+CURRENT_WORKSPACE_WINDOWS=$(echo $TREE | jq --argjson ws $CURRENT_WORKSPACE --raw-output '
+  [.. | objects | select(.type? == "workspace" and .num == $ws)][0]
+  | [.. | objects | select(.window != null)][]
+  | "\(.window) \(.window_properties.class // "") \(.window_properties.instance // "")"
+')
 
-# All visible windows on the current workspace
-CURRENT_WORKSPACE_WINDOWS=$(xdotool search --all --onlyvisible --desktop $(( $CURRENT_WORKSPACE - 1 )) '' 2>/dev/null | xargs --replace sh -c "echo {}-\$(xprop -id {} | grep WM_CLASS | cut --delimiter '\"' --fields 2)")
+WINDOWS_AFTER_FOCUSED=$(echo "$CURRENT_WORKSPACE_WINDOWS" | awk --assign focused=$FOCUSED_WINDOW '$1 == focused {p=1; next} p')
+WINDOWS_BEFORE_FOCUSED=$(echo "$CURRENT_WORKSPACE_WINDOWS" | awk --assign focused=$FOCUSED_WINDOW '$1 == focused {exit} {print}')
 
-# Split the current workspace around the focused window
-WINDOWS_AFTER_FOCUSED=$(echo $CURRENT_WORKSPACE_WINDOWS | tr ' ' '\n' | awk "/$FOCUSED_WINDOW.*/{p=1;next} p")
-WINDOWS_BEFORE_FOCUSED=$(echo $CURRENT_WORKSPACE_WINDOWS | tr ' ' '\n' | awk "/$FOCUSED_WINDOW.*/{found=1} !found{print}")
-
-# Class-matching windows on other workspaces
-OTHER_WORKSPACE_WINDOWS=
-for WORKSPACE_NUMBER in $NEXT_WORKSPACES $PREVIOUS_WORKSPACES; do
-  OTHER_WORKSPACE_WINDOWS="$OTHER_WORKSPACE_WINDOWS $(xdotool search --desktop $(( $WORKSPACE_NUMBER - 1 )) --class $WINDOW_CLASS | grep --invert-match $FOCUSED_WINDOW | sed "s/\$/-$WINDOW_CLASS/")"
-done
+OTHER_WORKSPACE_WINDOWS=$(echo $TREE | jq --argjson ws $CURRENT_WORKSPACE --raw-output '
+  (([.. | objects | select(.type? == "workspace" and .num > $ws)] | sort_by(.num)) +
+   ([.. | objects | select(.type? == "workspace" and .num >= 0 and .num < $ws)] | sort_by(.num)))[]
+  | [.. | objects | select(.window != null)][]
+  | "\(.window) \(.window_properties.class // "") \(.window_properties.instance // "")"
+')
 
 # Forward cycle order: current-after, other workspaces, current-before
-CANDIDATE_WINDOWS=$(echo $WINDOWS_AFTER_FOCUSED $OTHER_WORKSPACE_WINDOWS $WINDOWS_BEFORE_FOCUSED | tr ' ' '\n' | grep --extended-regexp $WINDOW_CLASS | cut --delimiter - --fields 1)
+CANDIDATE_WINDOWS=$(printf '%s\n%s\n%s\n' "$WINDOWS_AFTER_FOCUSED" "$OTHER_WORKSPACE_WINDOWS" "$WINDOWS_BEFORE_FOCUSED" | grep --extended-regexp --ignore-case $WINDOW_CLASS | awk '{print $1}')
 
-# Reverse the candidate stream to cycle backwards
 ORDER=cat
 if [ $DIRECTION = previous ]; then
   ORDER=tac
