@@ -157,6 +157,7 @@ bindsym $mod+shift+bracketright floating disable, sticky disable
 
 # Cycle floating window around screen corners
 bindsym $mod+$alt+bracketright $exec $HOME/.config/i3/cycle-floating-corner.sh
+bindsym $mod+$alt+Shift+bracketright $exec $HOME/.config/i3/cycle-floating-corner.sh -1
 
 # Define names for workspaces to be used in key bindings
 set $ws1 "1"
