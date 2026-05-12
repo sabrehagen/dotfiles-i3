@@ -121,10 +121,10 @@ bindsym $mod+bracketleft open
 bindsym $mod+f fullscreen toggle
 
 # Toggle container floating mode
-bindsym $mod+Shift+f [tiling con_id=__focused__] mark --add _manualfloat, move scratchpad, exec --no-startup-id i3-msg '[con_mark="_manualfloat"] scratchpad show'; [con_mark="_manualfloat" con_id=__focused__] floating disable, unmark _manualfloat
+bindsym $mod+Shift+f [tiling con_id=__focused__] mark --add _manual_float, move scratchpad, exec --no-startup-id i3-msg '[con_mark="_manual_float"] scratchpad show'; [con_mark="_manual_float" con_id=__focused__] floating disable, unmark _manual_float
 
-# Toggle visibility of manually floated windows
-bindsym $mod+$alt+f [con_mark="_manualfloat"] scratchpad show
+# Toggle visibility of temp floating windows
+bindsym $mod+$alt+f [con_mark="_manual_float"] scratchpad show
 
 # Toggle container sticky mode
 bindsym $mod+Shift+s sticky toggle
