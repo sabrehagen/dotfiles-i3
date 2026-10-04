@@ -280,7 +280,7 @@ bindsym $mod+semicolon $exec $HOME/.config/x2x/focus-toggle.sh
 bindsym $mod+r $exec $HOME/.config/scripts/screen-recorder.sh
 
 # Launch telegram
-bindsym $mod+t $exec /opt/telegram/telegram
+bindsym $mod+t $exec telegram
 
 # Launch wallpaper cycle
 bindsym $mod+p $exec $HOME/.config/scripts/wal.sh
