@@ -279,6 +279,9 @@ bindsym $mod+semicolon $exec $HOME/.config/x2x/focus-toggle.sh
 # Launch screen recorder
 bindsym $mod+r $exec $HOME/.config/scripts/screen-recorder.sh
 
+# Launch t3code
+bindsym $mod+a $exec t3code
+
 # Launch telegram
 bindsym $mod+t $exec telegram
 
@@ -336,6 +339,10 @@ bindsym $mod+$alt+e $exec $HOME/.config/i3/move-to-window-of-type.sh pcmanfm pre
 # Focus slack
 bindsym $mod+Shift+m $exec $HOME/.config/i3/move-to-window-of-type.sh slack next
 bindsym $mod+$alt+m $exec $HOME/.config/i3/move-to-window-of-type.sh slack previous
+
+# Focus t3code
+bindsym $mod+Shift+a $exec $HOME/.config/i3/move-to-window-of-type.sh t3code next
+bindsym $mod+$alt+a $exec $HOME/.config/i3/move-to-window-of-type.sh t3code previous
 
 # Focus telegram
 bindsym $mod+Shift+t $exec $HOME/.config/i3/move-to-window-of-type.sh telegram next
