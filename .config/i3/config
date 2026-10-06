@@ -429,7 +429,7 @@ bar {
     inactive_workspace $bg      $bg         $fg
     urgent_workspace   $bg      $alert      $fg
   }
-  font pango:monospace 10
+  font pango:DejaVu Sans Mono, FA5 Solid Thin 25, Font Awesome 5 Brands, DejaVuSansM Nerd Font 10.5
   position bottom
   status_command i3blocks
   tray_output none
