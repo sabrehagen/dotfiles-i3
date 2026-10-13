@@ -325,8 +325,8 @@ bindsym $mod+Shift+b $exec $HOME/.config/i3/move-to-window-of-type.sh browser ne
 bindsym $mod+$alt+b $exec $HOME/.config/i3/move-to-window-of-type.sh browser previous
 
 # Focus cursor
-bindsym $mod+Shift+c $exec $HOME/.config/i3/move-to-window-of-type.sh 'code|cursor' next
-bindsym $mod+$alt+c $exec $HOME/.config/i3/move-to-window-of-type.sh 'code|cursor' previous
+bindsym $mod+Shift+c $exec $HOME/.config/i3/move-to-window-of-type.sh '\bcode|cursor' next
+bindsym $mod+$alt+c $exec $HOME/.config/i3/move-to-window-of-type.sh '\bcode|cursor' previous
 
 # Focus discord
 bindsym $mod+Shift+d $exec $HOME/.config/i3/move-to-window-of-type.sh discord next
