@@ -11,8 +11,8 @@ CURRENT_WORKSPACE_WINDOWS=$(echo $TREE | jq --argjson ws $CURRENT_WORKSPACE --ra
   | "\(.window) \(.window_properties.class // "") \(.window_properties.instance // "")"
 ')
 
-WINDOWS_AFTER_FOCUSED=$(echo "$CURRENT_WORKSPACE_WINDOWS" | awk --assign focused=$FOCUSED_WINDOW '$1 == focused {p=1; next} p')
-WINDOWS_BEFORE_FOCUSED=$(echo "$CURRENT_WORKSPACE_WINDOWS" | awk --assign focused=$FOCUSED_WINDOW '$1 == focused {exit} {print}')
+WINDOWS_AFTER_FOCUSED=$(echo "$CURRENT_WORKSPACE_WINDOWS" | awk -v focused=$FOCUSED_WINDOW '$1 == focused {p=1; next} p')
+WINDOWS_BEFORE_FOCUSED=$(echo "$CURRENT_WORKSPACE_WINDOWS" | awk -v focused=$FOCUSED_WINDOW '$1 == focused {exit} {print}')
 
 OTHER_WORKSPACE_WINDOWS=$(echo $TREE | jq --argjson ws $CURRENT_WORKSPACE --raw-output '
   (([.. | objects | select(.type? == "workspace" and .num > $ws)] | sort_by(.num)) +
