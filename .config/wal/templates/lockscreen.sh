@@ -1,3 +1,8 @@
+# Wait for x server to regain vt after suspend
+until xprop -root XFree86_has_VT | grep --quiet 1$; do
+  sleep 0.1
+done
+
 # Create lockscreen image
 LOCKSCREEN_IMAGE=$(mktemp).png
 scrot - | convert - -level 0%,100%,0.6 -scale 10% -scale 1000% $LOCKSCREEN_IMAGE
