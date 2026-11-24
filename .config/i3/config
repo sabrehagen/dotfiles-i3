@@ -241,16 +241,16 @@ bindsym $mod+$alt+F5 $exec $HOME/.config/i3/launch-desktop-environment-build-log
 bindsym $mod+F6 $exec $HOME/.config/scripts/tmux-kill-desktop-environment-build.sh
 
 # Launch alacritty
-bindsym $mod+Shift+Return $exec alacritty
+bindsym $mod+Return $exec alacritty
 
 # Launch beekeeper
-bindsym $mod+Shift+g $exec beekeeper-studio
+bindsym $mod+g $exec beekeeper-studio
 
 # Launch browser
-bindsym $mod+Shift+b $exec thorium-browser
+bindsym $mod+b $exec thorium-browser
 
 # Launch cursor
-bindsym $mod+Shift+c $exec cursor
+bindsym $mod+c $exec cursor
 
 # Launch dmenu launcher
 bindsym $mod+o $exec i3-dmenu-desktop --dmenu=$HOME/.config/scripts/dmenu.sh
@@ -262,13 +262,13 @@ bindsym $mod+Shift+o $exec $HOME/.config/scripts/dmenu-focus-window.sh
 bindsym $mod+$alt+o $exec $HOME/.config/scripts/dmenu-op.sh
 
 # Launch discord
-bindsym $mod+Shift+d $exec discord
+bindsym $mod+d $exec discord
 
 # Launch lockscreen
 bindsym $mod+slash $exec sh $HOME/.config/i3/lockscreen.sh
 
 # Launch pcmanfm
-bindsym $mod+Shift+e $exec pcmanfm
+bindsym $mod+e $exec pcmanfm
 
 # Launch hints
 bindsym $mod+period $exec hints
@@ -280,10 +280,10 @@ bindsym $mod+semicolon $exec $HOME/.config/x2x/focus-toggle.sh
 bindsym $mod+r $exec $HOME/.config/scripts/screen-recorder.sh
 
 # Launch t3code
-bindsym $mod+Shift+a $exec t3code
+bindsym $mod+a $exec t3code
 
 # Launch telegram
-bindsym $mod+Shift+t $exec telegram
+bindsym $mod+t $exec telegram
 
 # Launch wallpaper cycle
 bindsym $mod+p $exec $HOME/.config/scripts/wal.sh
@@ -292,7 +292,7 @@ bindsym $mod+p $exec $HOME/.config/scripts/wal.sh
 bindsym $mod+Shift+p $exec $HOME/.config/scripts/wallpaper-select.sh
 
 # Launch slack
-bindsym $mod+Shift+m $exec slack >/dev/null 2>&1
+bindsym $mod+m $exec slack >/dev/null 2>&1
 
 # Launch screenshot dump
 bindsym $mod+w $exec xclip -out -selection clipboard > $HOME/pictures/screenshot-$(date +%s).png
@@ -312,40 +312,40 @@ bindsym $mod+$alt+x $exec ksnip --rectarea
 # Launch host reboot
 bindsym $mod+Control+Delete $exec $HOME/.config/i3/save-layout.sh && $HOME/.config/scripts/host-restart.sh
 
-# Run or raise alacritty
-bindsym $mod+Return $exec $HOME/.config/i3/run-or-raise.sh alacritty alacritty
+# Focus alacritty
+bindsym $mod+Shift+Return $exec $HOME/.config/i3/move-to-window-of-type.sh alacritty next
 bindsym $mod+$alt+Return $exec $HOME/.config/i3/move-to-window-of-type.sh alacritty previous
 
-# Run or raise beekeeper
-bindsym $mod+g $exec $HOME/.config/i3/run-or-raise.sh beekeeper beekeeper-studio
+# Focus beekeeper
+bindsym $mod+Shift+g $exec $HOME/.config/i3/move-to-window-of-type.sh beekeeper next
 bindsym $mod+$alt+g $exec $HOME/.config/i3/move-to-window-of-type.sh beekeeper previous
 
-# Run or raise browser
-bindsym $mod+b $exec $HOME/.config/i3/run-or-raise.sh browser thorium-browser
+# Focus browser
+bindsym $mod+Shift+b $exec $HOME/.config/i3/move-to-window-of-type.sh browser next
 bindsym $mod+$alt+b $exec $HOME/.config/i3/move-to-window-of-type.sh browser previous
 
-# Run or raise cursor
-bindsym $mod+c $exec $HOME/.config/i3/run-or-raise.sh '\bcode|cursor' cursor
+# Focus cursor
+bindsym $mod+Shift+c $exec $HOME/.config/i3/move-to-window-of-type.sh '\bcode|cursor' next
 bindsym $mod+$alt+c $exec $HOME/.config/i3/move-to-window-of-type.sh '\bcode|cursor' previous
 
-# Run or raise discord
-bindsym $mod+d $exec $HOME/.config/i3/run-or-raise.sh discord discord
+# Focus discord
+bindsym $mod+Shift+d $exec $HOME/.config/i3/move-to-window-of-type.sh discord next
 bindsym $mod+$alt+d $exec $HOME/.config/i3/move-to-window-of-type.sh discord previous
 
-# Run or raise pcmanfm
-bindsym $mod+e $exec $HOME/.config/i3/run-or-raise.sh pcmanfm pcmanfm
+# Focus pcmanfm
+bindsym $mod+Shift+e $exec $HOME/.config/i3/move-to-window-of-type.sh pcmanfm next
 bindsym $mod+$alt+e $exec $HOME/.config/i3/move-to-window-of-type.sh pcmanfm previous
 
-# Run or raise slack
-bindsym $mod+m $exec $HOME/.config/i3/run-or-raise.sh slack slack >/dev/null 2>&1
+# Focus slack
+bindsym $mod+Shift+m $exec $HOME/.config/i3/move-to-window-of-type.sh slack next
 bindsym $mod+$alt+m $exec $HOME/.config/i3/move-to-window-of-type.sh slack previous
 
-# Run or raise t3code
-bindsym $mod+a $exec $HOME/.config/i3/run-or-raise.sh t3code t3code
+# Focus t3code
+bindsym $mod+Shift+a $exec $HOME/.config/i3/move-to-window-of-type.sh t3code next
 bindsym $mod+$alt+a $exec $HOME/.config/i3/move-to-window-of-type.sh t3code previous
 
-# Run or raise telegram
-bindsym $mod+t $exec $HOME/.config/i3/run-or-raise.sh telegram telegram
+# Focus telegram
+bindsym $mod+Shift+t $exec $HOME/.config/i3/move-to-window-of-type.sh telegram next
 bindsym $mod+$alt+t $exec $HOME/.config/i3/move-to-window-of-type.sh telegram previous
 
 # Launch claude on scratchpad
